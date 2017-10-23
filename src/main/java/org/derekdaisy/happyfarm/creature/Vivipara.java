@@ -1,4 +1,4 @@
 package org.derekdaisy.happyfarm.creature;
 
-public class Vivipara extends Animal {
+public abstract class Vivipara extends Animal {
 }

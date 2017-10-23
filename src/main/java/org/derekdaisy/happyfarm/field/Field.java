@@ -1,4 +1,4 @@
 package org.derekdaisy.happyfarm.field;
 
-public class Field {
+public abstract class Field {
 }

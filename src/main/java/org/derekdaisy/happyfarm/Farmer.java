@@ -1,6 +1,8 @@
 package org.derekdaisy.happyfarm;
 
-public class Farmer {
+import org.derekdaisy.happyfarm.task.Task;
+
+public class Farmer extends Person implements executor {
 
     private static Farmer instance;
 
@@ -25,4 +27,5 @@ public class Farmer {
         return inst;
     }
 
+    public void executeTask(Task task) {}
 }

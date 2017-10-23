@@ -1,4 +1,4 @@
 package org.derekdaisy.happyfarm.creature;
 
-public class Animal extends Creature {
+public abstract class Animal extends Creature {
 }
