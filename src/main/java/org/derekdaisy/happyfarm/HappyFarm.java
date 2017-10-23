@@ -4,7 +4,11 @@ public class HappyFarm {
 
     private static HappyFarm instance;
 
-    private HappyFarm() {}
+    private static double funds;
+
+    private HappyFarm() {
+        funds = 1000.0;
+    }
 
     /**
      * Returns the single instance of HappyFarm
