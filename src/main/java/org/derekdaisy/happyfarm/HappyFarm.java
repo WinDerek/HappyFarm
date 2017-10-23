@@ -7,8 +7,8 @@ public class HappyFarm {
     private HappyFarm() {}
 
     /**
-     * Returns a single instance of HappyFarm
-     * @return A single instance of HappyFarm
+     * Returns the single instance of HappyFarm
+     * @return The single instance of HappyFarm
      */
     public static HappyFarm getInstance() {
         HappyFarm inst = instance;
