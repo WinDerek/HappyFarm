@@ -1,4 +1,7 @@
 package org.derekdaisy.happyfarm;
 
-public class Store {
+
+
+public abstract class Store {
+    public abstract void buy(String goods_name);
 }
