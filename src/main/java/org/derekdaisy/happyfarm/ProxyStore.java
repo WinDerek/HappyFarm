@@ -2,11 +2,12 @@ package org.derekdaisy.happyfarm;
 
 
 /**
- * @author XuantangCun E-mail:Tang_zhu0@163.com
- * @version 创建时间：2017-10-24
+ * ProxyStore class
  *
+ * @author ${USER}
+ * @date 2017/10/24
  */
-public class ProxyStore extends Store {
+public class ProxyStore extends AbstractStore {
 
     private FactoryStore factoryStore;
 
@@ -15,8 +16,8 @@ public class ProxyStore extends Store {
     }
 
     @Override
-    public void buy(String goods_name) {
-        factoryStore.buy(goods_name);
+    public void buy(String goodsName) {
+        factoryStore.buy(goodsName);
     }
 
     public void show(){

@@ -1,17 +1,22 @@
 package org.derekdaisy.happyfarm.field;
 
 import org.derekdaisy.happyfarm.CookHelper;
+
 /**
- * @author XuantangCun E-mail:Tang_zhu0@163.com
- * @version 创建时间：2017-10-24
+ * AbstractFood abstract class
  *
+ * @author ${USER}
+ * @date 2017/10/24
  */
-public abstract class Food {
+public abstract class AbstractFood {
     protected CookHelper cookHelper;
 
-    public Food(CookHelper cookHelper){
+    public AbstractFood(CookHelper cookHelper){
         this.cookHelper = cookHelper;
     }
 
+    /**
+     * do cook action
+     */
     public abstract void cook();
 }

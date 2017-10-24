@@ -1,33 +1,34 @@
 package org.derekdaisy.happyfarm;
 
 
-import org.derekdaisy.happyfarm.field.Goods;
+import org.derekdaisy.happyfarm.field.AbstractGoods;
 
 import java.util.HashMap;
 import java.util.List;
 
 /**
- * @author XuantangCun E-mail:Tang_zhu0@163.com
- * @version 创建时间：2017-10-24
+ * FactoryStore class
  *
+ * @author ${USER}
+ * @date 2017/10/24
  */
-public class FactoryStore extends Store{
+public class FactoryStore extends AbstractStore {
 
-    private HashMap<String, Goods> goods;
-    private static List<String> goods_names;
+    private HashMap<String, AbstractGoods> goods;
+    private static List<String> goodsNames;
 
     // goods list, maybe read from config
     static {
-        goods_names.add("computer");
-        goods_names.add("cloth");
+        goodsNames.add("computer");
+        goodsNames.add("cloth");
     }
 
     @Override
-    public void buy(String goods_name) {
-        if(null != goods.get(goods_name)){
-            System.out.println(goods_name);
+    public void buy(String goodsName) {
+        if(null != goods.get(goodsName)){
+            System.out.println(goodsName);
         }else {
-            Goods produce = produce(goods_name);
+            AbstractGoods produce = produce(goodsName);
             System.out.println(produce.name);
         }
     }
@@ -36,18 +37,18 @@ public class FactoryStore extends Store{
      * show the list of goods
      */
     public void show(){
-        for(String name : goods_names){
+        for(String name : goodsNames){
             System.out.println(name);
         }
     }
 
     /**
      * produce a new goods
-     * @param goods_name
+     * @param goodsName
      * @return
      */
-    private Goods produce(String goods_name){
-        switch (goods_name) {
+    private AbstractGoods produce(String goodsName){
+        switch (goodsName) {
             case "computer":
                 ComputerGoods computer = new ComputerGoods();
                 goods.put("computer", computer);

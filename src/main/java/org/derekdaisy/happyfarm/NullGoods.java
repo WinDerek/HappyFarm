@@ -1,13 +1,14 @@
 package org.derekdaisy.happyfarm;
 
-import org.derekdaisy.happyfarm.field.Goods;
+import org.derekdaisy.happyfarm.field.AbstractGoods;
 
 /**
- * @author XuantangCun E-mail:Tang_zhu0@163.com
- * @version 创建时间：2017-10-24
+ * NullGoods class
  *
+ * @author ${USER}
+ * @date 2017/10/24
  */
-public class NullGoods extends Goods {
+public class NullGoods extends AbstractGoods {
     public NullGoods(){
         this.name = "null";
     }

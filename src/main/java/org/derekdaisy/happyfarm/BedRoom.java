@@ -1,13 +1,14 @@
 package org.derekdaisy.happyfarm;
 
-import org.derekdaisy.happyfarm.field.Room;
+import org.derekdaisy.happyfarm.field.AbstractRoom;
 
 /**
- * @author XuantangCun E-mail:Tang_zhu0@163.com
- * @version 创建时间：2017-10-24
+ * BedRoom class
  *
+ * @author ${USER}
+ * @date 2017/10/24
  */
-public class BedRoom extends Room {
+public class BedRoom extends AbstractRoom {
 
     public BedRoom(){
         goods.add("bed");

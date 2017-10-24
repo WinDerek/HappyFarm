@@ -1,19 +1,23 @@
 package org.derekdaisy.happyfarm;
 
-import org.derekdaisy.happyfarm.field.Game;
+import org.derekdaisy.happyfarm.field.AbstractGame;
 
 /**
- * @author XuantangCun E-mail:Tang_zhu0@163.com
- * @version 创建时间：2017-10-24
+ * GameAdapter class
  *
+ * @author ${USER}
+ * @date 2017/10/24
  */
-public class GameAdapter extends Game {
+public class GameAdapter extends AbstractGame {
+
+    private static final String ANDROID_NAME = "android";
+    private static final String IOS_NAME = "ios";
 
     private Simulator simulator;
     public GameAdapter(String device, String name){
-        if(device.equals("android")){
+        if(ANDROID_NAME.equals(device)){
             this.simulator = new AndroidSimulator();
-        }else if(device.equals("ios")){
+        }else if(IOS_NAME.equals(device)){
             this.simulator = new IosSimulator();
         }
     }
