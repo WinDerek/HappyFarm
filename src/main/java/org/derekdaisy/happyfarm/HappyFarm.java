@@ -6,8 +6,10 @@ public class HappyFarm {
 
     private static double funds;
 
+    private static final double INITIAL_FUNDS = 1000.0;
+
     private HappyFarm() {
-        funds = 1000.0;
+        funds = INITIAL_FUNDS;
     }
 
     /**
