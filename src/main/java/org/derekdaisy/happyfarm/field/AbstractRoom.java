@@ -9,7 +9,7 @@ import java.util.List;
  * @date 2017/10/24
  */
 public abstract class AbstractRoom {
-    public List<String> goods;
+    public List<String> furnitures;
 
     /**
      * show the thing in room

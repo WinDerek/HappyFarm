@@ -16,8 +16,8 @@ public class ProxyStore extends AbstractStore {
     }
 
     @Override
-    public void buy(String goodsName) {
-        factoryStore.buy(goodsName);
+    public void buy(String productName) {
+        factoryStore.buy(productName);
     }
 
     public void show(){

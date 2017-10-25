@@ -11,14 +11,14 @@ import org.derekdaisy.happyfarm.field.AbstractRoom;
 public class LivingRoom extends AbstractRoom {
 
     public LivingRoom(){
-        goods.add("chair");
-        goods.add("desk");
+        furnitures.add("chair");
+        furnitures.add("desk");
     }
     @Override
     public void show() {
         System.out.println("this room have good here: ");
-        for(String str : goods){
-            System.out.println(str);
+        for(String furniture : furnitures){
+            System.out.println(furnitures);
         }
     }
 }

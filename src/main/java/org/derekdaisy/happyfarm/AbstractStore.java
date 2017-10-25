@@ -9,7 +9,7 @@ package org.derekdaisy.happyfarm;
 public abstract class AbstractStore {
     /**
      * can buy something
-     * @param goodsName
+     * @param productName
      */
-    public abstract void buy(String goodsName);
+    public abstract void buy(String productName);
 }

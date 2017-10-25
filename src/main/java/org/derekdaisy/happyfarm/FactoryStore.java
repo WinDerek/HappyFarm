@@ -1,10 +1,13 @@
 package org.derekdaisy.happyfarm;
 
 
-import org.derekdaisy.happyfarm.field.AbstractGoods;
+import org.derekdaisy.happyfarm.field.Product;
 
 import java.util.HashMap;
 import java.util.List;
+
+import static org.derekdaisy.happyfarm.field.Product.CLOTHES_PRODUCT;
+import static org.derekdaisy.happyfarm.field.Product.COMPUTER_PRODUCT;
 
 /**
  * FactoryStore class
@@ -14,51 +17,52 @@ import java.util.List;
  */
 public class FactoryStore extends AbstractStore {
 
-    private HashMap<String, AbstractGoods> goods;
-    private static List<String> goodsNames;
+    private HashMap<String, Product> products;
+    private static List<String> productNames;
+   
 
-    // goods list, maybe read from config
+    // products list, maybe read from config
     static {
-        goodsNames.add("computer");
-        goodsNames.add("cloth");
+        productNames.add(COMPUTER_PRODUCT);
+        productNames.add(CLOTHES_PRODUCT);
     }
 
     @Override
-    public void buy(String goodsName) {
-        if(null != goods.get(goodsName)){
-            System.out.println(goodsName);
+    public void buy(String productName) {
+        if(null != products.get(productName)){
+            System.out.println(productName);
         }else {
-            AbstractGoods produce = produce(goodsName);
+            Product produce = produce(productName);
             System.out.println(produce.name);
         }
     }
 
     /**
-     * show the list of goods
+     * show the list of products
      */
     public void show(){
-        for(String name : goodsNames){
-            System.out.println(name);
+        for(String productName : productNames){
+            System.out.println(productName);
         }
     }
 
     /**
-     * produce a new goods
-     * @param goodsName
+     * produce a new products
+     * @param productName
      * @return
      */
-    private AbstractGoods produce(String goodsName){
-        switch (goodsName) {
-            case "computer":
-                ComputerGoods computer = new ComputerGoods();
-                goods.put("computer", computer);
+    private Product produce(String productName){
+        switch (productName) {
+            case COMPUTER_PRODUCT:
+                ComputerProduct computer = new ComputerProduct();
+                products.put(COMPUTER_PRODUCT, computer);
                 return computer;
-            case "cloth":
-                ClothGoods cloth = new ClothGoods();
-                goods.put("cloth", cloth);
-                return cloth;
+            case CLOTHES_PRODUCT:
+                ClothesProduct clothes = new ClothesProduct();
+                products.put(CLOTHES_PRODUCT, clothes);
+                return clothes;
             default:
-                return new NullGoods();
+                return new NullProduct();
         }
     }
 }
