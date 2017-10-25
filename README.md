@@ -9,7 +9,7 @@ Design Patterns
 --------
 **Creational Patterns**
 - [ ] Abstract Factory
-- [ ] Builder
+- [x] Builder
 - [ ] Factory Method
 - [ ] Prototype
 - [x] Singleton
@@ -18,16 +18,16 @@ Design Patterns
 - [ ] Adapter
 - [ ] Bridge
 - [ ] Composite
-- [ ] Decorator
-- [ ] Facade
+- [x] Decorator
+- [x] Facade
 - [ ] Flyweight
 - [ ] Proxy
 
 **Behavioral Patterns**
-- [ ] Chain of Responsibility
+- [x] Chain of Responsibility
 - [x] Command
-- [ ] Interpreter
-- [ ] Iterator
+- [x] Interpreter
+- [x] Iterator
 - [ ] Mediator
 - [ ] Memento
 - [ ] Observer
