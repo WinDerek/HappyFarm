@@ -20,7 +20,7 @@ Design Patterns
 - [ ] Composite
 - [x] Decorator
 - [x] Facade
-- [ ] Flyweight
+- [x] Flyweight
 - [ ] Proxy
 
 **Behavioral Patterns**
@@ -29,7 +29,7 @@ Design Patterns
 - [x] Interpreter
 - [x] Iterator
 - [ ] Mediator
-- [ ] Memento
+- [x] Memento
 - [ ] Observer
 - [ ] State
 - [ ] Template Method
