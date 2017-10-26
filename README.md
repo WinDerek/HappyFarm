@@ -12,7 +12,7 @@ Design Patterns
 - [ ] Builder
 - [ ] Factory Method
 - [ ] Prototype
-- [x] Singleton
+- [ ] Singleton
 
 **Structural Patterns**
 - [ ] Adapter
@@ -25,7 +25,7 @@ Design Patterns
 
 **Behavioral Patterns**
 - [ ] Chain of Responsibility
-- [x] Command
+- [ ] Command
 - [ ] Interpreter
 - [ ] Iterator
 - [ ] Mediator
