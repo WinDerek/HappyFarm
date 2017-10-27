@@ -43,4 +43,5 @@ public abstract class AbstractRoom {
         products.add(abstractProduct);
         System.out.println("add product in the room");
     }
+
 }

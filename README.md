@@ -17,7 +17,7 @@ Design Patterns
 **Structural Patterns**
 - [ ] Adapter
 - [ ] Bridge
-- [ ] Composite
+- [x] Composite
 - [ ] Decorator
 - [x] Facade
 - [ ] Flyweight
@@ -32,5 +32,9 @@ Design Patterns
 - [ ] Memento
 - [ ] Observer
 - [ ] State
+- [ ] Strategy
 - [ ] Template Method
 - [ ] Visitor
+
+**Other Patterns**
+- [ ] Null Object

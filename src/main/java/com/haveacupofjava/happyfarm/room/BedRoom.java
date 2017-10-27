@@ -10,4 +10,5 @@ public class BedRoom extends AbstractRoom {
             System.out.println("you do not add clean way");
         }
     }
+
 }

@@ -14,5 +14,4 @@ public class KitchenRoom extends AbstractRoom {
 
     }
 
-
 }

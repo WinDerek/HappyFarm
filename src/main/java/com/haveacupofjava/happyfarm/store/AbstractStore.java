@@ -13,4 +13,5 @@ public abstract class AbstractStore {
      * The items in the room have
      */
     public abstract void show();
+
 }

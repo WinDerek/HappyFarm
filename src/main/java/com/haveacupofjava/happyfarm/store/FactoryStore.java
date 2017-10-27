@@ -41,4 +41,5 @@ public class FactoryStore extends AbstractStore {
             System.out.println("this store has no product");
         }
     }
+
 }

@@ -11,4 +11,5 @@ public class LivingRoom extends AbstractRoom {
         }
 
     }
+
 }

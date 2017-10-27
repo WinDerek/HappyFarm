@@ -19,4 +19,5 @@ public class ProxyStore extends AbstractStore {
     public void show() {
         factoryStore.show();
     }
+
 }

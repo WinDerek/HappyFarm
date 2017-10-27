@@ -1,6 +1,7 @@
 package com.haveacupofjava.happyfarm.product;
 
 public abstract class AbstractProduct {
+
     public String name;
 
     /**
@@ -8,4 +9,5 @@ public abstract class AbstractProduct {
      * @return
      */
     public abstract AbstractProduct clone();
+
 }
