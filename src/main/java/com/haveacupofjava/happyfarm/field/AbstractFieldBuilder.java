@@ -1,9 +1,5 @@
 package com.haveacupofjava.happyfarm.field;
 
-import sun.font.FontConfigManager;
-
-import javax.swing.*;
-
 /**
   * Class AbstractFieldBuilder
   * includes 2 functions to build a field
