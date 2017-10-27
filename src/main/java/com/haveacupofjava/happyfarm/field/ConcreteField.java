@@ -1,6 +1,6 @@
 package com.haveacupofjava.happyfarm.field;
 
-public class ConcreteField extends AbstractField{
+public class ConcreteField extends AbstractPen{
 
     @Override
     public void showField(){

@@ -8,11 +8,6 @@ package com.haveacupofjava.happyfarm.field;
 public abstract class AbstractField extends AbstractFieldComponent{
     protected AbstractFieldDecorator decorator;
 
-    // TODO
-    /*
-     * a container for creature
-     */
-
     public void resetDecoratorHead(AbstractFieldDecorator decorator){
         this.decorator = decorator;
     }

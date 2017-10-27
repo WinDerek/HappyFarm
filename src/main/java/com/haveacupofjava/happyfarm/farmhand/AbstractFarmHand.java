@@ -12,8 +12,9 @@ public abstract class AbstractFarmHand {
      * @param tool
      * @return
      */
-    public AbstractTool getTool(String tool){
+    protected AbstractTool getTool(String tool){
         StorageRoom storageRoom = new StorageRoom();
         return storageRoom.getTool(tool);
     }
+
 }
