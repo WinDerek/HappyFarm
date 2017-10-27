@@ -1,5 +1,7 @@
 package com.haveacupofjava.happyfarm.product;
 
+import com.haveacupofjava.happyfarm.field.AbstractField;
+
 public class Hoe extends AbstractTool{
     public Hoe() {
         this.name = "hoe";
@@ -12,4 +14,11 @@ public class Hoe extends AbstractTool{
         hoe.name = this.name;
         return hoe;
     }
+
+    @Override
+    public void handleField(AbstractField filed) {
+
+    }
 }
+
+
