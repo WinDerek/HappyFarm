@@ -4,12 +4,15 @@ public class HappyFarm {
 
     private static HappyFarm instance;
 
+    private static Farmer farmer;
+
     private Double funds;
 
     private static final double INITIAL_FUNDS = 1000.0;
 
     private HappyFarm() {
         funds = INITIAL_FUNDS;
+        farmer = Farmer.getInstance();
     }
 
     /**

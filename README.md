@@ -12,14 +12,14 @@ Design Patterns
 - [ ] Builder
 - [ ] Factory Method
 - [ ] Prototype
-- [ ] Singleton
+- [x] Singleton
 
 **Structural Patterns**
 - [ ] Adapter
 - [ ] Bridge
-- [ ] Composite
+- [x] Composite
 - [ ] Decorator
-- [ ] Facade
+- [x] Facade
 - [ ] Flyweight
 - [ ] Proxy
 
@@ -30,7 +30,17 @@ Design Patterns
 - [ ] Iterator
 - [ ] Mediator
 - [ ] Memento
+- [ ] Chain of Responsibility
+- [ ] Command
+- [ ] Interpreter
+- [ ] Iterator
+- [ ] Mediator
+- [ ] Memento
 - [ ] Observer
 - [ ] State
+- [ ] Strategy
 - [ ] Template Method
 - [ ] Visitor
+
+**Other Patterns**
+- [ ] Null Object

@@ -1,19 +1,27 @@
 package com.haveacupofjava.happyfarm.creature;
 
-/**
-  * Class AbstractAnimal
-  * Define properties that all animals have
-  * @author Yichao Wu
-  */
+import com.haveacupofjava.happyfarm.security.PackageChecker;
+
 public abstract class AbstractAnimal extends AbstractCreature {
 
     private double bodyLength;
     private double weight;
 
     /**
-     * Setters and getters
-     * @author Yichao Wu
+     * Feeds the animal
      */
+    public void feed() {
+        // Checks if the caller method is allowed to call this method
+        try {
+            PackageChecker.checkPackage();
+        } catch (Exception exception) {
+            System.out.println(exception.toString());
+            exception.printStackTrace();
+            return;
+        }
+
+        System.out.println("Animal " + this.toString() + " get fed.");
+    }
 
     public double getBodyLength() {
         return bodyLength;
@@ -30,4 +38,5 @@ public abstract class AbstractAnimal extends AbstractCreature {
     public void setWeight(double weight) {
         this.weight = weight;
     }
+
 }
