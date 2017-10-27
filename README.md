@@ -32,5 +32,6 @@ Design Patterns
 - [ ] Memento
 - [ ] Observer
 - [ ] State
+- [ ] Strategy
 - [ ] Template Method
 - [ ] Visitor
