@@ -6,11 +6,9 @@ import com.haveacupofjava.happyfarm.product.AbstractTool;
 import com.haveacupofjava.happyfarm.room.AbstractRoom;
 import com.haveacupofjava.happyfarm.store.ProxyStore;
 
-
 public class StorageRoom extends AbstractRoom {
 
     private static StorageRoom storageRoom;
-
 
     private StorageRoom(){
     }
@@ -24,8 +22,8 @@ public class StorageRoom extends AbstractRoom {
      * return storage room instant
      * @return StorageRoom
      */
-    public static StorageRoom getInstant(){
-        if(null != storageRoom){
+    public static StorageRoom getInstance() {
+        if (null != storageRoom) {
             storageRoom = new StorageRoom();
         }
         return storageRoom;
@@ -35,13 +33,13 @@ public class StorageRoom extends AbstractRoom {
      * @param tool name
      * @return Tool
      */
-    public AbstractTool getTool(String tool){
-        if(products == null){
+    public AbstractTool getTool(String tool) {
+        if (products == null) {
             return null;
         }
         // get tool from storage
-        for(AbstractProduct product : products){
-            if(product instanceof AbstractTool && product.getName().equals(tool)){
+        for (AbstractProduct product : products) {
+            if (product instanceof AbstractTool && product.getName().equals(tool)) {
                 return (AbstractTool) product;
             }
         }
@@ -49,11 +47,11 @@ public class StorageRoom extends AbstractRoom {
         ProxyStore proxyStore = new ProxyStore();
         AbstractProduct product = proxyStore.buy(tool);
         // check
-        if("null".equals(proxyStore.buy(tool).getName())
-                && proxyStore.buy(tool) instanceof AbstractTool){
+        if ("null".equals(proxyStore.buy(tool).getName())
+                && proxyStore.buy(tool) instanceof AbstractTool) {
             products.add(product);
             return (AbstractTool) product;
-        }else{
+        } else {
             throw new NullPointerException("you can not get the tool");
         }
     }
@@ -62,19 +60,18 @@ public class StorageRoom extends AbstractRoom {
      * storage produce
      * @param produce AbstractProduce
      */
-    public void storage(AbstractProduce produce){
+    public void storage(AbstractProduce produce) {
         NormalBox normalBox = new NormalBox();
         normalBox.storage(produce);
     }
 
     @Override
     public void clean() {
-        if(null != cleanable){
+        if (null != cleanable) {
             cleanable.clean();
-        }else{
+        } else {
             System.out.println("you do not add clean way");
         }
-
     }
 
 }

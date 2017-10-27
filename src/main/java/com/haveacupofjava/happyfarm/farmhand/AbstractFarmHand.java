@@ -13,7 +13,7 @@ public abstract class AbstractFarmHand {
      * @return
      */
     protected AbstractTool getTool(String tool) {
-        StorageRoom storageRoom = StorageRoom.getInstant();
+        StorageRoom storageRoom = StorageRoom.getInstance();
         return storageRoom.getTool(tool);
     }
 
