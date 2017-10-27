@@ -19,13 +19,13 @@ Design Patterns
 - [ ] Bridge
 - [ ] Composite
 - [ ] Decorator
-- [ ] Facade
+- [x] Facade
 - [ ] Flyweight
 - [ ] Proxy
 
 **Behavioral Patterns**
 - [ ] Chain of Responsibility
-- [x] Command
+- [ ] Command
 - [ ] Interpreter
 - [ ] Iterator
 - [ ] Mediator
