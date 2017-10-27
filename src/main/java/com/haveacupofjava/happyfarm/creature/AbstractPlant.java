@@ -1,8 +1,14 @@
 package com.haveacupofjava.happyfarm.creature;
 
+import com.haveacupofjava.happyfarm.produce.AbstractFruitProduce;
 import com.haveacupofjava.happyfarm.security.PackageChecker;
 
+import java.util.List;
+
 public abstract class AbstractPlant extends AbstractCreature {
+
+    private List<AbstractFruitProduce> fruitProduce;
+    private double height;
 
     /**
      * Waters the plant

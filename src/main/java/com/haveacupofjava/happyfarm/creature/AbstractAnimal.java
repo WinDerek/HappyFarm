@@ -4,6 +4,9 @@ import com.haveacupofjava.happyfarm.security.PackageChecker;
 
 public abstract class AbstractAnimal extends AbstractCreature {
 
+    private double bodyLength;
+    private double weight;
+
     /**
      * Feeds the animal
      */
@@ -18,6 +21,22 @@ public abstract class AbstractAnimal extends AbstractCreature {
         }
 
         System.out.println("Animal " + this.toString() + " get fed.");
+    }
+
+    public double getBodyLength() {
+        return bodyLength;
+    }
+
+    public void setBodyLength(double bodyLength) {
+        this.bodyLength = bodyLength;
+    }
+
+    public double getWeight() {
+        return weight;
+    }
+
+    public void setWeight(double weight) {
+        this.weight = weight;
     }
 
 }
