@@ -1,4 +1,4 @@
 package org.derekdaisy.happyfarm.field;
 
-public class FarmLand extends Field {
+public class FarmLand extends AbstractField {
 }

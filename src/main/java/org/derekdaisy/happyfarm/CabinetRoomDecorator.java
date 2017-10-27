@@ -11,6 +11,7 @@ import org.derekdaisy.happyfarm.field.AbstractRoom;
 public class CabinetRoomDecorator extends AbstractRoom {
 
     private AbstractRoom room;
+
     public CabinetRoomDecorator(AbstractRoom room){
         this.room = room;
 

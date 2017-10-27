@@ -1,6 +1,6 @@
 package org.derekdaisy.happyfarm.creature;
 
-public abstract class Creature {
+public abstract class AbstractCreature {
 
     private String name;
 

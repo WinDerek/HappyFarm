@@ -1,6 +1,8 @@
 package org.derekdaisy.happyfarm.field;
 
 import java.util.List;
+import java.util.Map;
+import java.util.Queue;
 
 /**
  * AbstractRoom abstract class
@@ -10,6 +12,7 @@ import java.util.List;
  */
 public abstract class AbstractRoom {
     public List<String> furnitures;
+    public Queue<String> queue;
 
     /**
      * show the thing in room

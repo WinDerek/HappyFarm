@@ -1,7 +1,5 @@
 package org.derekdaisy.happyfarm.creature;
 
-public class Barley extends Plant {
-
-
+public class Barley extends AbstractPlant {
 
 }
