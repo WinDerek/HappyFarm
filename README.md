@@ -35,3 +35,6 @@ Design Patterns
 - [ ] Strategy
 - [ ] Template Method
 - [ ] Visitor
+
+**Other Patterns**
+- [ ] Null Object
