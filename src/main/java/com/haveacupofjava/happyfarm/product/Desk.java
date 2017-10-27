@@ -5,7 +5,7 @@ public class Desk extends AbstractFurniture {
     @Override
     public Desk clone() {
         Desk desk = new Desk();
-        desk.name = this.name;
+        desk.setName(this.getName());
         return desk;
     }
 }

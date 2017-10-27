@@ -2,13 +2,13 @@ package com.haveacupofjava.happyfarm.product;
 
 public class Sickle extends AbstractTool{
     public Sickle() {
-        this.name = "sickle";
+        setName("sickle");
     }
 
     @Override
     public Sickle clone(){
         Sickle sickle = new Sickle();
-        sickle.name = this.name;
+        sickle.setName(this.getName());
         return sickle;
     }
 }

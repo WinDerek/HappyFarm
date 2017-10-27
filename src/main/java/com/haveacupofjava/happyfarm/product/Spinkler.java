@@ -3,13 +3,13 @@ package com.haveacupofjava.happyfarm.product;
 public class Spinkler extends AbstractTool {
 
     public Spinkler() {
-        this.name = "spinkler";
+        setName("spinkler");
     }
 
     @Override
     public Spinkler clone() {
         Spinkler spinkler = new Spinkler();
-        spinkler.name = this.name;
+        spinkler.setName(this.getName());
         return spinkler;
     }
 }

@@ -5,7 +5,7 @@ public class Bed extends AbstractFurniture {
     @Override
     public Bed clone() {
         Bed bed = new Bed();
-        bed.name = this.name;
+        bed.setName(this.getName());
         return bed;
     }
 }

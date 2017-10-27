@@ -4,7 +4,7 @@ import com.haveacupofjava.happyfarm.product.AbstractProduct;
 
 public abstract class AbstractStore {
     /**
-     * buy something
+     * buy something through product name
      * @param name product name
      */
     public abstract AbstractProduct buy(String name);

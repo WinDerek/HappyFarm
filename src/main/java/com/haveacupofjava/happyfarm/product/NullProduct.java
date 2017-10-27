@@ -4,13 +4,13 @@ public class NullProduct extends AbstractProduct {
 
 
     public NullProduct() {
-        this.name = "null";
+        setName("null");
     }
 
     @Override
     public NullProduct clone() {
         NullProduct nullProduct = new NullProduct();
-        nullProduct.name = this.name;
+        nullProduct.setName(this.getName());
         return nullProduct;
     }
 }
