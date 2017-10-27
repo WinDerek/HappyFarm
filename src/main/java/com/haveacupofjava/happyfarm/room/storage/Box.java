@@ -3,16 +3,16 @@ package com.haveacupofjava.happyfarm.room.storage;
 import com.haveacupofjava.happyfarm.produce.AbstractProduce;
 import com.haveacupofjava.happyfarm.product.AbstractProduct;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Box extends AbstractProduct{
 
     public List<AbstractProduce> getProduces() {
+        if(null == produces){
+            produces = new ArrayList<>();
+        }
         return produces;
-    }
-
-    public void setProduces(List<AbstractProduce> produces) {
-        this.produces = produces;
     }
 
     private List<AbstractProduce> produces;
@@ -21,9 +21,6 @@ public abstract class Box extends AbstractProduct{
         return products;
     }
 
-    public void setProducts(List<AbstractProduct> products) {
-        this.products = products;
-    }
 
     private List<AbstractProduct> products;
 
