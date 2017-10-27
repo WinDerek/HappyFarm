@@ -1,4 +1,12 @@
 package com.haveacupofjava.happyfarm.visitor;
 
-public abstract class AbstractFieldVisitor {
+import com.haveacupofjava.happyfarm.field.AbstractFarmLand;
+import com.haveacupofjava.happyfarm.field.AbstractPen;
+
+public interface AbstractFieldVisitor {
+
+    void visit(AbstractPen pen);
+
+    void visit(AbstractFarmLand farmLand);
+
 }

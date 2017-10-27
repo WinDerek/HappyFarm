@@ -2,10 +2,11 @@ package com.haveacupofjava.happyfarm.field;
 
 import com.haveacupofjava.happyfarm.visitor.AbstractFieldVisitor;
 
-public class PigPen extends AbstractPen {
+public class WheatFarmLand extends AbstractFarmLand {
 
     @Override
     public void show() {
+        System.out.println("WheatFarmLand shown.");
     }
 
     @Override
