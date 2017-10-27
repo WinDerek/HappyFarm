@@ -1,7 +1,7 @@
 package com.haveacupofjava.happyfarm.farmhand;
 
 import com.haveacupofjava.happyfarm.product.AbstractTool;
-import com.haveacupofjava.happyfarm.room.StorageRoom;
+import com.haveacupofjava.happyfarm.room.storage.StorageRoom;
 
 public abstract class AbstractFarmHand {
 
@@ -13,7 +13,7 @@ public abstract class AbstractFarmHand {
      * @return
      */
     public AbstractTool getTool(String tool){
-        StorageRoom storageRoom = new StorageRoom();
+        StorageRoom storageRoom = StorageRoom.getInstant();
         return storageRoom.getTool(tool);
     }
 }

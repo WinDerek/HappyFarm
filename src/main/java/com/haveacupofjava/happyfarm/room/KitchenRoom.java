@@ -1,7 +1,5 @@
 package com.haveacupofjava.happyfarm.room;
 
-import com.haveacupofjava.happyfarm.product.AbstractProduct;
-
 public class KitchenRoom extends AbstractRoom {
 
     @Override

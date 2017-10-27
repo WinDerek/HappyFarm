@@ -23,7 +23,7 @@ public abstract class AbstractRoom {
         }else{
             System.out.println("the items in the room as follows: ");
             for(AbstractProduct abstractProduct : products){
-                System.out.println(abstractProduct.name);
+                System.out.println(abstractProduct.getName());
             }
         }
     }
