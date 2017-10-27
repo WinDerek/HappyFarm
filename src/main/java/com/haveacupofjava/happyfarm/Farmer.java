@@ -1,6 +1,6 @@
 package com.haveacupofjava.happyfarm;
 
-public class Farmer {
+public class Farmer implements Observer {
 
     private static Farmer instance;
     private static HappyFarm happyFarm;
@@ -46,4 +46,22 @@ public class Farmer {
 
     }
 
+
+    /**
+      * When the farmer get a notification, he do something
+      * @param notification
+      *         type of notification
+      * @author Yichao Wu
+      */
+    @Override
+    public void update(String notification) {
+        switch (notification) {
+            case "SheepProduceMilk": {
+                System.out.println("some sheep has produced milk");
+            } break;
+            default: {
+                System.out.println(notification);
+            }
+        }
+    }
 }
