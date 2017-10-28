@@ -28,7 +28,7 @@ Design Patterns
 - [x] Command
 - [ ] Interpreter
 - [ ] Iterator
-- [ ] Mediator
+- [x] Mediator
 - [ ] Memento
 - [x] Observer
 - [ ] State
