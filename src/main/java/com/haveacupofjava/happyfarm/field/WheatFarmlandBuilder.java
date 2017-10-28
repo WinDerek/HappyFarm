@@ -1,6 +1,6 @@
 package com.haveacupofjava.happyfarm.field;
 
-public class WheatFarmlandBuild extends AbstractFieldBuilder<WheatFarmLand> {
+public class WheatFarmlandBuilder extends AbstractFieldBuilder<WheatFarmland> {
 
     @Override
     public void buildDecorator() {
@@ -10,6 +10,6 @@ public class WheatFarmlandBuild extends AbstractFieldBuilder<WheatFarmLand> {
 
     @Override
     public void buildField() {
-        this.field = new WheatFarmLand();
+        this.field = new WheatFarmland();
     }
 }

@@ -9,6 +9,9 @@ import com.haveacupofjava.happyfarm.room.Wipe;
 import com.haveacupofjava.happyfarm.room.storage.AbstractBox;
 import com.haveacupofjava.happyfarm.room.storage.StorageRoom;
 import com.haveacupofjava.happyfarm.store.ProxyStore;
+import com.haveacupofjava.happyfarm.field.AbstractField;
+import com.haveacupofjava.happyfarm.field.AbstractFieldBuilder;
+import com.haveacupofjava.happyfarm.field.Director;
 
 public class Farmer implements Observer {
 
@@ -182,5 +185,17 @@ public class Farmer implements Observer {
                 System.out.println(notification);
             }
         }
+    }
+
+    public void buyField(AbstractFieldBuilder builder){
+
+        Director director = new Director(builder);
+        director.constructField();
+
+        AbstractField field = builder.getField();
+
+        // TODO
+        // HappyFarm.pushFiled(field);
+        // farmer.buyField(new Builder);
     }
 }

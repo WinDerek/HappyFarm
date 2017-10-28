@@ -25,7 +25,7 @@ public class NullToolProduct extends AbstractTool {
     @Override
     public void handleField(AbstractField filed) {
         // TODO: Improve the solution of null object
-        System.out.println("Null tool!!!");
+        System.out.println("This is a NULL Tool and cannot handle any fields");
     }
 
 }
