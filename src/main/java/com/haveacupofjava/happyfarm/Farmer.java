@@ -1,8 +1,14 @@
 package com.haveacupofjava.happyfarm;
 
+import com.haveacupofjava.happyfarm.creature.AbstractAnimal;
+import com.haveacupofjava.happyfarm.creature.AbstractCreature;
+import com.haveacupofjava.happyfarm.creature.AbstractPlant;
+import com.haveacupofjava.happyfarm.factory.AbstractPlantFactory;
 import com.haveacupofjava.happyfarm.field.AbstractField;
 import com.haveacupofjava.happyfarm.field.AbstractFieldBuilder;
 import com.haveacupofjava.happyfarm.field.Director;
+import com.haveacupofjava.happyfarm.factory.AbstractAnimalFactory;
+import com.haveacupofjava.happyfarm.room.storage.StorageRoom;
 
 public class Farmer implements Observer {
 
@@ -41,10 +47,42 @@ public class Farmer implements Observer {
         HappyFarm.getInstance().moneyIn(amount);
     }
 
-    public void buyAnimal(Class clazz, int number) {
+    public void buyAnimal(AbstractAnimalFactory factory, int number) throws Exception {
+        HappyFarm happyFarm = HappyFarm.getInstance();
+
+        AbstractAnimal animal = factory.getAnimal();
+
+        if (number > happyFarm.getCreatureCapacity(animal.getClass())) {
+            throw new Exception("NoEnoughCapacityException");
+        }
+        if (happyFarm.getFunds() < animal.getSellingPrice() * number) {
+            throw new Exception("NoEnoughMoneyException");
+        }
+
+        this.payMoney(animal.getSellingPrice() * number);
+
+        //TODO: Mediator adds animals to field
+
+        System.out.println("buy animal success");
     }
 
-    public void buyPlant(Class clazz, int number) {
+    public void buyPlant(AbstractPlantFactory factory, int number) throws Exception {
+        HappyFarm happyFarm = HappyFarm.getInstance();
+
+        AbstractPlant plant = factory.getPlant();
+
+        if (number > happyFarm.getCreatureCapacity(plant.getClass())) {
+            throw new Exception("NoEnoughCapacityException");
+        }
+        if (happyFarm.getFunds() < plant.getSellingPrice() * number) {
+            throw new Exception("NoEnoughMoneyException");
+        }
+
+        this.payMoney(plant.getSellingPrice() * number);
+
+        //TODO: Mediator adds plants to field
+
+        System.out.println("buy plant success");
     }
 
     /**

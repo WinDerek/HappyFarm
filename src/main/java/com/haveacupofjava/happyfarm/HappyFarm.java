@@ -1,6 +1,7 @@
 package com.haveacupofjava.happyfarm;
 
 import com.haveacupofjava.happyfarm.field.AbstractField;
+import com.haveacupofjava.happyfarm.field.PigPen;
 import com.haveacupofjava.happyfarm.visitor.ConcreteFieldVisitor;
 
 import java.util.ArrayList;
