@@ -21,6 +21,7 @@ public abstract class AbstractCreature implements Serializable{
      */
     private double sellingPrice;
     private double purchasingPrice;
+    private String name;
 
 
     /**
@@ -41,6 +42,12 @@ public abstract class AbstractCreature implements Serializable{
         return this.purchasingPrice;
     }
 
+    public String getName() {
+        return name;
+    }
+    public void setName(String name) {
+        this.name = name;
+    }
 
     /**
       * Add observer for creature
@@ -86,5 +93,5 @@ public abstract class AbstractCreature implements Serializable{
       * Creature produce agricultural product
       * @author Yichao Wu
       */
-    abstract void produce();
+    public abstract void produce();
 }
