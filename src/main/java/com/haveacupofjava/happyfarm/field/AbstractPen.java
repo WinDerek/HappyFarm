@@ -3,12 +3,12 @@ package com.haveacupofjava.happyfarm.field;
 import com.haveacupofjava.happyfarm.creature.AbstractAnimal;
 import com.haveacupofjava.happyfarm.creature.group.AnimalGroup;
 
-public abstract class AbstractPen extends AbstractField {
+public abstract class AbstractPen<T extends AbstractAnimal> extends AbstractField {
 
-    private AnimalGroup animalGroup;
+    private AnimalGroup<T> animalGroup;
 
     public AbstractPen() {
-        animalGroup = new AnimalGroup();
+        animalGroup = new AnimalGroup<>();
     }
 
     @Override
@@ -19,7 +19,7 @@ public abstract class AbstractPen extends AbstractField {
      * Adds an animal into the animal group of this pen
      * @param animal The animal to be added
      */
-    public void addAnimal(AbstractAnimal animal) {
+    public void addAnimal(T animal) {
         animalGroup.addAnimal(animal);
     }
 
