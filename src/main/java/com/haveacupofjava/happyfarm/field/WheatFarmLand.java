@@ -2,7 +2,7 @@ package com.haveacupofjava.happyfarm.field;
 
 import com.haveacupofjava.happyfarm.visitor.AbstractFieldVisitor;
 
-public class WheatFarmLand extends AbstractFarmLand {
+public class WheatFarmLand extends AbstractFarmland {
 
     @Override
     public void show() {

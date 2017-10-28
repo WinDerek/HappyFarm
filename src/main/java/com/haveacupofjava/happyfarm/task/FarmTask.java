@@ -1,7 +1,7 @@
 package com.haveacupofjava.happyfarm.task;
 
 import com.haveacupofjava.happyfarm.farmhand.PlantFarmHand;
-import com.haveacupofjava.happyfarm.field.AbstractFarmLand;
+import com.haveacupofjava.happyfarm.field.AbstractFarmland;
 
 /**
   * Class FarmTask
@@ -11,7 +11,7 @@ import com.haveacupofjava.happyfarm.field.AbstractFarmLand;
 public class FarmTask extends AbstractTask{
     public PlantFarmHand farmhand;
     public String tool;
-    public AbstractFarmLand farmland;
+    public AbstractFarmland farmland;
     // TODO
     // need a function object
 
@@ -19,4 +19,5 @@ public class FarmTask extends AbstractTask{
     public void execute(){
         farmhand.useTool(tool, farmland);
     }
+
 }

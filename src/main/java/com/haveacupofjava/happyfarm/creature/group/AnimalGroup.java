@@ -1,6 +1,7 @@
 package com.haveacupofjava.happyfarm.creature.group;
 
 import com.haveacupofjava.happyfarm.creature.AbstractAnimal;
+import com.haveacupofjava.happyfarm.security.MethodExposedException;
 import com.haveacupofjava.happyfarm.security.PackageChecker;
 
 import java.util.ArrayList;
@@ -28,7 +29,11 @@ public class AnimalGroup {
         }
 
         for (AbstractAnimal animal : animals) {
-            animal.feed();
+            try {
+                animal.feed();
+            } catch (MethodExposedException exception) {
+                exception.printStackTrace(System.out);
+            }
         }
     }
 

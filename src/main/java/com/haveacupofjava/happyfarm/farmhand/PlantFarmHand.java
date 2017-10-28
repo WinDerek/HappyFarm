@@ -1,7 +1,7 @@
 package com.haveacupofjava.happyfarm.farmhand;
 
 
-import com.haveacupofjava.happyfarm.field.AbstractFarmLand;
+import com.haveacupofjava.happyfarm.field.AbstractFarmland;
 
 public class PlantFarmHand extends AbstractFarmHand {
 
@@ -11,7 +11,7 @@ public class PlantFarmHand extends AbstractFarmHand {
      * @return
      * @author Yiqun Lin
      */
-    public void useTool(String tool, AbstractFarmLand field){
+    public void useTool(String tool, AbstractFarmland field){
         this.tool = getTool(tool);
         this.tool.handleField(field);
     }
