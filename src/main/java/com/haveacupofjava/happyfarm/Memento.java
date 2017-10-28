@@ -1,6 +1,7 @@
 package com.haveacupofjava.happyfarm;
 
 import com.haveacupofjava.happyfarm.field.AbstractField;
+import com.haveacupofjava.happyfarm.product.AbstractProduct;
 import com.haveacupofjava.happyfarm.room.AbstractRoom;
 
 import java.util.List;
@@ -28,12 +29,14 @@ public class Memento {
     private Double funds;
     private List<AbstractField> fieldList;
     private List<AbstractRoom> roomList;
+    private List<AbstractProduct> productsList;
 
-    void setState(Double funds, List<AbstractField> fieldList, List<AbstractRoom> roomList) throws MementoSettingException{
-        if(funds != null && fieldList != null && roomList!= null ) {
+    void setState(Double funds, List<AbstractField> fieldList, List<AbstractRoom> roomList, List<AbstractProduct> productsList) throws MementoSettingException{
+        if(funds != null && fieldList != null && roomList!= null && productsList != null) {
             this.funds = funds;
             this.fieldList = fieldList;
             this.roomList = roomList;
+            this.productsList = productsList;
         }else{
             throw new MementoSettingException("Parameters should not be a null.");
         }
@@ -49,5 +52,9 @@ public class Memento {
 
     List<AbstractRoom> getRoomList() {
         return roomList;
+    }
+
+    List<AbstractProduct> getProductsList(){
+        return productsList;
     }
 }

@@ -3,12 +3,14 @@ package com.haveacupofjava.happyfarm.field;
 import com.haveacupofjava.happyfarm.creature.AbstractCreature;
 import com.haveacupofjava.happyfarm.visitor.AbstractFieldVisitor;
 
+import java.io.Serializable;
+
 /**
   * Class AbstractField
   * Abstract Field
   * @author Yiqun Lin
   */
-public abstract class AbstractField extends AbstractFieldComponent {
+public abstract class AbstractField extends AbstractFieldComponent implements Serializable {
 
     protected AbstractFieldDecorator decorator;
 

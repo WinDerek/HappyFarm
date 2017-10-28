@@ -6,6 +6,7 @@ import com.haveacupofjava.happyfarm.creature.AbstractPlant;
 import com.haveacupofjava.happyfarm.field.AbstractFarmland;
 import com.haveacupofjava.happyfarm.field.AbstractField;
 import com.haveacupofjava.happyfarm.field.AbstractPen;
+import com.haveacupofjava.happyfarm.product.AbstractProduct;
 import com.haveacupofjava.happyfarm.room.*;
 import com.haveacupofjava.happyfarm.room.storage.StorageRoom;
 import com.haveacupofjava.happyfarm.security.MethodExposedException;
@@ -237,7 +238,7 @@ public class HappyFarm {
     }
 
     /**
-     *
+     * save Farm State: HappyFarm(Funds, Field, Room List) and StorageRoom(ProductsList)
      */
     void save() {
         try {
@@ -257,8 +258,14 @@ public class HappyFarm {
             in = new ObjectInputStream(byteIn);
             List<AbstractRoom> clonedRoomList = (List<AbstractRoom>) in.readObject();
 
+            StorageRoom storageRoom = StorageRoom.getInstance();
+            List<AbstractProduct> productsList = storageRoom.getProducts();
+            out.writeObject(productsList);
+            in = new ObjectInputStream(byteIn);
+            List<AbstractProduct> clonedProductsList = (List<AbstractProduct>) in.readObject();
+
             Memento memento = new Memento();
-            memento.setState(clonedFunds, clonedFieldList, clonedRoomList);
+            memento.setState(clonedFunds, clonedFieldList, clonedRoomList, clonedProductsList);
 
             // TODO
             // and other attributes (must implement serializable)
@@ -266,18 +273,28 @@ public class HappyFarm {
 
             Memento.addState(memento);
 
+            System.out.println("Save HappyFarm success.");
+
         } catch (Exception e) {
             System.out.println(e);
         }
     }
 
     /**
-     *
+     * undo, reload state of HappyFarm and Storage
      */
     void reload() {
-        // TODO
-        // Memento m = Memento.popState();
-        // ... = m.get...
+
+        Memento memento = Memento.popState();
+
+        this.funds = memento.getFunds();
+        this.fieldList = memento.getFieldList();
+        this.roomList = memento.getRoomList();
+
+        StorageRoom storageRoom = StorageRoom.getInstance();
+        storageRoom.setProducts(memento.getProductsList());
+
+        System.out.println("Reload HappyFarm success");
     }
 
     /**

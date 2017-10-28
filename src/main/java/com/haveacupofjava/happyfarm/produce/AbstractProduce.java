@@ -1,6 +1,8 @@
 package com.haveacupofjava.happyfarm.produce;
 
-public abstract class AbstractProduce {
+import java.io.Serializable;
+
+public abstract class AbstractProduce implements Serializable {
 
     public String getName() {
         return name;
