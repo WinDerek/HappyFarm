@@ -21,7 +21,7 @@ public class FactoryMediator extends AbstractMediator {
      * @param clazz The Class of AbstractFactory
      * @param number The number of AbstractCreature to buy
      */
-    public void setTradInfo(Class clazz, int number) {
+    public void setTradeInfo(Class clazz, int number) {
         this.clazz = clazz;
         this.number = number;
     }
