@@ -4,6 +4,7 @@ package com.haveacupofjava.happyfarm.task;
 import com.haveacupofjava.happyfarm.farmhand.AnimalFarmHand;
 import com.haveacupofjava.happyfarm.field.AbstractPen;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -25,6 +26,7 @@ public class PenTask extends AbstractTask{
 
         // TODO
         // search from HappyFarm, and get the list of pen fields to handle
+        penList = new ArrayList<>();
     }
 
     @Override

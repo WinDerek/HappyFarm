@@ -4,6 +4,7 @@ import com.haveacupofjava.happyfarm.farmhand.AnimalFarmHand;
 import com.haveacupofjava.happyfarm.farmhand.PlantFarmHand;
 import com.haveacupofjava.happyfarm.field.AbstractFarmland;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -24,6 +25,7 @@ public class FarmTask extends AbstractTask{
 
         // TODO
         // search from HappyFarm, and get the list of farm fields to handle
+        farmlandList = new ArrayList<>();
     }
 
     @Override
