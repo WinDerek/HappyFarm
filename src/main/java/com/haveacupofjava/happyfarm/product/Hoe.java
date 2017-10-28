@@ -1,10 +1,12 @@
 package com.haveacupofjava.happyfarm.product;
 
+import com.haveacupofjava.happyfarm.field.AbstractField;
+
 public class Hoe extends AbstractTool{
     public Hoe() {
         setName("hoe");
+        setPrice(99D);
     }
-
 
     @Override
     public boolean isNil() {
@@ -17,4 +19,11 @@ public class Hoe extends AbstractTool{
         hoe.setName(this.getName());
         return hoe;
     }
+
+    @Override
+    public void handleField(AbstractField filed) {
+
+    }
 }
+
+

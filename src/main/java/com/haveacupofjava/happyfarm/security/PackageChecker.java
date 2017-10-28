@@ -10,9 +10,8 @@ public class PackageChecker {
      */
     public static void checkPackage() throws MethodExposedException {
         String callerMethodName = Thread.currentThread().getStackTrace()[3].toString();
-        System.out.println("callerMethodName = \"" + callerMethodName + "\"");
         if (!isMethodNameSafe(callerMethodName)) {
-            throw new MethodExposedException("library method exposed to " + callerMethodName);
+            throw new MethodExposedException("HappyFarm library method exposed to " + callerMethodName);
         }
     }
 

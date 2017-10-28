@@ -1,9 +1,12 @@
 package com.haveacupofjava.happyfarm.product;
 
+import com.haveacupofjava.happyfarm.field.AbstractField;
+
 public class Spinkler extends AbstractTool {
 
     public Spinkler() {
         setName("spinkler");
+        setPrice(299D);
     }
 
 
@@ -17,5 +20,10 @@ public class Spinkler extends AbstractTool {
         Spinkler spinkler = new Spinkler();
         spinkler.setName(this.getName());
         return spinkler;
+    }
+
+    @Override
+    public void handleField(AbstractField filed) {
+
     }
 }

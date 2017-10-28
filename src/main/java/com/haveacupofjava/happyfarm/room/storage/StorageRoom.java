@@ -8,15 +8,15 @@ import com.haveacupofjava.happyfarm.product.NullToolProduct;
 import com.haveacupofjava.happyfarm.room.AbstractRoom;
 import com.haveacupofjava.happyfarm.store.ProxyStore;
 
-import java.util.ArrayList;
 
+import java.util.ArrayList;
 
 public class StorageRoom extends AbstractRoom {
 
     private static StorageRoom storageRoom;
 
-
-    private StorageRoom(){
+    private StorageRoom() {
+        setName("storageRoom");
     }
 
     /**
@@ -28,11 +28,11 @@ public class StorageRoom extends AbstractRoom {
         //super.show();
         if(null == products){
             System.out.println("there is nothing in the room");
-        }else {
-            for(AbstractProduct product : products){
-                if(product instanceof AbstractBox){
-                    showBox((AbstractBox)product);
-                }else{
+        } else {
+            for (AbstractProduct product : products) {
+                if (product instanceof AbstractBox) {
+                    showBox((AbstractBox) product);
+                } else {
                     System.out.println("product: " + product.getName());
                 }
             }
@@ -44,18 +44,18 @@ public class StorageRoom extends AbstractRoom {
      * recursion print the items in the box
      * @param box
      */
-    public void showBox(AbstractBox box){
+    public void showBox(AbstractBox box) {
         // show all the products
-        for (AbstractProduct product : products){
-            if(product instanceof AbstractBox){
-                showBox((AbstractBox)product);
-            }else {
+        for (AbstractProduct product : products) {
+            if (product instanceof AbstractBox) {
+                showBox((AbstractBox) product);
+            } else {
                 System.out.println("product: " + product.getName()
                         + " in the " + box.getName());
             }
         }
         // show all the produces
-        for (AbstractProduce produce : box.getProduces()){
+        for (AbstractProduce produce : box.getProduces()) {
             System.out.println("produce: " + produce.getName()
                     + " in the " + box.getName());
         }
@@ -65,24 +65,25 @@ public class StorageRoom extends AbstractRoom {
      * return storage room instant
      * @return StorageRoom
      */
-    public static StorageRoom getInstance(){
-        if(null == storageRoom){
+    public static StorageRoom getInstance() {
+        if (null == storageRoom) {
             storageRoom = new StorageRoom();
         }
         return storageRoom;
     }
+
     /**
      * return tool object
      * @param tool name
      * @return Tool
      */
-    public AbstractTool getTool(String tool){
-        if(products == null){
+    public AbstractTool getTool(String tool) {
+        if (products == null) {
             products = new ArrayList<>();
         }
         // get tool from storage
-        for(AbstractProduct product : products){
-            if(product instanceof AbstractTool && product.getName().equals(tool)){
+        for (AbstractProduct product : products) {
+            if ((product instanceof AbstractTool) && product.getName().equals(tool)) {
                 System.out.println("Success to get " + tool + " from storage");
                 return (AbstractTool) product;
             }
@@ -93,15 +94,15 @@ public class StorageRoom extends AbstractRoom {
         ProxyStore proxyStore = ProxyStore.getInstance();
         AbstractProduct product = proxyStore.buy(tool);
         // check
-        if(product instanceof NullProduct){
+        if (product instanceof NullProduct) {
             System.out.println("Fail to get : " + tool + ", caused by: the store did not sell " + tool);
             return new NullToolProduct();
         }
-        else if(product instanceof AbstractTool){
+        else if (product instanceof AbstractTool) {
             System.out.println("Success to get : " + tool);
             products.add(product);
             return (AbstractTool) product;
-        }else{
+        } else {
             System.out.println("Fail to get : " + tool + ", caused by: the " + tool + " is not tool");
             return new NullToolProduct();
         }
@@ -111,7 +112,7 @@ public class StorageRoom extends AbstractRoom {
      * storage produce
      * @param produce AbstractProduce
      */
-    public void storage(AbstractProduce produce){
+    public void storage(AbstractProduce produce) {
         NormalBox normalBox = new NormalBox();
         normalBox.storage(produce);
         products.add(normalBox);
@@ -119,10 +120,11 @@ public class StorageRoom extends AbstractRoom {
 
     @Override
     public void clean() {
-        if(null != cleanable){
+        if (null != cleanable) {
             cleanable.clean();
-        }else{
-            System.out.println("You do not add clean way");
+        } else {
+            System.out.println("you do not add clean way");
         }
     }
+
 }

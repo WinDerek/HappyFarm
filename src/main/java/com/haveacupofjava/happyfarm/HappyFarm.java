@@ -1,18 +1,24 @@
 package com.haveacupofjava.happyfarm;
 
+import com.haveacupofjava.happyfarm.field.AbstractField;
+import com.haveacupofjava.happyfarm.visitor.ConcreteFieldVisitor;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class HappyFarm {
 
     private static HappyFarm instance;
 
-    private static Farmer farmer;
-
     private Double funds;
+
+    private List<AbstractField> fieldList;
 
     private static final double INITIAL_FUNDS = 1000.0;
 
     private HappyFarm() {
         funds = INITIAL_FUNDS;
-        farmer = Farmer.getInstance();
+        fieldList = new ArrayList<AbstractField>();
     }
 
     /**
@@ -46,6 +52,16 @@ public class HappyFarm {
 
     public double getFunds() {
         return this.funds;
+    }
+
+    /**
+     * Shows the information of the field in this farm
+     */
+    public void showFieldsInformation() {
+        ConcreteFieldVisitor visitor = new ConcreteFieldVisitor();
+        for (AbstractField field : fieldList) {
+            field.acceptVisitor(visitor);
+        }
     }
 
 }

@@ -2,6 +2,11 @@ package com.haveacupofjava.happyfarm.room;
 
 public class KitchenRoom extends AbstractRoom {
 
+
+    public KitchenRoom() {
+        setName("kitchenRoom");
+    }
+
     @Override
     public void clean() {
         if(null != cleanable){
