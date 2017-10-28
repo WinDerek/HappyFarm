@@ -1,5 +1,4 @@
-import com.haveacupofjava.happyfarm.farmhand.AnimalFarmHand;
-import com.haveacupofjava.happyfarm.field.WheatFarmLand;
+import com.haveacupofjava.happyfarm.field.WheatFarmland;
 import com.haveacupofjava.happyfarm.task.*;
 
 public class TestLyqApplication2 {
@@ -8,7 +7,7 @@ public class TestLyqApplication2 {
         String cmd = "water wheat";
 
         try{
-            RequestParsingRule rpr = new RequestParsingRule("water wheat",RequestCategory.FARM_REQUEST,"wTool", WheatFarmLand.class);
+            RequestParsingRule rpr = new RequestParsingRule("water wheat",RequestCategory.FARM_REQUEST,"wTool", WheatFarmland.class);
             Request.addRequestParsingRule(rpr);
 
             AnimalManagerHandler animalManagerHandler = new AnimalManagerHandler();
