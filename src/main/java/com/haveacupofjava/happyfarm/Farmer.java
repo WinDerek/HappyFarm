@@ -13,6 +13,9 @@ import com.haveacupofjava.happyfarm.field.AbstractField;
 import com.haveacupofjava.happyfarm.field.AbstractFieldBuilder;
 import com.haveacupofjava.happyfarm.field.Director;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Farmer implements Observer {
 
     private static Farmer instance;
@@ -105,19 +108,52 @@ public class Farmer implements Observer {
      * @param produceName
      * @return
      */
-    public AbstractProduce getProduce(String produceName){
+    public List<AbstractProduce> getProduce(Class clazz , int number){
+        List<AbstractProduce> produceList = new ArrayList<>();
+        int mNumber = 0;
         StorageRoom storageRoom = StorageRoom.getInstance();
+        // check
         for(AbstractProduct product : storageRoom.getProducts()){
             if (product instanceof AbstractBox){
                 for( AbstractProduce produce : ((AbstractBox) product).getProduces()){
-                    if(produce.getName().equalsIgnoreCase(produceName)){
-                        System.out.println("Success to get " + produceName);
-                        return produce;
+                    //System.out.println(produce.getName());
+                    if(clazz.getSimpleName().toLowerCase().equals(produce.getName())){
+                        mNumber++;
                     }
                 }
             }
         }
-        System.out.println("Fail to get produce, cause by : the " + produceName +" is not exist");
+        if(mNumber < number){
+            System.out.println("Fail to get : " + clazz.getSimpleName() + ", cause by : storage is not enough produce");
+            return null;
+        }
+        // ok
+        mNumber = 0;
+        int index = 0;
+        List<Integer> integers = new ArrayList<>();
+        for(AbstractProduct product : storageRoom.getProducts()){
+            //System.out.println(storageRoom.getProducts().size() + " " + product.getName());
+            if (product instanceof AbstractBox){
+                for( AbstractProduce produce : ((AbstractBox) product).getProduces()){
+                    if(clazz.getSimpleName().toLowerCase().equals(produce.getName())){
+                        mNumber++;
+                        produceList.add(produce);
+                        integers.add(index);
+                        if(mNumber == number){
+                            int count = 0;
+                            for (Integer integer : integers){
+                                storageRoom.getProducts().remove(integer - count);
+                                count++;
+                            }
+                            System.out.println("Success to get " + number + " " + clazz.getSimpleName() + "s");
+                            return produceList;
+                        }
+                    }
+                }
+            }
+            index++;
+        }
+        System.out.println("Fail to get produce, cause by : the " + clazz.getSimpleName() +" is not exist");
         return null;
     }
     /**
