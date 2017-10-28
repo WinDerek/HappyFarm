@@ -23,8 +23,4 @@ public class Director {
         builder.buildDecorator();
     }
 
-    public AbstractField getProduct(){
-        return builder.getField();
-    }
-
 }
