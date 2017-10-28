@@ -38,3 +38,10 @@ Design Patterns
 
 **Other Patterns**
 - [x] Null Object
+
+Team
+--------
+- 侯剑锋 ([@DerekDick](https://github.com/DerekDick/))
+- 林逸群 ([@lyqun](https://github.com/lyqun/))
+- 寸宣堂 ([@wzes](https://github.com/wzes/))
+- 吴毅超 ([@MonusW](https://github.com/MonusW/))
