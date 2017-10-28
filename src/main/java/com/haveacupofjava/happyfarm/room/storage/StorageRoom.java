@@ -31,6 +31,7 @@ public class StorageRoom extends AbstractRoom {
         } else {
             for (AbstractProduct product : products) {
                 if (product instanceof AbstractBox) {
+                    System.out.println("product: " + product.getName() + ", inside items :");
                     showBox((AbstractBox) product);
                 } else {
                     System.out.println("product: " + product.getName());
@@ -46,18 +47,15 @@ public class StorageRoom extends AbstractRoom {
      */
     public void showBox(AbstractBox box) {
         // show all the products
-        for (AbstractProduct product : products) {
-            if (product instanceof AbstractBox) {
-                showBox((AbstractBox) product);
-            } else {
-                System.out.println("product: " + product.getName()
-                        + " in the " + box.getName());
-            }
-        }
-        // show all the produces
         for (AbstractProduce produce : box.getProduces()) {
-            System.out.println("produce: " + produce.getName()
+            System.out.println("    produce: " + produce.getName()
                     + " in the " + box.getName());
+//            if (product instanceof AbstractBox) {
+//                showBox((AbstractBox) product);
+//            } else {
+//                System.out.println("product: " + produce.getName()
+//                        + " in the " + box.getName());
+//            }
         }
     }
 
@@ -114,8 +112,8 @@ public class StorageRoom extends AbstractRoom {
      */
     public void storage(AbstractProduce produce) {
         NormalBox normalBox = new NormalBox();
-        normalBox.storage(produce);
-        products.add(normalBox);
+        normalBox.storage(products, produce);
+        //products.add(normalBox);
     }
 
     @Override
@@ -123,7 +121,7 @@ public class StorageRoom extends AbstractRoom {
         if (null != cleanable) {
             cleanable.clean();
         } else {
-            System.out.println("you do not add clean way");
+            System.out.println("You do not add clean way");
         }
     }
 

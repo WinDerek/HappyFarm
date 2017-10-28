@@ -4,7 +4,7 @@ public class Mop implements Cleanable {
 
     @Override
     public void clean() {
-        System.out.println("mopped the room");
+        System.out.println("Mopped the room");
     }
 
 }

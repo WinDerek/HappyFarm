@@ -1,7 +1,11 @@
 package com.haveacupofjava.happyfarm;
 
+import com.haveacupofjava.happyfarm.produce.AbstractProduce;
 import com.haveacupofjava.happyfarm.product.AbstractProduct;
 import com.haveacupofjava.happyfarm.product.NullProduct;
+import com.haveacupofjava.happyfarm.room.AbstractRoom;
+import com.haveacupofjava.happyfarm.room.Mop;
+import com.haveacupofjava.happyfarm.room.Wipe;
 import com.haveacupofjava.happyfarm.room.storage.StorageRoom;
 import com.haveacupofjava.happyfarm.store.ProxyStore;
 
@@ -63,6 +67,31 @@ public class Farmer implements Observer {
         System.out.println("The consumption cost " + product.getPrice() * number + "$");
     }
 
+    /**
+     * farmer storage produce
+     * @param produce
+     */
+    public void storageProduce(AbstractProduce produce){
+        StorageRoom storageRoom = StorageRoom.getInstance();
+        storageRoom.storage(produce);
+        System.out.println("Show all products in the storage room :");
+        storageRoom.show();
+    }
+
+    public void cleanRoom(AbstractRoom abstractRoom, String action){
+        if(action.equalsIgnoreCase("wipe")){
+            abstractRoom.setCleanable(new Wipe());
+            abstractRoom.clean();
+        }else if(action.equalsIgnoreCase("mop")){
+            abstractRoom.setCleanable(new Mop());
+            abstractRoom.clean();
+        }else {
+            System.out.println("Fail to clean, cause by there is no " + action + " action");
+            System.out.println("List actions : ");
+            System.out.println("1.wipe");
+            System.out.println("2.mop");
+        }
+    }
     /**
      * show all items in the store
      */

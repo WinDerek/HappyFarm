@@ -5,4 +5,7 @@ package com.haveacupofjava.happyfarm.produce;
   * @author Yichao Wu
   */
 public class SheepMilk extends AbstractMilkProduce {
+    public SheepMilk(){
+        setName("milk");
+    }
 }

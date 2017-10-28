@@ -1,7 +1,10 @@
 import com.haveacupofjava.happyfarm.Farmer;
+import com.haveacupofjava.happyfarm.produce.SheepMilk;
 import com.haveacupofjava.happyfarm.product.*;
 import com.haveacupofjava.happyfarm.room.BedRoom;
 import com.haveacupofjava.happyfarm.room.BrushDecoratorRoom;
+import com.haveacupofjava.happyfarm.room.Cleanable;
+import com.haveacupofjava.happyfarm.room.Wipe;
 import com.haveacupofjava.happyfarm.room.storage.StorageRoom;
 import com.haveacupofjava.happyfarm.store.ProxyStore;
 
@@ -30,7 +33,13 @@ public class TestApplication3 {
 //        // decorator the room
 //        BrushDecoratorRoom brushDecoratorRoom = new BrushDecoratorRoom(bedRoom);
 //        brushDecoratorRoom.show();
+
+        System.out.println("\n-------------------farmer clean--------------------");
+        Farmer.getInstance().cleanRoom(StorageRoom.getInstance(), "ipe");
+
         System.out.println("\n--------------------farmer buy---------------------");
         Farmer.getInstance().buyProduct("hoe", 1);
+        System.out.println("\n--------------- farmer storage produce-------------");
+        Farmer.getInstance().storageProduce(new SheepMilk());
     }
 }
