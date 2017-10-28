@@ -277,7 +277,15 @@ public class Farmer implements Observer, Tradable {
     public void update(String notification) {
         switch (notification) {
             case "SheepProduceMilk": {
-                System.out.println("some sheep has produced milk");
+                System.out.println("some sheep have produced milk");
+            }
+            break;
+            case "PigProduceMilk": {
+                System.out.println("some pigs have produced milk");
+            }
+            break;
+            case "WheatProduceFruit": {
+                System.out.println("some wheat have produced fruit");
             }
             break;
 

@@ -8,6 +8,9 @@ import java.util.List;
 public abstract class AbstractPlant extends AbstractCreature {
 
     private List<AbstractFruitProduce> fruitProduce;
+    /**
+     * The unit is centimeter
+     */
     private double height;
 
     /**
@@ -26,4 +29,17 @@ public abstract class AbstractPlant extends AbstractCreature {
         System.out.println("Plant " + this.toString() + " get watered.");
     }
 
+    public List<AbstractFruitProduce> getFruitProduce() {
+        return fruitProduce;
+    }
+    public void setFruitProduce(List<AbstractFruitProduce> fruitProduce) {
+        this.fruitProduce = fruitProduce;
+    }
+
+    public double getHeight() {
+        return height;
+    }
+    public void setHeight(double height) {
+        this.height = height;
+    }
 }

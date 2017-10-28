@@ -13,8 +13,10 @@ import java.util.List;
   */
 public class Sheep extends AbstractVivipara {
 
-    private String name;
-
+    /**
+      * Sheep produce milk and notify SheepProduceMilk message to the observers
+      * @author Yichao Wu
+      */
     @Override
     public void produce() {
         List<AbstractMilkProduce> list = new ArrayList<>();
@@ -23,15 +25,9 @@ public class Sheep extends AbstractVivipara {
             list.add(milk);
         }
         this.setMilkProduce(list);
+
         System.out.println("hey, sheep milk!");
         notifyAllObservers("SheepProduceMilk");
-    }
-
-    public String getName() {
-        return name;
-    }
-    public void setName(String name) {
-        this.name = name;
     }
 
 }

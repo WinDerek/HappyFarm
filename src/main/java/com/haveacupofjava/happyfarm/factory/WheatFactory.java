@@ -8,6 +8,9 @@ public class WheatFactory extends AbstractPlantFactory {
     AbstractCreature create() {
         Wheat wheat = new Wheat();
         wheat.setSellingPrice(1.0);
+        wheat.setPurchasingPrice(0.8);
+        wheat.setName("wheat");
+        wheat.setHeight(50.0);
         return wheat;
     }
 }

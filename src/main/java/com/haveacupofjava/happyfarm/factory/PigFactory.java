@@ -10,6 +10,7 @@ public class PigFactory extends AbstractAnimalFactory {
     AbstractCreature create() {
         Pig pig = new Pig();
         pig.setSellingPrice(10.0);
+        pig.setName("pig");
         return pig;
     }
 }

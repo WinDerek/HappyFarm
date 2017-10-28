@@ -9,6 +9,7 @@ public class SheepFactory extends AbstractAnimalFactory {
     AbstractAnimal create() {
         Sheep sheep = new Sheep();
         sheep.setSellingPrice(10.0);
+        sheep.setPurchasingPrice(8.0);
         sheep.setName("sheep");
         return sheep;
     }
