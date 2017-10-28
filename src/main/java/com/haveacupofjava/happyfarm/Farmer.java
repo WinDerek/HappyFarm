@@ -55,6 +55,12 @@ public class Farmer implements Observer {
         HappyFarm.getInstance().moneyIn(amount);
     }
 
+    /**
+      * Buy animal(s) from an animal factory through mediator
+      * @param factory an instance of concrete animal factory
+      * @param number  the number of animal(s) to be bought
+      * @author Yichao Wu
+      */
     public void buyAnimal(AbstractAnimalFactory factory, int number) throws Exception {
         HappyFarm happyFarm = HappyFarm.getInstance();
 
@@ -72,6 +78,31 @@ public class Farmer implements Observer {
         //TODO: Mediator adds animals to field
 
         System.out.println("buy animal success");
+    }
+
+    /**
+      * Buy plant(s) from an plant factory through mediator
+      * @param factory the instance of concrete plant factory
+      * @param number  the number of plant(s) to be bought
+      * @author Yichao Wu
+      */
+    public void buyPlant(AbstractPlantFactory factory, int number) throws Exception {
+        HappyFarm happyFarm = HappyFarm.getInstance();
+
+        AbstractPlant plant = factory.getPlant();
+
+        if (number > happyFarm.getCreatureCapacity(plant.getClass())) {
+            throw new Exception("NoEnoughCapacityException");
+        }
+        if (happyFarm.getFunds() < plant.getSellingPrice() * number) {
+            throw new Exception("NoEnoughMoneyException");
+        }
+
+        this.payMoney(plant.getSellingPrice() * number);
+
+        //TODO: Mediator adds plants to field
+
+        System.out.println("buy plant success");
     }
 
     /**
@@ -155,7 +186,7 @@ public class Farmer implements Observer {
 
     /**
      * clean the room
-     * @param abstractRoom
+     * @param roomName
      * @param action
      */
     public void cleanRoom(String roomName, String action){
@@ -184,25 +215,6 @@ public class Farmer implements Observer {
     public void goShopping(){
         ProxyStore proxyStore = ProxyStore.getInstance();
         proxyStore.show();
-    }
-
-    public void buyPlant(AbstractPlantFactory factory, int number) throws Exception {
-        HappyFarm happyFarm = HappyFarm.getInstance();
-
-        AbstractPlant plant = factory.getPlant();
-
-        if (number > happyFarm.getCreatureCapacity(plant.getClass())) {
-            throw new Exception("NoEnoughCapacityException");
-        }
-        if (happyFarm.getFunds() < plant.getSellingPrice() * number) {
-            throw new Exception("NoEnoughMoneyException");
-        }
-
-        this.payMoney(plant.getSellingPrice() * number);
-
-        //TODO: Mediator adds plants to field
-
-        System.out.println("buy plant success");
     }
 
     /**
