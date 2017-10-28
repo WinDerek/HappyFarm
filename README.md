@@ -10,7 +10,7 @@ Design Patterns
 **Creational Patterns**
 - [x] Abstract Factory
 - [x] Builder
-- [ ] Factory Method
+- [x] Factory Method
 - [x] Prototype
 - [x] Singleton
 
