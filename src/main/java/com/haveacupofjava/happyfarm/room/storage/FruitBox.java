@@ -14,7 +14,7 @@ public class FruitBox extends SpecialBox {
     public void storage(List<AbstractProduct> products, AbstractProduce produce) {
         getProduces().add(produce);
         products.add(this);
-        System.out.println("Storage fruit in the " + getName());
+        System.out.println("Storage " + produce.getName() + " in the " + getName());
     }
 
     @Override

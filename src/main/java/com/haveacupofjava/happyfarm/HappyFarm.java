@@ -1,10 +1,22 @@
 package com.haveacupofjava.happyfarm;
 
+import com.haveacupofjava.happyfarm.creature.AbstractAnimal;
+import com.haveacupofjava.happyfarm.creature.AbstractCreature;
+import com.haveacupofjava.happyfarm.creature.AbstractPlant;
+import com.haveacupofjava.happyfarm.field.AbstractFarmland;
 import com.haveacupofjava.happyfarm.field.AbstractField;
+import com.haveacupofjava.happyfarm.field.AbstractPen;
 import com.haveacupofjava.happyfarm.room.*;
 import com.haveacupofjava.happyfarm.room.storage.StorageRoom;
+import com.haveacupofjava.happyfarm.security.MethodExposedException;
+import com.haveacupofjava.happyfarm.security.PackageChecker;
 import com.haveacupofjava.happyfarm.visitor.ConcreteFieldVisitor;
 
+import java.util.*;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,7 +34,7 @@ public class HappyFarm {
 
     private HappyFarm() {
         funds = INITIAL_FUNDS;
-        fieldList = new ArrayList<AbstractField>();
+        fieldList = new ArrayList<>();
         roomList = new ArrayList<>();
     }
 
@@ -86,20 +98,21 @@ public class HappyFarm {
      * @param action
      * @param roomName
      */
-    void decoratorRoom(String roomName, String action){
-        if(action.equalsIgnoreCase("brush")){
+    void decoratorRoom(String roomName, String action) {
+        if (action.equalsIgnoreCase("brush")) {
             AbstractRoom room = getRoom(roomName);
-            if(null != room){
+            if (null != room) {
                 BrushDecoratorRoom brushDecoratorRoom = new BrushDecoratorRoom(room);
                 brushDecoratorRoom.show();
-            }else{
-                System.out.println("Fail to decorator " + roomName + " , cause by : the room is not exits");
+            } else {
+                System.out.println("Fail to decorator " + roomName +
+                        " , cause by : the room is not exits");
             }
-        }else{
-            System.out.println("Fail to decorator " + roomName + " , cause by : the action is not exits");
+        } else {
+            System.out.println("Fail to decorator " + roomName +
+                    " , cause by : the action is not exits");
         }
     }
-
 
     /**
      * Returns a single instance of HappyFarm
@@ -177,6 +190,95 @@ public class HappyFarm {
         }
 
         return totalCapacity;
+    }
+
+    /**
+     * Adds the creatures into the fields
+     * @param list The list of the creatures
+     * @throws MethodExposedException if the method is exposed to the outside package
+     */
+    public void addCreatures(List<AbstractCreature> list) throws MethodExposedException {
+        // Checks if the caller method is allowed to call this method
+        PackageChecker.checkPackage();
+
+        Deque<AbstractCreature> deque = new ArrayDeque<AbstractCreature>(list);
+
+        for (AbstractField field : fieldList) {
+            if (field.isCreatureMatch(list.get(0).getClass())) {
+                if (field instanceof AbstractPen) {
+                    while (field.getCapacity() - field.creatureCount() > 0) {
+                        AbstractAnimal animal = (AbstractAnimal) deque.poll();
+
+                        // If the deque is empty
+                        if (animal == null) {
+                            return;
+                        } else {
+                            ((AbstractPen) field).addAnimal((AbstractAnimal) deque.poll());
+                        }
+                    }
+                } else if (field instanceof AbstractFarmland) {
+                    while (field.getCapacity() - field.creatureCount() > 0) {
+                        AbstractPlant plant = (AbstractPlant) deque.poll();
+
+                        // If the deque is empty
+                        if (plant == null) {
+                            return;
+                        } else {
+                            ((AbstractFarmland) field).addPlant((AbstractPlant) deque.poll());
+                        }
+                    }
+                } else {
+                    // TODO: handle...
+                    System.out.println("Field not recognisable.");
+                }
+            }
+        }
+
+        // TODO: Throws exception indicating the capacity is not enough
+    }
+
+    /**
+     *
+     */
+    void save() {
+        try {
+            Double clonedFunds = this.funds;
+
+            //serializable
+            ByteArrayOutputStream byteOut = new ByteArrayOutputStream();
+            ObjectOutputStream out = new ObjectOutputStream(byteOut);
+            ByteArrayInputStream byteIn = new ByteArrayInputStream(
+                    byteOut.toByteArray());
+
+            out.writeObject(this.fieldList);
+            ObjectInputStream in = new ObjectInputStream(byteIn);
+            List<AbstractField> clonedFieldList = (List<AbstractField>) in.readObject();
+
+            out.writeObject(this.roomList);
+            in = new ObjectInputStream(byteIn);
+            List<AbstractRoom> clonedRoomList = (List<AbstractRoom>) in.readObject();
+
+            Memento memento = new Memento();
+            memento.setState(clonedFunds, clonedFieldList, clonedRoomList);
+
+            // TODO
+            // and other attributes (must implement serializable)
+            // and need define some functions in Memento (set..., get...)
+
+            Memento.addState(memento);
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+
+    /**
+     *
+     */
+    void reload() {
+        // TODO
+        // Memento m = Memento.popState();
+        // ... = m.get...
     }
 
 }

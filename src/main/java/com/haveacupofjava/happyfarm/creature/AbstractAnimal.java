@@ -9,7 +9,8 @@ public abstract class AbstractAnimal extends AbstractCreature {
     private double weight;
 
     /**
-     * Feeds the animal
+     * Feeds this animal
+     * @throws MethodExposedException if the method is exposed to the outside package
      */
     public void feed() throws MethodExposedException {
         // Checks if the caller method is allowed to call this method

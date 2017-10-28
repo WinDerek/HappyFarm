@@ -6,7 +6,9 @@ import java.util.List;
 
 
 public abstract class AbstractPlantFactory extends AbstractFactory {
+
     public AbstractPlant getPlant() {
-        return (AbstractPlant)create();
+        return (AbstractPlant) create();
     }
+
 }

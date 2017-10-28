@@ -11,32 +11,24 @@ public class BoxAdapter extends AbstractBox {
 
     public BoxAdapter(AbstractProduce produce){
         String name = produce.getName();
-        switch (name) {
-            case "meat":
-                specialBox = new MeatBox();
-                break;
-            case "milk":
-                specialBox = new MilkBox();
-                break;
-            case "fruit":
-                specialBox = new FruitBox();
-                break;
+        if(name.endsWith("meat")){
+            specialBox = new MeatBox();
+        }else if(name.endsWith("milk")){
+            specialBox = new MilkBox();
+        }else if(name.endsWith("fruit")){
+            specialBox = new FruitBox();
         }
     }
 
     @Override
     public void storage(List<AbstractProduct> products, AbstractProduce produce) {
         String name = produce.getName();
-        switch (name) {
-            case "meat":
-                specialBox.storage(products, produce);
-                break;
-            case "milk":
-                specialBox.storage(products, produce);
-                break;
-            case "fruit":
-                specialBox.storage(products, produce);
-                break;
+        if(name.endsWith("meat")){
+            specialBox.storage(products, produce);
+        }else if(name.endsWith("milk")){
+            specialBox.storage(products, produce);
+        }else if(name.endsWith("fruit")){
+            specialBox.storage(products, produce);
         }
     }
 
