@@ -1,4 +1,11 @@
 package com.haveacupofjava.happyfarm.produce;
 
-public class PigMilk {
+/**
+  * Class PigMilk
+  * @author Yichao Wu
+  */
+public class PigMilk extends AbstractMilkProduce {
+    public PigMilk() {
+        setName("PigMilk");
+    }
 }

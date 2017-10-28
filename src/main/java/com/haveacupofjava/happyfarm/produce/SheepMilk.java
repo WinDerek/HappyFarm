@@ -6,6 +6,6 @@ package com.haveacupofjava.happyfarm.produce;
   */
 public class SheepMilk extends AbstractMilkProduce {
     public SheepMilk(){
-        setName("sheepmilk");
+        setName("SheepMilk");
     }
 }

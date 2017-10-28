@@ -23,6 +23,7 @@ public class Sheep extends AbstractVivipara {
             list.add(milk);
         }
         this.setMilkProduce(list);
+        System.out.println("hey, sheep milk!");
         notifyAllObservers("SheepProduceMilk");
     }
 
