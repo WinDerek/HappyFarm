@@ -5,8 +5,8 @@ import com.haveacupofjava.happyfarm.field.AbstractField;
 public class Hoe extends AbstractTool{
     public Hoe() {
         setName("hoe");
+        setPrice(99D);
     }
-
 
     @Override
     public boolean isNil() {

@@ -4,6 +4,7 @@ public class Desk extends AbstractFurniture {
 
     public Desk(){
         setName("desk");
+        setPrice(999D);
     }
 
     @Override

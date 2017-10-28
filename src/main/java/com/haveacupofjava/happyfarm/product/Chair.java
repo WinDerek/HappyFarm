@@ -4,6 +4,7 @@ public class Chair extends AbstractFurniture {
 
     public Chair(){
         setName("chair");
+        setPrice(199D);
     }
 
     @Override

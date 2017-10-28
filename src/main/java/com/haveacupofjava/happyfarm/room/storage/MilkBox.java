@@ -3,6 +3,8 @@ package com.haveacupofjava.happyfarm.room.storage;
 import com.haveacupofjava.happyfarm.produce.AbstractProduce;
 import com.haveacupofjava.happyfarm.product.AbstractProduct;
 
+import java.util.List;
+
 public class MilkBox extends SpecialBox {
 
 
@@ -11,9 +13,10 @@ public class MilkBox extends SpecialBox {
     }
 
     @Override
-    public void storage(AbstractProduce produce) {
+    public void storage(List<AbstractProduct> products, AbstractProduce produce) {
         getProduces().add(produce);
-        System.out.println("storage milk in the box");
+        products.add(this);
+        System.out.println("Storage milk in the " + getName());
     }
 
     @Override

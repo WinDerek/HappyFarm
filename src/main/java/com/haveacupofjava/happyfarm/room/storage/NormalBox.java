@@ -3,6 +3,8 @@ package com.haveacupofjava.happyfarm.room.storage;
 import com.haveacupofjava.happyfarm.produce.AbstractProduce;
 import com.haveacupofjava.happyfarm.product.AbstractProduct;
 
+import java.util.List;
+
 public class NormalBox extends AbstractBox {
 
     private BoxAdapter boxAdapter;
@@ -13,15 +15,16 @@ public class NormalBox extends AbstractBox {
 
 
     @Override
-    public void storage(AbstractProduce produce) {
+    public void storage(List<AbstractProduct> products, AbstractProduce produce) {
         String name = produce.getName();
         // storage special produce
-        if(name.equals("meat") || name.equals("milk") || name.equals("fruit")){
+        if(name.endsWith("meat") || name.endsWith("milk") || name.endsWith("fruit")){
             boxAdapter = new BoxAdapter(produce);
-            boxAdapter.storage(produce);
+            boxAdapter.storage(products, produce);
+            //getProducts().add(boxAdapter);
         }else{
             getProduces().add(produce);
-            System.out.println("storage produce in the box");
+            System.out.println("Storage " + produce.getName() + " in the " + getName());
         }
     }
 

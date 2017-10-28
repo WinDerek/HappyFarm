@@ -5,6 +5,7 @@ public class NullProduct extends AbstractProduct {
 
     public NullProduct() {
         setName("Not Available");
+        setPrice(0D);
     }
 
     @Override
