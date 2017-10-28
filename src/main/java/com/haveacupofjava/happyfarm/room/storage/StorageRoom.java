@@ -26,7 +26,7 @@ public class StorageRoom extends AbstractRoom {
     @Override
     public void show() {
         //super.show();
-        if(null != products){
+        if(null == products){
             System.out.println("there is nothing in the room");
         }else {
             for(AbstractProduct product : products){
@@ -124,6 +124,5 @@ public class StorageRoom extends AbstractRoom {
         }else{
             System.out.println("You do not add clean way");
         }
-
     }
 }
