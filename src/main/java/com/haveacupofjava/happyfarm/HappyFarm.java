@@ -11,9 +11,14 @@ import com.haveacupofjava.happyfarm.room.storage.StorageRoom;
 import com.haveacupofjava.happyfarm.security.MethodExposedException;
 import com.haveacupofjava.happyfarm.security.PackageChecker;
 import com.haveacupofjava.happyfarm.visitor.ConcreteFieldVisitor;
-import com.sun.net.httpserver.Authenticator;
 
 import java.util.*;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.util.ArrayList;
+import java.util.List;
 
 public class HappyFarm {
 
@@ -230,6 +235,50 @@ public class HappyFarm {
         }
 
         // TODO: Throws exception indicating the capacity is not enough
+    }
+
+    /**
+     *
+     */
+    void save() {
+        try {
+            Double clonedFunds = this.funds;
+
+            //serializable
+            ByteArrayOutputStream byteOut = new ByteArrayOutputStream();
+            ObjectOutputStream out = new ObjectOutputStream(byteOut);
+            ByteArrayInputStream byteIn = new ByteArrayInputStream(
+                    byteOut.toByteArray());
+
+            out.writeObject(this.fieldList);
+            ObjectInputStream in = new ObjectInputStream(byteIn);
+            List<AbstractField> clonedFieldList = (List<AbstractField>) in.readObject();
+
+            out.writeObject(this.roomList);
+            in = new ObjectInputStream(byteIn);
+            List<AbstractRoom> clonedRoomList = (List<AbstractRoom>) in.readObject();
+
+            Memento memento = new Memento();
+            memento.setState(clonedFunds, clonedFieldList, clonedRoomList);
+
+            // TODO
+            // and other attributes (must implement serializable)
+            // and need define some functions in Memento (set..., get...)
+
+            Memento.addState(memento);
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+
+    /**
+     *
+     */
+    void reload() {
+        // TODO
+        // Memento m = Memento.popState();
+        // ... = m.get...
     }
 
 }

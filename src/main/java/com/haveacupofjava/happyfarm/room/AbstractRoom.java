@@ -2,10 +2,11 @@ package com.haveacupofjava.happyfarm.room;
 
 import com.haveacupofjava.happyfarm.product.AbstractProduct;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class AbstractRoom {
+public abstract class AbstractRoom implements Serializable{
 
 
     /**

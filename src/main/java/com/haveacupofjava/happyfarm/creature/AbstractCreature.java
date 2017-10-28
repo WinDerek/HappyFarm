@@ -2,6 +2,7 @@ package com.haveacupofjava.happyfarm.creature;
 
 import com.haveacupofjava.happyfarm.Observer;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,7 +11,7 @@ import java.util.List;
   * Abstract class of creature and observable
   * @author Yichao Wu
   */
-public abstract class AbstractCreature {
+public abstract class AbstractCreature implements Serializable{
     private List<Observer> observerList = new ArrayList<>();
 
     /**
