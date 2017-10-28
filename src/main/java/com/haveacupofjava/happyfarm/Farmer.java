@@ -19,6 +19,8 @@ import com.haveacupofjava.happyfarm.field.AbstractField;
 import com.haveacupofjava.happyfarm.field.AbstractFieldBuilder;
 import com.haveacupofjava.happyfarm.field.Director;
 import com.haveacupofjava.happyfarm.trade.FactoryMediator;
+import com.haveacupofjava.happyfarm.trade.Market;
+import com.haveacupofjava.happyfarm.trade.MarketMediator;
 import com.haveacupofjava.happyfarm.trade.Tradable;
 
 import java.util.ArrayList;
@@ -118,26 +120,25 @@ public class Farmer implements Observer, Tradable {
     }
 
     /**
-     * get produce name
-     * @param produceName
-     * @return
+     * get produce
+     * @param clazz
+     * @return null if the get operation fails
      */
-    public List<AbstractProduce> getProduce(Class clazz , int number){
+    public List<AbstractProduce> getProduce(Class clazz, int number) {
         List<AbstractProduce> produceList = new ArrayList<>();
         int mNumber = 0;
         StorageRoom storageRoom = StorageRoom.getInstance();
         // check
-        for(AbstractProduct product : storageRoom.getProducts()){
-            if (product instanceof AbstractBox){
-                for( AbstractProduce produce : ((AbstractBox) product).getProduces()){
-                    //System.out.println(produce.getName());
-                    if(clazz.getSimpleName().toLowerCase().equals(produce.getName())){
+        for (AbstractProduct product : storageRoom.getProducts()) {
+            if (product instanceof AbstractBox) {
+                for (AbstractProduce produce : ((AbstractBox) product).getProduces()) {
+                    if (clazz.getSimpleName().toLowerCase().equals(produce.getName())) {
                         mNumber++;
                     }
                 }
             }
         }
-        if(mNumber < number){
+        if (mNumber < number) {
             System.out.println("Fail to get : " + clazz.getSimpleName() + ", cause by : storage is not enough produce");
             return null;
         }
@@ -145,21 +146,22 @@ public class Farmer implements Observer, Tradable {
         mNumber = 0;
         int index = 0;
         List<Integer> integers = new ArrayList<>();
-        for(AbstractProduct product : storageRoom.getProducts()){
+        for (AbstractProduct product : storageRoom.getProducts()) {
             //System.out.println(storageRoom.getProducts().size() + " " + product.getName());
-            if (product instanceof AbstractBox){
-                for( AbstractProduce produce : ((AbstractBox) product).getProduces()){
-                    if(clazz.getSimpleName().toLowerCase().equals(produce.getName())){
+            if (product instanceof AbstractBox) {
+                for (AbstractProduce produce : ((AbstractBox) product).getProduces()) {
+                    if (clazz.getSimpleName().toLowerCase().equals(produce.getName())) {
                         mNumber++;
                         produceList.add(produce);
                         integers.add(index);
-                        if(mNumber == number){
+                        if (mNumber == number) {
                             int count = 0;
-                            for (Integer integer : integers){
+                            for (Integer integer : integers) {
                                 storageRoom.getProducts().remove(integer - count);
                                 count++;
                             }
-                            System.out.println("Success to get " + number + " " + clazz.getSimpleName() + "s");
+                            System.out.println("Success to get " + number + " " +
+                                    clazz.getSimpleName() + "s");
                             return produceList;
                         }
                     }
@@ -167,9 +169,11 @@ public class Farmer implements Observer, Tradable {
             }
             index++;
         }
-        System.out.println("Fail to get produce, cause by : the " + clazz.getSimpleName() +" is not exist");
+        System.out.println("Fail to get produce, cause by : the class " +
+                clazz.getSimpleName() + " does not exist");
         return null;
     }
+
     /**
      * decorator the room
      * @param action
@@ -204,6 +208,7 @@ public class Farmer implements Observer, Tradable {
             System.out.println("2.mop");
         }
     }
+
     /**
      * show all items in the store
      */
@@ -296,6 +301,24 @@ public class Farmer implements Observer, Tradable {
         director.constructField();
         AbstractField field = builder.getField();
         HappyFarm.getInstance().addField(field);
+    }
+
+    public void sellProduce(Class clazz, int number) {
+        List<AbstractProduce> list = getProduce(clazz, number);
+
+        // Checks if the get operation fails
+        if (list == null) {
+            System.out.println("Sell produce fails due to the failure of getting the produces.");
+            return;
+        }
+
+        MarketMediator marketMediator = new MarketMediator();
+        marketMediator.setSeller(this);
+        marketMediator.setBuyer(Market.getInstance());
+        marketMediator.setProduceList(list);
+        marketMediator.handleTrade();
+
+        System.out.println("Trade completed.");
     }
 
 }
