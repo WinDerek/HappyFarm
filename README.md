@@ -11,17 +11,17 @@ Design Patterns
 - [x] Abstract Factory
 - [x] Builder
 - [ ] Factory Method
-- [ ] Prototype
+- [x] Prototype
 - [x] Singleton
 
 **Structural Patterns**
-- [ ] Adapter
-- [ ] Bridge
+- [x] Adapter
+- [x] Bridge
 - [x] Composite
 - [x] Decorator
 - [x] Facade
-- [ ] Flyweight
-- [ ] Proxy
+- [x] Flyweight
+- [x] Proxy
 
 **Behavioral Patterns**
 - [x] Chain of Responsibility
@@ -37,4 +37,4 @@ Design Patterns
 - [x] Visitor
 
 **Other Patterns**
-- [ ] Null Object
+- [x] Null Object
