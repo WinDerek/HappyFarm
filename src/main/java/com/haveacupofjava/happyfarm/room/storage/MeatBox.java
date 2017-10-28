@@ -15,6 +15,11 @@ public class MeatBox extends SpecialBox {
     }
 
     @Override
+    public boolean isNil() {
+        return false;
+    }
+
+    @Override
     public AbstractProduct clone() {
         return null;
     }

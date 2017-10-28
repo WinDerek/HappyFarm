@@ -2,6 +2,15 @@ package com.haveacupofjava.happyfarm.product;
 
 public class Bed extends AbstractFurniture {
 
+    public Bed(){
+        setName("bed");
+    }
+
+    @Override
+    public boolean isNil() {
+        return false;
+    }
+
     @Override
     public Bed clone() {
         Bed bed = new Bed();
