@@ -6,6 +6,7 @@ public class Spinkler extends AbstractTool {
 
     public Spinkler() {
         setName("spinkler");
+        setPrice(299D);
     }
 
 

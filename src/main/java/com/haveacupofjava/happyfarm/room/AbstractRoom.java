@@ -6,6 +6,28 @@ import java.util.ArrayList;
 import java.util.List;
 
 public abstract class AbstractRoom {
+
+
+    /**
+     * room name
+     */
+    private String name;
+    /**
+     *
+     * @return
+     */
+    public String getName() {
+        return name;
+    }
+
+    /**
+     *
+     * @param name
+     */
+    public void setName(String name) {
+        this.name = name;
+    }
+
     /**
      * clean interface
      */
@@ -52,7 +74,7 @@ public abstract class AbstractRoom {
             products = new ArrayList<>();
         }
         products.add(abstractProduct);
-        System.out.println("Success to add the " + abstractProduct.getName() + " to the room");
+        System.out.println("Success to add the " + abstractProduct.getName() + " to the " + getName());
     }
 
 }

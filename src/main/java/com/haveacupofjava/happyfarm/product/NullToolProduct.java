@@ -7,6 +7,7 @@ public class NullToolProduct extends AbstractTool {
 
     public NullToolProduct() {
         setName("Not Available");
+        setPrice(0D);
     }
 
     @Override

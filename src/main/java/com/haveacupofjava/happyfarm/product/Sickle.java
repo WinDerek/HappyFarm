@@ -5,6 +5,7 @@ import com.haveacupofjava.happyfarm.field.AbstractField;
 public class Sickle extends AbstractTool{
     public Sickle() {
         setName("sickle");
+        setPrice(59D);
     }
 
     @Override

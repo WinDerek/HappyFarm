@@ -4,6 +4,7 @@ public class Bed extends AbstractFurniture {
 
     public Bed(){
         setName("bed");
+        setPrice(2999D);
     }
 
     @Override

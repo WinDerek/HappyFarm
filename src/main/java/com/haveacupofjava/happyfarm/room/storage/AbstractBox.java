@@ -16,18 +16,18 @@ public abstract class AbstractBox extends AbstractProduct{
 //    /**
 //     * storage the products
 //     */
-//    private List<AbstractProduct> products;
+    private List<AbstractProduct> products;
 
-//    /**
-//     * get products container
-//     * @return
-//     */
-//    public List<AbstractProduct> getProducts() {
-//        if(null == products){
-//            products = new ArrayList<>();
-//        }
-//        return products;
-//    }
+    /**
+     * get products container
+     * @return
+     */
+    public List<AbstractProduct> getProducts() {
+        if(null == products){
+            products = new ArrayList<>();
+        }
+        return products;
+    }
 
     /**
      * get produces container
@@ -44,5 +44,5 @@ public abstract class AbstractBox extends AbstractProduct{
      * storage product
      * @param name
      */
-    public abstract void storage(AbstractProduce produce);
+    public abstract void storage(List<AbstractProduct> products, AbstractProduce produce);
 }
