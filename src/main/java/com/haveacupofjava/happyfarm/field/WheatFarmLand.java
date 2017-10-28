@@ -7,7 +7,7 @@ public class WheatFarmLand extends AbstractFarmland<Wheat> {
 
     @Override
     public void show() {
-        System.out.println("WheatFarmLand shown.");
+        System.out.println("a wheat farmland");
     }
 
     @Override

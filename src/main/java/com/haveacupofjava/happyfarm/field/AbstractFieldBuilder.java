@@ -5,8 +5,8 @@ package com.haveacupofjava.happyfarm.field;
   * includes 2 functions to build a field
   * @author Yiqun Lin
   */
-public abstract class AbstractFieldBuilder {
-    protected AbstractField field;
+public abstract class AbstractFieldBuilder<T extends AbstractField> {
+    protected T field;
 
     /**
       * create decorator
@@ -30,7 +30,7 @@ public abstract class AbstractFieldBuilder {
       * @return AbstractField
       * @author Yiqun Lin
       */
-    public AbstractField getField(){
+    public T getField(){
         return field;
     }
 }

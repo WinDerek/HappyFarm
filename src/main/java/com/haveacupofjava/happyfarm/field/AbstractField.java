@@ -28,6 +28,7 @@ public abstract class AbstractField extends AbstractFieldComponent {
     }
 
     public void showField() {
+        this.decorator.show();
     }
 
     @Override
