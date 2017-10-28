@@ -23,6 +23,15 @@ public class StorageRoom extends AbstractRoom {
     public List<AbstractProduct> getProducts(){
         return products;
     }
+
+    /**
+     * reset products list
+     * only for HappyFarm.reload
+     */
+    public void setProducts(List<AbstractProduct> list){
+        products = list;
+    }
+
     /**
      * override show
      * show the items int the box
