@@ -7,9 +7,7 @@ public class LivingRoom extends AbstractRoom {
         if(null != cleanable){
             cleanable.clean();
         }else{
-            System.out.println("you do not add clean way");
+            System.out.println("there is not a clean way");
         }
-
     }
-
 }

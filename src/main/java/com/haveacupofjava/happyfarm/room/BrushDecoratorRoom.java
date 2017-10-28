@@ -11,6 +11,13 @@ public class BrushDecoratorRoom extends AbstractRoom {
     @Override
     public void show() {
         super.show();
+        brush();
+    }
+
+    /**
+     * brush the room
+     */
+    private void brush(){
         System.out.println("brush the room");
     }
 
@@ -19,7 +26,7 @@ public class BrushDecoratorRoom extends AbstractRoom {
         if(null != cleanable){
             cleanable.clean();
         }else{
-            System.out.println("you do not add clean way");
+            System.out.println("there is not a clean way");
         }
     }
 }

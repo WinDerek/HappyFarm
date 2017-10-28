@@ -4,7 +4,12 @@ public class NullProduct extends AbstractProduct {
 
 
     public NullProduct() {
-        setName("null");
+        setName("Not Available in the store");
+    }
+
+    @Override
+    public boolean isNil() {
+        return true;
     }
 
     @Override

@@ -3,7 +3,7 @@ package com.haveacupofjava.happyfarm.room.storage;
 import com.haveacupofjava.happyfarm.produce.AbstractProduce;
 import com.haveacupofjava.happyfarm.product.AbstractProduct;
 
-public class NormalBox extends Box {
+public class NormalBox extends AbstractBox {
 
     private BoxAdapter boxAdapter;
 
@@ -22,9 +22,13 @@ public class NormalBox extends Box {
             getProducts().add(boxAdapter);
         }else{
             getProduces().add(produce);
-            getProducts().add(this);
-            System.out.println("storage product in the box");
+            System.out.println("storage produce in the box");
         }
+    }
+
+    @Override
+    public boolean isNil() {
+        return false;
     }
 
     @Override
