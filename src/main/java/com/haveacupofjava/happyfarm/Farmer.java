@@ -1,5 +1,9 @@
 package com.haveacupofjava.happyfarm;
 
+import com.haveacupofjava.happyfarm.field.AbstractField;
+import com.haveacupofjava.happyfarm.field.AbstractFieldBuilder;
+import com.haveacupofjava.happyfarm.field.Director;
+
 public class Farmer implements Observer {
 
     private static Farmer instance;
@@ -60,6 +64,18 @@ public class Farmer implements Observer {
                 System.out.println(notification);
             }
         }
+    }
+
+    public void buyField(AbstractFieldBuilder builder){
+
+        Director director = new Director(builder);
+        director.constructField();
+
+        AbstractField field = builder.getField();
+
+        // TODO
+        // HappyFarm.pushFiled(field);
+        // farmer.buyField(new Builder);
     }
 
 }

@@ -2,6 +2,8 @@ package com.haveacupofjava.happyfarm.farmhand;
 
 import com.haveacupofjava.happyfarm.field.AbstractPen;
 
+import java.util.List;
+
 public class AnimalFarmHand extends AbstractFarmHand {
 
     /**
@@ -10,8 +12,10 @@ public class AnimalFarmHand extends AbstractFarmHand {
       * @return
       * @author Yiqun Lin
       */
-    public void useTool(String tool, AbstractPen field){
+    public void useTool(String tool, List<AbstractPen> fieldList){
         this.tool = getTool(tool);
-        this.tool.handleField(field);
+        for(AbstractPen field : fieldList){
+            this.tool.handleField(field);
+        }
     }
 }
