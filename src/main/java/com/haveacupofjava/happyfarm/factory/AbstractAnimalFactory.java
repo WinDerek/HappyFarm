@@ -8,7 +8,7 @@ import com.haveacupofjava.happyfarm.creature.AbstractAnimal;
   * Abstract factory of all animal factories
   * @author Yichao Wu
   */
-abstract class AbstractAnimalFactory extends AbstractFactory {
+public abstract class AbstractAnimalFactory extends AbstractFactory {
     public AbstractAnimal getAnimal() {
         return (AbstractAnimal) create();
     }

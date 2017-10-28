@@ -1,5 +1,9 @@
 package com.haveacupofjava.happyfarm;
 
+import com.haveacupofjava.happyfarm.creature.AbstractAnimal;
+import com.haveacupofjava.happyfarm.creature.AbstractPlant;
+import com.haveacupofjava.happyfarm.factory.AbstractAnimalFactory;
+import com.haveacupofjava.happyfarm.factory.AbstractPlantFactory;
 import com.haveacupofjava.happyfarm.produce.AbstractProduce;
 import com.haveacupofjava.happyfarm.product.AbstractProduct;
 import com.haveacupofjava.happyfarm.product.NullProduct;
@@ -8,12 +12,16 @@ import com.haveacupofjava.happyfarm.room.Mop;
 import com.haveacupofjava.happyfarm.room.Wipe;
 import com.haveacupofjava.happyfarm.room.storage.AbstractBox;
 import com.haveacupofjava.happyfarm.room.storage.StorageRoom;
+import com.haveacupofjava.happyfarm.security.MethodExposedException;
+import com.haveacupofjava.happyfarm.security.PackageChecker;
 import com.haveacupofjava.happyfarm.store.ProxyStore;
 import com.haveacupofjava.happyfarm.field.AbstractField;
 import com.haveacupofjava.happyfarm.field.AbstractFieldBuilder;
 import com.haveacupofjava.happyfarm.field.Director;
+import com.haveacupofjava.happyfarm.trade.FactoryMediator;
+import com.haveacupofjava.happyfarm.trade.Tradable;
 
-public class Farmer implements Observer {
+public class Farmer implements Observer, Tradable {
 
     private static Farmer instance;
 
@@ -38,7 +46,10 @@ public class Farmer implements Observer {
         return inst;
     }
 
-    private void payMoney(double amount) {
+    public void payMoney(double amount) throws MethodExposedException {
+        // Checks if the caller method is allowed to call this method
+        PackageChecker.checkPackage();
+
         HappyFarm happyFarm = HappyFarm.getInstance();
         System.out.println(Farmer.class.getName() + ".payMoney(" + amount + ") called.");
         System.out.println("Current amount of money is: " + happyFarm.getFunds() + ".");
@@ -46,7 +57,10 @@ public class Farmer implements Observer {
                 happyFarm.moneyOut(amount));
     }
 
-    private void gainMoney(double amount) {
+    public void gainMoney(double amount) throws MethodExposedException {
+        // Checks if the caller method is allowed to call this method
+        PackageChecker.checkPackage();
+
         HappyFarm.getInstance().moneyIn(amount);
     }
 
@@ -131,7 +145,7 @@ public class Farmer implements Observer {
 
     /**
      * clean the room
-     * @param abstractRoom
+     * @param roomName
      * @param action
      */
     public void cleanRoom(String roomName, String action){
@@ -162,10 +176,60 @@ public class Farmer implements Observer {
         proxyStore.show();
     }
 
-    public void buyAnimal(Class clazz, int number) {
+    /**
+     * Buys animal(s) from an animal factory through mediator
+     * @param factory An instance of concrete animal factory
+     * @param number  The number of animal(s) to be bought
+     */
+    public void buyAnimal(AbstractAnimalFactory factory, int number) throws Exception {
+        HappyFarm happyFarm = HappyFarm.getInstance();
+
+        AbstractAnimal animal = factory.getAnimal();
+
+        if (number > happyFarm.getCreatureCapacity(animal.getClass())) {
+            throw new Exception("NoEnoughCapacityException");
+        }
+
+        if (happyFarm.getFunds() < animal.getSellingPrice() * number) {
+            throw new Exception("NoEnoughMoneyException");
+        }
+
+        FactoryMediator factoryMediator = new FactoryMediator();
+        factoryMediator.setBuyer(this);
+        factoryMediator.setSeller(factory);
+        factoryMediator.setTradeInfo(number);
+        factoryMediator.handleTrade();
+
+        System.out.println("buy animal success");
     }
 
-    public void buyPlant(Class clazz, int number) {
+    /**
+     * Buys plant(s) from an plant factory through mediator
+     * @param factory The instance of concrete plant factory
+     * @param number  The number of plant(s) to be bought
+     */
+    public void buyPlant(AbstractPlantFactory factory, int number) throws Exception {
+        HappyFarm happyFarm = HappyFarm.getInstance();
+
+        AbstractPlant plant = factory.getPlant();
+
+        if (number > happyFarm.getCreatureCapacity(plant.getClass())) {
+            throw new Exception("NoEnoughCapacityException");
+        }
+
+        if (happyFarm.getFunds() < plant.getSellingPrice() * number) {
+            throw new Exception("NoEnoughMoneyException");
+        }
+
+        payMoney(plant.getSellingPrice() * number);
+
+        FactoryMediator factoryMediator = new FactoryMediator();
+        factoryMediator.setBuyer(this);
+        factoryMediator.setSeller(factory);
+        factoryMediator.setTradeInfo(number);
+        factoryMediator.handleTrade();
+
+        System.out.println("buy plant success");
     }
 
     /**
@@ -187,15 +251,15 @@ public class Farmer implements Observer {
         }
     }
 
+    /**
+     *
+     * @param builder
+     */
     public void buyField(AbstractFieldBuilder builder){
-
         Director director = new Director(builder);
         director.constructField();
-
         AbstractField field = builder.getField();
-
-        // TODO
-        // HappyFarm.pushFiled(field);
-        // farmer.buyField(new Builder);
+        HappyFarm.getInstance().addField(field);
     }
+
 }

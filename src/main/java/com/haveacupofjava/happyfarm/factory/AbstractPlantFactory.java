@@ -5,8 +5,10 @@ import com.haveacupofjava.happyfarm.creature.AbstractPlant;
 import java.util.List;
 
 
-public abstract class AbstractPlantFactory {
+public abstract class AbstractPlantFactory extends AbstractFactory {
 
-    public abstract List<AbstractPlant> getPlant();
+    public AbstractPlant getPlant() {
+        return (AbstractPlant) create();
+    }
 
 }

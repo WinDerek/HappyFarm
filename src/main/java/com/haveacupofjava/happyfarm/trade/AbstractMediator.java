@@ -9,17 +9,18 @@ public abstract class AbstractMediator {
     private Tradable buyer;
     private Tradable seller;
 
-    /**
-      * Set buyer
-      * @author Yichao Wu
-      */
+    Tradable getBuyer() {
+        return buyer;
+    }
+
+    Tradable getSeller() {
+        return seller;
+    }
+
     public void setBuyer(Tradable buyer) {
         this.buyer = buyer;
     }
-    /**
-      * Set seller
-      * @author Yichao Wu
-      */
+
     public void setSeller(Tradable seller) {
         this.seller = seller;
     }
