@@ -15,9 +15,46 @@ public class StorageRoom extends AbstractRoom {
     private StorageRoom(){
     }
 
+    /**
+     * override show
+     * show the items int the box
+     */
     @Override
     public void show() {
-        super.show();
+        //super.show();
+        if(null != products){
+            System.out.println("there is nothing in the room");
+        }else {
+            for(AbstractProduct product : products){
+                if(product instanceof AbstractBox){
+                    showBox((AbstractBox)product);
+                }else{
+                    System.out.println("product: " + product.getName());
+                }
+            }
+        }
+
+    }
+
+    /**
+     * recursion print the items in the box
+     * @param box
+     */
+    public void showBox(AbstractBox box){
+        // show all the products
+        for (AbstractProduct product : products){
+            if(product instanceof AbstractBox){
+                showBox((AbstractBox)product);
+            }else {
+                System.out.println("product: " + product.getName()
+                        + " in the " + box.getName());
+            }
+        }
+        // show all the produces
+        for (AbstractProduce produce : box.getProduces()){
+            System.out.println("produce: " + produce.getName()
+                    + " in the " + box.getName());
+        }
     }
 
     /**
@@ -65,6 +102,7 @@ public class StorageRoom extends AbstractRoom {
     public void storage(AbstractProduce produce){
         NormalBox normalBox = new NormalBox();
         normalBox.storage(produce);
+        products.add(normalBox);
     }
 
     @Override

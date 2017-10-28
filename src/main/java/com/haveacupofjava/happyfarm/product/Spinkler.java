@@ -6,6 +6,12 @@ public class Spinkler extends AbstractTool {
         setName("spinkler");
     }
 
+
+    @Override
+    public boolean isNil() {
+        return false;
+    }
+
     @Override
     public Spinkler clone() {
         Spinkler spinkler = new Spinkler();

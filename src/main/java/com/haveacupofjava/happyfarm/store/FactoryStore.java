@@ -9,7 +9,7 @@ public class FactoryStore extends AbstractStore {
     private HashMap<String, AbstractProduct> hashMap;
 
     public FactoryStore(){
-        // init the factory and add product
+        // init the factory and add init products
         hashMap = new HashMap<>();
         hashMap.put("sickle", new Sickle());
         hashMap.put("spinkler", new Spinkler());
@@ -24,7 +24,7 @@ public class FactoryStore extends AbstractStore {
 
     @Override
     public AbstractProduct buy(String name) {
-        // check if exist in the factory
+        // check if product exist in the factory
         if(hashMap.keySet().contains(name)){
             return hashMap.get(name).clone();
         }else {

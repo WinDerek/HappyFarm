@@ -2,6 +2,11 @@ package com.haveacupofjava.happyfarm.product;
 
 public class Chair extends AbstractFurniture {
     @Override
+    public boolean isNil() {
+        return false;
+    }
+
+    @Override
     public Chair clone() {
         Chair chair = new Chair();
         chair.setName(this.getName());

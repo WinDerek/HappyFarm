@@ -6,6 +6,11 @@ public class Sickle extends AbstractTool{
     }
 
     @Override
+    public boolean isNil() {
+        return false;
+    }
+
+    @Override
     public Sickle clone(){
         Sickle sickle = new Sickle();
         sickle.setName(this.getName());
