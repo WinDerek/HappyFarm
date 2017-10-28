@@ -1,9 +1,9 @@
 package com.haveacupofjava.happyfarm.product;
 
-public class NullProduct extends AbstractProduct {
+public class NullToolProduct extends AbstractTool {
 
 
-    public NullProduct() {
+    public NullToolProduct() {
         setName("Not Available");
     }
 
@@ -13,8 +13,8 @@ public class NullProduct extends AbstractProduct {
     }
 
     @Override
-    public NullProduct clone() {
-        NullProduct nullProduct = new NullProduct();
+    public NullToolProduct clone() {
+        NullToolProduct nullProduct = new NullToolProduct();
         nullProduct.setName(this.getName());
         return nullProduct;
     }

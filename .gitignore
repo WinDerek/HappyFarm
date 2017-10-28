@@ -10,6 +10,7 @@ Thumbs.db
 
 # Build Artifacts
 
+
 .gradle/
 build/
 target/
@@ -28,3 +29,4 @@ dependency-reduced-pom.xml
 *.ipr
 *.iws
 *.idea
+src/main/java/com/havaacupofjava/happyfarm/TestApplication.java

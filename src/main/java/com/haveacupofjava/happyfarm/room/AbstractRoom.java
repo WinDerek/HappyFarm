@@ -25,10 +25,10 @@ public abstract class AbstractRoom {
      * show all the items in the room
      */
     public void show() {
-        if(null != products){
-            System.out.println("there is nothing in the room");
+        if(null == products){
+            System.out.println("There is nothing in the room");
         }else{
-            System.out.println("the items in the room as follows: ");
+            System.out.println("The items in the room as follows: ");
             for(AbstractProduct abstractProduct : products){
                 System.out.println(abstractProduct.getName());
             }
@@ -52,7 +52,7 @@ public abstract class AbstractRoom {
             products = new ArrayList<>();
         }
         products.add(abstractProduct);
-        System.out.println("add product in the room");
+        System.out.println("Success to add the " + abstractProduct.getName() + " to the room");
     }
 
 }

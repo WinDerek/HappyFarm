@@ -18,7 +18,7 @@ public class BrushDecoratorRoom extends AbstractRoom {
      * brush the room
      */
     private void brush(){
-        System.out.println("brush the room");
+        System.out.println("Brush the room");
     }
 
     @Override

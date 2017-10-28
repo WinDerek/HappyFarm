@@ -2,6 +2,10 @@ package com.haveacupofjava.happyfarm.product;
 
 public class Desk extends AbstractFurniture {
 
+    public Desk(){
+        setName("desk");
+    }
+
     @Override
     public boolean isNil() {
         return false;

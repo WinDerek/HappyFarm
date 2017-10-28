@@ -19,7 +19,6 @@ public class NormalBox extends AbstractBox {
         if(name.equals("meat") || name.equals("milk") || name.equals("fruit")){
             boxAdapter = new BoxAdapter(produce);
             boxAdapter.storage(produce);
-            getProducts().add(boxAdapter);
         }else{
             getProduces().add(produce);
             System.out.println("storage produce in the box");

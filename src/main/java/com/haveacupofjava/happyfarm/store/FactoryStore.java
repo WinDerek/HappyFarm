@@ -26,8 +26,10 @@ public class FactoryStore extends AbstractStore {
     public AbstractProduct buy(String name) {
         // check if product exist in the factory
         if(hashMap.keySet().contains(name)){
+            System.out.println("Success to buy : " + name);
             return hashMap.get(name).clone();
         }else {
+            System.out.println("Fail to buy : " + name + ", caused by: the store did not sell " + name);
             return new NullProduct();
         }
     }
@@ -35,7 +37,7 @@ public class FactoryStore extends AbstractStore {
     @Override
     public void show() {
         if(null != hashMap){
-            System.out.println("this store has product as follow: ");
+            System.out.println("Show the products in the store: ");
             for (String name : hashMap.keySet()){
                 System.out.println(name);
             }

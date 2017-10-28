@@ -6,8 +6,17 @@ public class ProxyStore extends AbstractStore {
 
     private FactoryStore factoryStore;
 
-    public ProxyStore(){
+    private static ProxyStore proxyStore;
+
+    private ProxyStore(){
         this.factoryStore = new FactoryStore();
+    }
+
+    public static ProxyStore getInstance(){
+        if(null == proxyStore){
+            proxyStore = new ProxyStore();
+        }
+        return proxyStore;
     }
 
     @Override
