@@ -6,11 +6,10 @@ import java.util.HashMap;
 
 public class FactoryStore extends AbstractStore {
 
-    private HashMap<String, AbstractProduct> hashMap;
+    private static HashMap<String, AbstractProduct> hashMap = new HashMap<>();
 
-    public FactoryStore(){
+    public FactoryStore() {
         // init the factory and add init products
-        hashMap = new HashMap<>();
         hashMap.put("sickle", new Sickle());
         hashMap.put("spinkler", new Spinkler());
         hashMap.put("purse", new Purse());
@@ -20,7 +19,18 @@ public class FactoryStore extends AbstractStore {
         hashMap.put("chair", new Chair());
     }
 
-
+    /**
+     * TODO: Improve this method
+     * @param name
+     * @param tool
+     */
+    public static void addTool(String name, AbstractTool tool) {
+        try {
+            hashMap.put(name, tool);
+        } catch (Exception exception) {
+            exception.printStackTrace(System.out);
+        }
+    }
 
     @Override
     public AbstractProduct buy(String name) {

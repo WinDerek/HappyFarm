@@ -115,9 +115,10 @@ public class StorageRoom extends AbstractRoom {
      * @param produce AbstractProduce
      */
     public void storage(AbstractProduce produce) {
+        // TODO: Control the permissions better
         NormalBox normalBox = new NormalBox();
         normalBox.storage(products, produce);
-        //products.add(normalBox);
+        products.add(normalBox);
     }
 
     @Override

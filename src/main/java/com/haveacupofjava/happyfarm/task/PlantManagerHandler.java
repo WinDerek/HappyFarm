@@ -13,7 +13,7 @@ public class PlantManagerHandler extends AbstractManagerHandler{
         String tool = request.getTool();
         Class clazz = request.getField();
 
-        FarmTask task = new FarmTask(new PlantFarmHand(), tool, clazz);
+        FarmlandTask task = new FarmlandTask(new PlantFarmHand(), tool, clazz);
         Invoker invoker = Invoker.getInstence();
         invoker.pushTask(task);
 

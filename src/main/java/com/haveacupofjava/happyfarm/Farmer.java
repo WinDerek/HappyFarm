@@ -18,6 +18,9 @@ import com.haveacupofjava.happyfarm.store.ProxyStore;
 import com.haveacupofjava.happyfarm.field.AbstractField;
 import com.haveacupofjava.happyfarm.field.AbstractFieldBuilder;
 import com.haveacupofjava.happyfarm.field.Director;
+import com.haveacupofjava.happyfarm.task.AnimalManagerHandler;
+import com.haveacupofjava.happyfarm.task.PlantManagerHandler;
+import com.haveacupofjava.happyfarm.task.Request;
 import com.haveacupofjava.happyfarm.trade.FactoryMediator;
 import com.haveacupofjava.happyfarm.trade.Market;
 import com.haveacupofjava.happyfarm.trade.MarketMediator;
@@ -132,7 +135,8 @@ public class Farmer implements Observer, Tradable {
         for (AbstractProduct product : storageRoom.getProducts()) {
             if (product instanceof AbstractBox) {
                 for (AbstractProduce produce : ((AbstractBox) product).getProduces()) {
-                    if (clazz.getSimpleName().toLowerCase().equals(produce.getName())) {
+
+                    if (clazz.getSimpleName().equalsIgnoreCase(produce.getName())) {
                         mNumber++;
                     }
                 }
@@ -150,7 +154,7 @@ public class Farmer implements Observer, Tradable {
             //System.out.println(storageRoom.getProducts().size() + " " + product.getName());
             if (product instanceof AbstractBox) {
                 for (AbstractProduce produce : ((AbstractBox) product).getProduces()) {
-                    if (clazz.getSimpleName().toLowerCase().equals(produce.getName())) {
+                    if (clazz.getSimpleName().equalsIgnoreCase(produce.getName())) {
                         mNumber++;
                         produceList.add(produce);
                         integers.add(index);
@@ -327,6 +331,17 @@ public class Farmer implements Observer, Tradable {
         marketMediator.handleTrade();
 
         System.out.println("Trade completed.");
+    }
+
+    /**
+     *
+     * @param request
+     */
+    public void handleRequest(Request request) {
+        AnimalManagerHandler animalManagerHandler = new AnimalManagerHandler();
+        PlantManagerHandler plantManagerHandler = new PlantManagerHandler();
+        animalManagerHandler.setNext(plantManagerHandler);
+        animalManagerHandler.handleRequest(request);
     }
 
 }

@@ -208,12 +208,11 @@ public class HappyFarm {
                 if (field instanceof AbstractPen) {
                     while (field.getCapacity() - field.creatureCount() > 0) {
                         AbstractAnimal animal = (AbstractAnimal) deque.poll();
-
                         // If the deque is empty
                         if (animal == null) {
                             return;
                         } else {
-                            ((AbstractPen) field).addAnimal((AbstractAnimal) deque.poll());
+                            ((AbstractPen) field).addAnimal(animal);
                         }
                     }
                 } else if (field instanceof AbstractFarmland) {
@@ -279,6 +278,18 @@ public class HappyFarm {
         // TODO
         // Memento m = Memento.popState();
         // ... = m.get...
+    }
+
+    /**
+     *
+     * @return
+     * @throws MethodExposedException if the method is exposed to the outside package
+     */
+    public List<AbstractField> getFieldList() throws MethodExposedException {
+        // Checks if the caller method is allowed to call this method
+        PackageChecker.checkPackage();
+
+        return fieldList;
     }
 
 }

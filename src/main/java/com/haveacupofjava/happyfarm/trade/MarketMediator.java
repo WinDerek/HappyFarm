@@ -17,8 +17,7 @@ public class MarketMediator extends AbstractMediator {
     @Override
     public void handleTrade() {
         // Let the farmer gain some money
-//        double amount = produceList.get(0).getPrice() * produceList.size();
-        double amount = 0.0;
+        double amount = produceList.get(0).getPrice() * produceList.size();
         try {
             Farmer.getInstance().gainMoney(amount);
         } catch (MethodExposedException exception) {

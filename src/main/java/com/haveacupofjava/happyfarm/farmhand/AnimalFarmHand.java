@@ -12,9 +12,9 @@ public class AnimalFarmHand extends AbstractFarmHand {
       * @return
       * @author Yiqun Lin
       */
-    public void useTool(String tool, List<AbstractPen> fieldList){
+    public void useTool(String tool, List<AbstractPen> fieldList) {
         this.tool = getTool(tool);
-        for(AbstractPen field : fieldList){
+        for (AbstractPen field : fieldList) {
             this.tool.handleField(field);
         }
     }

@@ -13,11 +13,12 @@ public abstract class AbstractVivipara extends AbstractAnimal {
 
     private List<AbstractMilkProduce> milkProduce;
 
-    protected List<AbstractMilkProduce> getMilkProduce() {
+    public List<AbstractMilkProduce> getMilkProduce() {
         return milkProduce;
     }
 
     void setMilkProduce(List<AbstractMilkProduce> milkProduce) {
         this.milkProduce = milkProduce;
     }
+
 }

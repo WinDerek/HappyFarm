@@ -11,8 +11,12 @@ import java.util.List;
   * Definition for pig
   * @author Yichao Wu
   */
-public class Pig extends AbstractVivipara{
+public class Pig extends AbstractVivipara {
 
+    public Pig(){
+        // TODO: implement an interface in HappyFarm
+        produce();
+    }
     /**
       * Pig produce milk and notify PigProduceMilk message to the observers
       * @author Yichao Wu

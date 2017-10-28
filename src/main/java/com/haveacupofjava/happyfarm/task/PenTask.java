@@ -1,7 +1,9 @@
 package com.haveacupofjava.happyfarm.task;
 
 
+import com.haveacupofjava.happyfarm.HappyFarm;
 import com.haveacupofjava.happyfarm.farmhand.AnimalFarmHand;
+import com.haveacupofjava.happyfarm.field.AbstractField;
 import com.haveacupofjava.happyfarm.field.AbstractPen;
 
 import java.util.ArrayList;
@@ -20,13 +22,24 @@ public class PenTask extends AbstractTask{
     // TODO
     // need a function object
 
-    public PenTask(AnimalFarmHand farmhand, String tool, Class penClazz){
+    public PenTask(AnimalFarmHand farmhand, String tool, Class penClazz) {
         this.farmhand = farmhand;
         this.tool = tool;
 
-        // TODO
-        // search from HappyFarm, and get the list of pen fields to handle
+        List<AbstractField> fieldList = null;
+        try {
+            fieldList = HappyFarm.getInstance().getFieldList();
+        } catch (Exception exception) {
+            exception.printStackTrace(System.out);
+        }
+
         penList = new ArrayList<>();
+
+        for (AbstractField field : fieldList) {
+            if (field.getClass().getName().equalsIgnoreCase(penClazz.getName())) {
+                penList.add((AbstractPen) field);
+            }
+        }
     }
 
     @Override
