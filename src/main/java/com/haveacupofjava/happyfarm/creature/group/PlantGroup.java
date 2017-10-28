@@ -6,12 +6,12 @@ import com.haveacupofjava.happyfarm.security.PackageChecker;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PlantGroup {
+public class PlantGroup <T extends AbstractPlant> {
 
-    private List<AbstractPlant> plants;
+    private List<T> plants;
 
     public PlantGroup() {
-        plants = new ArrayList<AbstractPlant>();
+        plants = new ArrayList<T>();
     }
 
     /**
@@ -27,7 +27,7 @@ public class PlantGroup {
             return;
         }
 
-        for (AbstractPlant plant : plants) {
+        for (T plant : plants) {
             plant.water();
         }
     }
@@ -36,7 +36,7 @@ public class PlantGroup {
      * Adds an plant into this group
      * @param plant The plant to be added
      */
-    public void addPlant(AbstractPlant plant) {
+    public void addPlant(T plant) {
         plants.add(plant);
     }
 
@@ -45,7 +45,7 @@ public class PlantGroup {
      * @param index The index of the plant
      * @return The plant at the index of the plant list
      */
-    public AbstractPlant getPlant(int index) {
+    public T getPlant(int index) {
         return plants.get(index);
     }
 

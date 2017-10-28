@@ -7,12 +7,12 @@ import com.haveacupofjava.happyfarm.security.PackageChecker;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AnimalGroup {
+public class AnimalGroup<T extends AbstractAnimal> {
 
-    private List<AbstractAnimal> animals;
+    private List<T> animals;
 
     public AnimalGroup() {
-        animals = new ArrayList<AbstractAnimal>();
+        animals = new ArrayList<T>();
     }
 
     /**
@@ -28,7 +28,7 @@ public class AnimalGroup {
             return;
         }
 
-        for (AbstractAnimal animal : animals) {
+        for (T animal : animals) {
             try {
                 animal.feed();
             } catch (MethodExposedException exception) {
@@ -41,7 +41,7 @@ public class AnimalGroup {
      * Adds an animal into this group
      * @param animal The animal to be added
      */
-    public void addAnimal(AbstractAnimal animal) {
+    public void addAnimal(T animal) {
         animals.add(animal);
     }
 
@@ -50,7 +50,7 @@ public class AnimalGroup {
      * @param index The index of the animal
      * @return The animal at the index of the animal list
      */
-    public AbstractAnimal getAnimal(int index) {
+    public T getAnimal(int index) {
         return animals.get(index);
     }
 
