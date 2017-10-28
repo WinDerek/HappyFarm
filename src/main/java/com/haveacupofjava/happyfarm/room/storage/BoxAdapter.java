@@ -3,7 +3,7 @@ package com.haveacupofjava.happyfarm.room.storage;
 import com.haveacupofjava.happyfarm.produce.AbstractProduce;
 import com.haveacupofjava.happyfarm.product.AbstractProduct;
 
-public class BoxAdapter extends Box {
+public class BoxAdapter extends AbstractBox {
 
     private SpecialBox specialBox;
 
@@ -19,21 +19,28 @@ public class BoxAdapter extends Box {
             case "fruit":
                 specialBox = new FruitBox();
                 break;
-            default:
-                break;
         }
     }
 
     @Override
     public void storage(AbstractProduce produce) {
         String name = produce.getName();
-        if(name.equals("meat")){
-            specialBox.storage(produce);
-        }else if(name.equals("milk")){
-            specialBox.storage(produce);
-        }else if(name.equals("fruit")){
-            specialBox.storage(produce);
+        switch (name) {
+            case "meat":
+                specialBox.storage(produce);
+                break;
+            case "milk":
+                specialBox.storage(produce);
+                break;
+            case "fruit":
+                specialBox.storage(produce);
+                break;
         }
+    }
+
+    @Override
+    public boolean isNil() {
+        return false;
     }
 
     @Override

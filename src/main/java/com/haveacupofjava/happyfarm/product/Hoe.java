@@ -9,6 +9,11 @@ public class Hoe extends AbstractTool{
 
 
     @Override
+    public boolean isNil() {
+        return false;
+    }
+
+    @Override
     public Hoe clone() {
         Hoe hoe = new Hoe();
         hoe.setName(this.getName());
