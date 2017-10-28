@@ -8,7 +8,7 @@ import com.haveacupofjava.happyfarm.room.Wipe;
 import com.haveacupofjava.happyfarm.room.storage.StorageRoom;
 import com.haveacupofjava.happyfarm.store.ProxyStore;
 
-public class TestApplication3 {
+public class WzesTestApplication0 {
     public static void main(String[] args) {
         // buy product from proxy store
         System.out.println("\n---------------farmer go shopping------------------");
@@ -48,10 +48,11 @@ public class TestApplication3 {
 
         System.out.println("\n--------------- farmer storage produce-------------");
         farmer.storageProduce(new SheepMilk());
-
+        farmer.storageProduce(new SheepMilk());
         System.out.println("\n---------------- farmer get produce----------------");
-        farmer.getProduce("milk");
-
-
+        farmer.getProduce(SheepMilk.class, 1);
+        System.out.println("\n-------------- farmer get more produce-------------");
+        farmer.getProduce(SheepMilk.class, 1);
+        
     }
 }
