@@ -10,6 +10,7 @@ import com.haveacupofjava.happyfarm.store.ProxyStore;
 
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class StorageRoom extends AbstractRoom {
 
@@ -19,6 +20,9 @@ public class StorageRoom extends AbstractRoom {
         setName("storageRoom");
     }
 
+    public List<AbstractProduct> getProducts(){
+        return products;
+    }
     /**
      * override show
      * show the items int the box

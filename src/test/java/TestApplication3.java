@@ -12,7 +12,8 @@ public class TestApplication3 {
     public static void main(String[] args) {
         // buy product from proxy store
         System.out.println("\n---------------farmer go shopping------------------");
-        Farmer.getInstance().goShopping();
+        Farmer farmer = Farmer.getInstance();
+        farmer.goShopping();
 //        ProxyStore proxyStore = ProxyStore.getInstance();
 //        proxyStore.show();
 //        System.out.println("\n---------------------------------------------------");
@@ -33,13 +34,24 @@ public class TestApplication3 {
 //        // decorator the room
 //        BrushDecoratorRoom brushDecoratorRoom = new BrushDecoratorRoom(bedRoom);
 //        brushDecoratorRoom.show();
+        System.out.println("\n-------------------farmer build--------------------");
+        farmer.buildRoom("livingroom", "livingroom");
 
         System.out.println("\n-------------------farmer clean--------------------");
-        Farmer.getInstance().cleanRoom(StorageRoom.getInstance(), "ipe");
+        farmer.cleanRoom("livingroom", "wipe");
+
+        System.out.println("\n------------------farmer decorator-----------------");
+        farmer.decoratorRoom("livingroom", "brush");
 
         System.out.println("\n--------------------farmer buy---------------------");
-        Farmer.getInstance().buyProduct("hoe", 1);
+        farmer.buyProduct("hoe", 1);
+
         System.out.println("\n--------------- farmer storage produce-------------");
-        Farmer.getInstance().storageProduce(new SheepMilk());
+        farmer.storageProduce(new SheepMilk());
+
+        System.out.println("\n---------------- farmer get produce----------------");
+        farmer.getProduce("milk");
+
+
     }
 }
