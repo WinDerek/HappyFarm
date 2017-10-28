@@ -49,4 +49,12 @@ public class PlantGroup <T extends AbstractPlant> {
         return plants.get(index);
     }
 
+    /**
+     * Returns the number of the plants in this farmland
+     * @return The number of the plants in this farmland
+     */
+    public int plantCount() {
+        return plants.size();
+    }
+
 }

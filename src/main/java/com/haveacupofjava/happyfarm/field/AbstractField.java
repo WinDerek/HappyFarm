@@ -1,5 +1,6 @@
 package com.haveacupofjava.happyfarm.field;
 
+import com.haveacupofjava.happyfarm.creature.AbstractCreature;
 import com.haveacupofjava.happyfarm.visitor.AbstractFieldVisitor;
 
 /**
@@ -39,5 +40,24 @@ public abstract class AbstractField extends AbstractFieldComponent {
      * @param visitor The visitor
      */
     public abstract void acceptVisitor(AbstractFieldVisitor visitor);
+
+    /**
+     * Returns true if the creature type matches this field
+     * @param clazz The class of the creature
+     * @return True if the creature type matches this field
+     */
+    public abstract boolean isCreatureMatch(Class clazz);
+
+    /**
+     * Returns the capacity of this field
+     * @return The capacity of this field
+     */
+    public abstract int getCapacity();
+
+    /**
+     * Returns the number of the creature in this field
+     * @return The number of the creature in this field
+     */
+    public abstract int creatureCount();
 
 }

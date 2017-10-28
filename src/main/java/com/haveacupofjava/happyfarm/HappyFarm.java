@@ -40,12 +40,22 @@ public class HappyFarm {
         return inst;
     }
 
-    protected double moneyIn(double amount) {
+    /**
+     * Increases the funds by some amount
+     * @param amount The amount by which the funds are increased
+     * @return The amount of the funds after the increase
+     */
+    double moneyIn(double amount) {
         this.funds += amount;
         return this.funds;
     }
 
-    protected double moneyOut(double amount) {
+    /**
+     * Decreases the funds by some amount
+     * @param amount The amount by which the funds are decreased
+     * @return The amount of the funds after the decrease
+     */
+    double moneyOut(double amount) {
         this.funds -= amount;
         return this.funds;
     }
@@ -62,6 +72,31 @@ public class HappyFarm {
         for (AbstractField field : fieldList) {
             field.acceptVisitor(visitor);
         }
+    }
+
+    /**
+     * Adds a field into the list of fields in this farm
+     * @param field The field to be added
+     */
+    void addField(AbstractField field) {
+        fieldList.add(field);
+    }
+
+    /**
+     * Returns the total capacity of the creature in this farm
+     * @param clazz The class of the creature
+     * @return The total capacity of the creature in this farm
+     */
+    int getCreatureCapacity(Class clazz) {
+        int totalCapacity = 0;
+
+        for (AbstractField field : fieldList) {
+            if (field.isCreatureMatch(clazz)) {
+                totalCapacity += field.getCapacity() - field.creatureCount();
+            }
+        }
+
+        return totalCapacity;
     }
 
 }

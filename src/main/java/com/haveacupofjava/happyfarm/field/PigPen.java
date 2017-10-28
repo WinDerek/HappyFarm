@@ -5,6 +5,8 @@ import com.haveacupofjava.happyfarm.visitor.AbstractFieldVisitor;
 
 public class PigPen extends AbstractPen<Pig> {
 
+    private static final int PIG_PEN_CAPACITY = 20;
+
     @Override
     public void show() {
         System.out.println("pig pen shown");
@@ -13,6 +15,11 @@ public class PigPen extends AbstractPen<Pig> {
     @Override
     public void acceptVisitor(AbstractFieldVisitor visitor) {
         visitor.visit(this);
+    }
+
+    @Override
+    public int getCapacity() {
+        return PIG_PEN_CAPACITY;
     }
 
 }

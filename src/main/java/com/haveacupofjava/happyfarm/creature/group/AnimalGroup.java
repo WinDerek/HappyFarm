@@ -54,4 +54,12 @@ public class AnimalGroup<T extends AbstractAnimal> {
         return animals.get(index);
     }
 
+    /**
+     * Returns the number of the animals in this group
+     * @return The number of the animals in this group
+     */
+    public int animalCount() {
+        return animals.size();
+    }
+
 }

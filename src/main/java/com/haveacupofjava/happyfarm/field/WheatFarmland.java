@@ -5,6 +5,8 @@ import com.haveacupofjava.happyfarm.visitor.AbstractFieldVisitor;
 
 public class WheatFarmland extends AbstractFarmland<Wheat> {
 
+    private static final int WHEAT_FARMLAND_CAPACITY = 100;
+
     @Override
     public void show() {
         System.out.println("a wheat farmland");
@@ -13,6 +15,11 @@ public class WheatFarmland extends AbstractFarmland<Wheat> {
     @Override
     public void acceptVisitor(AbstractFieldVisitor visitor) {
         visitor.visit(this);
+    }
+
+    @Override
+    public int getCapacity() {
+        return WHEAT_FARMLAND_CAPACITY;
     }
 
 }

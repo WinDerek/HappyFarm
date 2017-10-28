@@ -3,6 +3,8 @@ package com.haveacupofjava.happyfarm.field;
 import com.haveacupofjava.happyfarm.creature.AbstractPlant;
 import com.haveacupofjava.happyfarm.creature.group.PlantGroup;
 
+import java.lang.reflect.ParameterizedType;
+
 public abstract class AbstractFarmland<T extends AbstractPlant> extends AbstractField {
 
     private PlantGroup<T> plantGroup;
@@ -27,6 +29,20 @@ public abstract class AbstractFarmland<T extends AbstractPlant> extends Abstract
      */
     public void waterPlants() {
         plantGroup.water();
+    }
+
+    @Override
+    public boolean isCreatureMatch(Class clazz) {
+        return clazz.getName()
+                .equals(
+                        ((ParameterizedType) getClass().getGenericSuperclass())
+                                .getActualTypeArguments()[0].getTypeName()
+                );
+    }
+
+    @Override
+    public int creatureCount() {
+        return plantGroup.plantCount();
     }
 
 }

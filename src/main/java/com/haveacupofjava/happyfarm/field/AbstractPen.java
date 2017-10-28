@@ -1,7 +1,11 @@
 package com.haveacupofjava.happyfarm.field;
 
 import com.haveacupofjava.happyfarm.creature.AbstractAnimal;
+import com.haveacupofjava.happyfarm.creature.AbstractCreature;
 import com.haveacupofjava.happyfarm.creature.group.AnimalGroup;
+
+import java.lang.reflect.ParameterizedType;
+import java.lang.reflect.Type;
 
 public abstract class AbstractPen<T extends AbstractAnimal> extends AbstractField {
 
@@ -28,6 +32,20 @@ public abstract class AbstractPen<T extends AbstractAnimal> extends AbstractFiel
      */
     public void feedAnimals() {
         animalGroup.feed();
+    }
+
+    @Override
+    public boolean isCreatureMatch(Class clazz) {
+        return clazz.getName()
+                .equals(
+                        ((ParameterizedType) getClass().getGenericSuperclass())
+                                .getActualTypeArguments()[0].getTypeName()
+                );
+    }
+
+    @Override
+    public int creatureCount() {
+        return animalGroup.animalCount();
     }
 
 }
