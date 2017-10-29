@@ -296,6 +296,10 @@ public class Farmer implements Observer, Tradable {
                 System.out.println("some wheat have produced fruit");
             }
             break;
+            case "HenProduceEgg": {
+                System.out.println("some hens have produced eggs");
+            }
+            break;
 
             default: {
                 System.out.println(notification);

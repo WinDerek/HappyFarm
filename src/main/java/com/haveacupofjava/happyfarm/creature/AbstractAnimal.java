@@ -7,7 +7,13 @@ public abstract class AbstractAnimal extends AbstractCreature {
 
     private static final String TAG = AbstractAnimal.class.getSimpleName();
 
+    /**
+     * The unit is centimeter
+     */
     private double bodyLength;
+    /**
+     * The unit is kilogram
+     */
     private double weight;
 
     /**
