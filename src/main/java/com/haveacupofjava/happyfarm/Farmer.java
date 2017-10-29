@@ -120,7 +120,7 @@ public class Farmer implements Observer, Tradable {
     public void storeProduce(AbstractProduce produce){
         StorageRoom storageRoom = StorageRoom.getInstance();
         storageRoom.store(produce);
-        System.out.println("Show all products in the store room : ");
+        System.out.println("Show all products in the storage room : ");
         storageRoom.show();
     }
 
@@ -149,7 +149,7 @@ public class Farmer implements Observer, Tradable {
             }
         }
         if (mNumber < number) {
-            System.out.println("Fail to get : " + clazz.getSimpleName() + ", cause by : store is not enough produce");
+            System.out.println("Fail to get : " + clazz.getSimpleName() + ", cause by : storage room is not enough produce");
             return null;
         }
         // ok
