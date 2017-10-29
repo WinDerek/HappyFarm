@@ -114,8 +114,8 @@ public class Farmer implements Observer, Tradable {
     }
 
     /**
-     * farmer store produce
-     * @param produce
+     * Farmer store produce
+     * @param produce The object of AbstractProduce
      */
     public void storeProduce(AbstractProduce produce){
         StorageRoom storageRoom = StorageRoom.getInstance();
@@ -125,9 +125,10 @@ public class Farmer implements Observer, Tradable {
     }
 
     /**
-     * get produce
-     * @param clazz
-     * @return null if the get operation fails
+     * Get some produces
+     * @param clazz Class type
+     * @param number The number of produce
+     * @return null If the get operation fails
      */
     public List<AbstractProduce> getProduce(Class clazz, int number) {
         if(number <= 0){
@@ -153,6 +154,7 @@ public class Farmer implements Observer, Tradable {
         }
         // ok
         mNumber = 0;
+        // use iterator to remove object
         Iterator iterator = storageRoom.getProducts().iterator();
         while (iterator.hasNext()){
             AbstractProduct product = (AbstractProduct) iterator.next();
@@ -177,9 +179,9 @@ public class Farmer implements Observer, Tradable {
     }
 
     /**
-     * decorator the room
-     * @param action
-     * @param roomName
+     * Decorator the room
+     * @param action The name of action
+     * @param roomName The name of room
      */
     public void decoratorRoom( String roomName, String action){
         HappyFarm.getInstance().decoratorRoom(roomName, action);

@@ -37,6 +37,11 @@ public class FactoryStore extends AbstractStore {
         }
     }
 
+    /**
+     * Buy product through product name
+     * @param name product name
+     * @return AbstractProduct
+     */
     @Override
     public AbstractProduct buy(String name) {
         // check if product exist in the factory

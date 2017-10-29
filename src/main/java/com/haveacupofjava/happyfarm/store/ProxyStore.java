@@ -17,8 +17,8 @@ public class ProxyStore extends AbstractStore {
     }
 
     /**
-     *
-     * @return instance of proxy store
+     * Get instance
+     * @return the Instance of proxy store
      */
     public static ProxyStore getInstance(){
         if(null == proxyStore){
@@ -28,9 +28,9 @@ public class ProxyStore extends AbstractStore {
     }
 
     /**
-     *
-     * @param name product name
-     * @return
+     * Buy product through product name
+     * @param name The name of product
+     * @return AbstractProduct
      */
     @Override
     public AbstractProduct buy(String name) {

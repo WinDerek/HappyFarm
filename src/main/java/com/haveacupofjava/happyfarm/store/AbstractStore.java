@@ -11,6 +11,7 @@ public abstract class AbstractStore {
     /**
      * Buy product through product name
      * @param name product name
+     * @return AbstractProduct
      */
     public abstract AbstractProduct buy(String name);
 

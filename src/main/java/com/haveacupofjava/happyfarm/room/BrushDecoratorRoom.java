@@ -12,6 +12,9 @@ public class BrushDecoratorRoom extends AbstractRoom {
         this.abstractRoom = abstractRoom;
     }
 
+    /**
+     * Brush the room
+     */
     @Override
     public void show() {
         super.show();

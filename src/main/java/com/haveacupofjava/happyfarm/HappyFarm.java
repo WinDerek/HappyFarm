@@ -40,9 +40,9 @@ public class HappyFarm {
     }
 
     /**
-     * build a room
-     * @param roomType
-     * @param roomName
+     * Build a room has one type
+     * @param roomType The type of room
+     * @param roomName The name of room
      */
     void buildRoom(String roomType, String roomName) {
         // check if

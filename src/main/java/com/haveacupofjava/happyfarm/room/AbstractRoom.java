@@ -14,28 +14,22 @@ public abstract class AbstractRoom implements Serializable{
 
 
     /**
-     * room name
+     * Room name
+     * setter and getter
      */
     private String name;
-    /**
-     *
-     * @return
-     */
+
     public String getName() {
         return name;
     }
 
-    /**
-     *
-     * @param name
-     */
     public void setName(String name) {
         this.name = name;
     }
 
     /**
-     * Get
-     * @return
+     * Get cleanables
+     * @return List<Cleanable>
      */
     public List<Cleanable> getCleanables() {
         if(null == cleanables){
@@ -45,7 +39,7 @@ public abstract class AbstractRoom implements Serializable{
     }
 
     /**
-     * clean interface
+     * Clean interface
      */
     protected List<Cleanable> cleanables;
 
@@ -93,7 +87,7 @@ public abstract class AbstractRoom implements Serializable{
 
     /**
      * Add the clean way
-     * @param cleanable
+     * @param cleanable the interface of cleanable
      */
     public void addCleanable(Cleanable cleanable) {
         if(null == cleanables){
