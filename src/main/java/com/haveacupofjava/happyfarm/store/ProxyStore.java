@@ -2,10 +2,6 @@ package com.haveacupofjava.happyfarm.store;
 
 import com.haveacupofjava.happyfarm.product.AbstractProduct;
 
-/**
- * @author Create by xuantang
- * @date on 10/29/17
- */
 public class ProxyStore extends AbstractStore {
 
     private FactoryStore factoryStore;
@@ -17,7 +13,7 @@ public class ProxyStore extends AbstractStore {
     }
 
     /**
-     * Get instance
+     * Gets instance
      * @return the Instance of proxy store
      */
     public static ProxyStore getInstance(){
@@ -28,7 +24,7 @@ public class ProxyStore extends AbstractStore {
     }
 
     /**
-     * Buy product through product name
+     * Buys product through product name
      * @param name The name of product
      * @return AbstractProduct
      */

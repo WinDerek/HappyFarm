@@ -1,6 +1,7 @@
 package com.haveacupofjava.happyfarm.creature.group;
 
 import com.haveacupofjava.happyfarm.creature.AbstractPlant;
+import com.haveacupofjava.happyfarm.security.MethodExposedException;
 import com.haveacupofjava.happyfarm.security.PackageChecker;
 
 import java.lang.reflect.ParameterizedType;
@@ -19,16 +20,11 @@ public class PlantGroup<T extends AbstractPlant> {
 
     /**
      * Waters all the plants in this group
+     * @throws MethodExposedException if this method is exposed to outside packages
      */
-    public void water() {
+    public void water() throws MethodExposedException {
         // Checks if the caller method is allowed to call this method
-        try {
-            PackageChecker.checkPackage();
-        } catch (Exception exception) {
-            System.out.println(exception.toString());
-            exception.printStackTrace();
-            return;
-        }
+        PackageChecker.checkPackage();
 
         for (T plant : plants) {
             plant.water();

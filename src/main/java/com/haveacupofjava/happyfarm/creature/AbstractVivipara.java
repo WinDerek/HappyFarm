@@ -7,9 +7,12 @@ import java.util.List;
 /**
   * Class AbstractVivipara
   * Define property that all Vivipara have
-  * @author Yichao Wu
   */
 public abstract class AbstractVivipara extends AbstractAnimal {
+
+    private static final String TAG = AbstractVivipara.class.getSimpleName();
+
+    // TODO: Constructor new list for milkProduce?
 
     private List<AbstractMilkProduce> milkProduce;
 

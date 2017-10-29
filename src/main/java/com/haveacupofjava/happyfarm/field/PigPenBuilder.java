@@ -1,6 +1,7 @@
 package com.haveacupofjava.happyfarm.field;
 
 public class PigPenBuilder extends AbstractFieldBuilder<PigPen> {
+
     @Override
     public void buildField() {
         field = new PigPen();
@@ -11,4 +12,5 @@ public class PigPenBuilder extends AbstractFieldBuilder<PigPen> {
         new Fence(this.field);
         new Fence(this.field);
     }
+
 }

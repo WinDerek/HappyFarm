@@ -2,31 +2,18 @@ package com.haveacupofjava.happyfarm.product;
 
 import com.haveacupofjava.happyfarm.field.AbstractField;
 
-/**
- * @author Create by xuantang
- * @date on 10/29/17
- */
 public class NullToolProduct extends AbstractTool {
-
 
     public NullToolProduct() {
         setName("Not Available");
         setPrice(0D);
     }
 
-    /**
-     * Check whether the object is empty
-     * @return true
-     */
     @Override
     public boolean isNil() {
         return true;
     }
 
-    /**
-     * Clone the nullProduct
-     * @return nullProduct
-     */
     @Override
     public NullToolProduct clone() {
         NullToolProduct nullProduct = new NullToolProduct();

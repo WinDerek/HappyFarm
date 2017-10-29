@@ -3,6 +3,7 @@ import com.haveacupofjava.happyfarm.field.AbstractPen;
 import com.haveacupofjava.happyfarm.produce.AbstractProduce;
 import com.haveacupofjava.happyfarm.product.AbstractTool;
 import com.haveacupofjava.happyfarm.room.storage.StorageRoom;
+import com.haveacupofjava.happyfarm.security.MethodExposedException;
 
 import java.util.List;
 

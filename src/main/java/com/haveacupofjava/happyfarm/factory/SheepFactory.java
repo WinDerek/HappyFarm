@@ -13,4 +13,5 @@ public class SheepFactory extends AbstractAnimalFactory {
         sheep.setName("sheep");
         return sheep;
     }
+
 }

@@ -6,35 +6,31 @@ import com.haveacupofjava.happyfarm.product.AbstractProduct;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * @author Create by xuantang
- * @date on 10/29/17
- */
-public abstract class AbstractBox extends AbstractProduct{
+public abstract class AbstractBox extends AbstractProduct {
 
     /**
      * store the produces
      */
     private List<AbstractProduce> produces;
 
-//    /**
-//     * store the products
-//     */
+    /**
+     * store the products
+     */
     private List<AbstractProduct> products;
 
     /**
-     * Get products container
+     * Gets products container
      * @return The list of AbstractProduct
      */
     public List<AbstractProduct> getProducts() {
-        if(null == products){
+        if(null == products) {
             products = new ArrayList<>();
         }
         return products;
     }
 
     /**
-     * Ｇet produces container
+     * Gets produces container
      * @return The list of AbstractProduce
      */
     public List<AbstractProduce> getProduces() {
@@ -45,9 +41,10 @@ public abstract class AbstractBox extends AbstractProduct{
     }
 
     /**
-     * Store produce to box and save in products list
-     * @param products products list
-     * @param produce the produce will be stored
+     * Stores produce to box and saves in products list
+     * @param products The products list
+     * @param produce The produce will be stored
      */
     public abstract void store(List<AbstractProduct> products, AbstractProduce produce);
+
 }

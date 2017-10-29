@@ -18,7 +18,7 @@ public abstract class AbstractAnimal extends AbstractCreature {
         // Checks if the caller method is allowed to call this method
         PackageChecker.checkPackage();
 
-        System.out.println(TAG + ": The animal " + this.toString() + " get fed.");
+        System.out.println(TAG + ": The animal " + this.toString() + " gets fed.");
     }
 
     public double getBodyLength() {

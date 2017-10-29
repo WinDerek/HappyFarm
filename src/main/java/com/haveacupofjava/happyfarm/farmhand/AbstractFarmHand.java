@@ -8,9 +8,9 @@ public abstract class AbstractFarmHand {
     protected AbstractTool tool;
 
     /**
-     * get one tool
-     * @param tool
-     * @return
+     * Gets a tool
+     * @param tool The name of the tool to get
+     * @return The corresponsing tool
      */
     public AbstractTool getTool(String tool) {
         StorageRoom storageRoom = StorageRoom.getInstance();

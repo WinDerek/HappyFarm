@@ -5,10 +5,6 @@ import com.haveacupofjava.happyfarm.product.AbstractProduct;
 
 import java.util.List;
 
-/**
- * @author Create by xuantang
- * @date on 10/29/17
- */
 public class MilkBox extends SpecialBox {
 
 
@@ -32,4 +28,5 @@ public class MilkBox extends SpecialBox {
     public AbstractProduct clone() {
         return null;
     }
+
 }

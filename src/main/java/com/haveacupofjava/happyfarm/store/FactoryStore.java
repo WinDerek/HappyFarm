@@ -4,10 +4,6 @@ import com.haveacupofjava.happyfarm.product.*;
 
 import java.util.HashMap;
 
-/**
- * @author Create by xuantang
- * @date on 10/29/17
- */
 public class FactoryStore extends AbstractStore {
 
     private static HashMap<String, AbstractProduct> hashMap = new HashMap<>();
@@ -15,7 +11,7 @@ public class FactoryStore extends AbstractStore {
     public FactoryStore() {
         // init the factory and add init products
         hashMap.put("sickle", new Sickle());
-        hashMap.put("spinkler", new Spinkler());
+        hashMap.put("spinkler", new Sprinkler());
         hashMap.put("purse", new Purse());
         hashMap.put("bed", new Bed());
         hashMap.put("hoe", new Hoe());
@@ -45,11 +41,12 @@ public class FactoryStore extends AbstractStore {
     @Override
     public AbstractProduct buy(String name) {
         // check if product exist in the factory
-        if(hashMap.keySet().contains(name)){
+        if (hashMap.keySet().contains(name)) {
             System.out.println("Success to buy : " + name);
             return hashMap.get(name).clone();
-        }else {
-            System.out.println("Fail to buy : " + name + ", caused by: the store did not sell " + name);
+        } else {
+            System.out.println("Fail to buy : " + name +
+                    ", caused by: the store did not sell " + name);
             return new NullProduct();
         }
     }
@@ -57,12 +54,12 @@ public class FactoryStore extends AbstractStore {
 
     @Override
     public void show() {
-        if(null != hashMap){
+        if (null != hashMap) {
             System.out.println("Show the products in the store: ");
-            for (String name : hashMap.keySet()){
+            for (String name : hashMap.keySet()) {
                 System.out.println(name);
             }
-        }else{
+        } else {
             System.out.println("There is no product in the store");
         }
     }

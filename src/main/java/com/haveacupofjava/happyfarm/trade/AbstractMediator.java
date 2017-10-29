@@ -3,9 +3,9 @@ package com.haveacupofjava.happyfarm.trade;
 /**
   * Class AbstractMediator
   * Abstract mediator of market mediator and factory mediator
-  * @author Yichao Wu
   */
 public abstract class AbstractMediator {
+
     private Tradable buyer;
     private Tradable seller;
 
@@ -27,7 +27,7 @@ public abstract class AbstractMediator {
 
     /**
       * Handle the trade process
-      * @author Yichao Wu
       */
     public abstract void handleTrade();
+
 }

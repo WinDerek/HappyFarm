@@ -1,6 +1,6 @@
 package com.haveacupofjava.happyfarm.field;
 
-public class Fence extends AbstractFieldDecorator{
+public class Fence extends AbstractFieldDecorator {
 
     public Fence(AbstractField field){
         super(field);
@@ -11,4 +11,5 @@ public class Fence extends AbstractFieldDecorator{
         System.out.println("a fence decorator");
         this.component.show();
     }
+
 }

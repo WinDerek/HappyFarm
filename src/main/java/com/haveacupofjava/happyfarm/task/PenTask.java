@@ -12,9 +12,9 @@ import java.util.List;
 /**
   * Class PenTask
   * Task about Pen, AnimalFarmHand
-  * @author Yiqun Lin
   */
-public class PenTask extends AbstractTask{
+public class PenTask extends AbstractTask {
+
     public AnimalFarmHand farmhand;
     public String tool;
     public List<AbstractPen> penList;
@@ -46,4 +46,5 @@ public class PenTask extends AbstractTask{
     public void execute(){
         farmhand.useTool(tool, penList);
     }
+
 }

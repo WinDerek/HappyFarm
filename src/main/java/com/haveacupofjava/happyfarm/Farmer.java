@@ -56,6 +56,11 @@ public class Farmer implements Observer, Tradable {
         return inst;
     }
 
+    /**
+     * Pays some amount of money
+     * @param amount The amount of money that this farmer should pay
+     * @throws MethodExposedException if this method is exposed to outside packages
+     */
     public void payMoney(double amount) throws MethodExposedException {
         // Checks if the caller method is allowed to call this method
         PackageChecker.checkPackage();
@@ -67,6 +72,11 @@ public class Farmer implements Observer, Tradable {
                 happyFarm.moneyOut(amount));
     }
 
+    /**
+     * Gains some amount of money
+     * @param amount The amount of money that this farmer should pain
+     * @throws MethodExposedException if this method is exposed to outside packages
+     */
     public void gainMoney(double amount) throws MethodExposedException {
         // Checks if the caller method is allowed to call this method
         PackageChecker.checkPackage();
@@ -75,53 +85,51 @@ public class Farmer implements Observer, Tradable {
     }
 
     /**
-     * farmer buy product from proxy store
-     * @param productName
-     * @param number
+     * Buys products from proxy store
+     * @param productName The name of the products to buy
+     * @param number The number of the products to buy
      */
-    public void buyProduct(String productName, int number){
+    public void buyProduct(String productName, int number) {
         ProxyStore proxyStore = ProxyStore.getInstance();
         AbstractProduct product = proxyStore.buy(productName);
-        // not enough
-        if(HappyFarm.getInstance().getFunds() <= product.getPrice() * number){
-            System.out.println("Fail to buy : " + productName + " cause by : there is not enough money");
+
+        // If the farmer cannot afford the products
+        double neededAmount = product.getPrice() * number;
+        double funds = HappyFarm.getInstance().getFunds();
+        if (funds <= neededAmount) {
+            System.out.println("Fail to buy : " + productName +
+                    " caused by : there is not enough money. The farmer only have " + funds +
+                    ", but the total amount of money should be paid is " + neededAmount + ".");
             return;
         }
-        // store the product
-        if(!(product instanceof NullProduct)){
+
+        // Store the products in the storage room
+        if (!(product instanceof NullProduct)) {
             StorageRoom.getInstance().addProduct(product);
         }
+
+        // Let the farmer pays the money
         HappyFarm.getInstance().moneyOut(product.getPrice() * number);
+
         System.out.println("The consumption cost " + product.getPrice() * number + "$");
     }
 
     /**
-     * build a room
-     * @param roomType
-     * @param roomName
+     * Builds up a room
+     * @param roomType The type of the room
+     * @param roomName The name of the room
      */
-    public void buildRoom(String roomType, String roomName){
+    public void buildRoom(String roomType, String roomName) {
         HappyFarm.getInstance().buildRoom(roomType, roomName);
     }
 
     /**
-     * get room object in the HappyFarm
-     * @param roomName
+     * Gets a room specified by the {@code roomName} in the {@code HappyFarm}
+     * @param roomName The name of the room
      * @return AbstractRoom
      */
-    public AbstractRoom getRoom(String roomName){
+    public AbstractRoom getRoom(String roomName) {
         return HappyFarm.getInstance().getRoom(roomName);
-    }
-
-    /**
-     * Farmer store produce
-     * @param produce The object of AbstractProduce
-     */
-    public void storeProduce(AbstractProduce produce){
-        StorageRoom storageRoom = StorageRoom.getInstance();
-        storageRoom.store(produce);
-        System.out.println("Show all products in the storage room : ");
-        storageRoom.show();
     }
 
     /**

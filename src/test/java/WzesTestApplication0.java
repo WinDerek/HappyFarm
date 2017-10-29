@@ -47,14 +47,15 @@ public class WzesTestApplication0 {
         System.out.println("\n--------------------farmer buy---------------------");
         farmer.buyProduct("hoe", 1);
 
-        System.out.println("\n--------------- farmer store produce-------------");
-        farmer.storeProduce(new SheepMilk());
-        System.out.println("\n--------------- farmer store produce-------------");
-        farmer.storeProduce(new SheepMilk());
-        System.out.println("\n---------------- farmer get produce----------------");
-        farmer.getProduce(SheepMilk.class, 1);
-        System.out.println("\n-------------- farmer get more produce-------------");
-        farmer.getProduce(SheepMilk.class, 1);
+        // The reason to comment this lines of code: The client is not allowed to store produces into the storage room
+//        System.out.println("\n--------------- farmer store produce-------------");
+//        farmer.storeProduce(new SheepMilk());
+//        System.out.println("\n--------------- farmer store produce-------------");
+//        farmer.storeProduce(new SheepMilk());
+//        System.out.println("\n---------------- farmer get produce----------------");
+//        farmer.getProduce(SheepMilk.class, 1);
+//        System.out.println("\n-------------- farmer get more produce-------------");
+//        farmer.getProduce(SheepMilk.class, 1);
 
     }
 }

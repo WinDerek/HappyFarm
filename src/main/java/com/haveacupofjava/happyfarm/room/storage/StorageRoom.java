@@ -6,17 +6,17 @@ import com.haveacupofjava.happyfarm.product.AbstractTool;
 import com.haveacupofjava.happyfarm.product.NullProduct;
 import com.haveacupofjava.happyfarm.product.NullToolProduct;
 import com.haveacupofjava.happyfarm.room.AbstractRoom;
+import com.haveacupofjava.happyfarm.security.MethodExposedException;
+import com.haveacupofjava.happyfarm.security.PackageChecker;
 import com.haveacupofjava.happyfarm.store.ProxyStore;
 
 
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * @author Create by xuantang
- * @date on 10/29/17
- */
 public class StorageRoom extends AbstractRoom {
+
+    private static final String TAG = StorageRoom.class.getSimpleName();
 
     private static StorageRoom storageRoom;
 
@@ -36,14 +36,9 @@ public class StorageRoom extends AbstractRoom {
         products = list;
     }
 
-    /**
-     * Override show
-     * Show the items int the box
-     */
     @Override
     public void show() {
-        //super.show();
-        if(null == products){
+        if (null == products) {
             System.out.println("There is nothing in the room");
         } else {
             for (AbstractProduct product : products) {
@@ -55,7 +50,6 @@ public class StorageRoom extends AbstractRoom {
                 }
             }
         }
-
     }
 
     /**
@@ -67,17 +61,11 @@ public class StorageRoom extends AbstractRoom {
         for (AbstractProduce produce : box.getProduces()) {
             System.out.println("    produce: " + produce.getName()
                     + " in the " + box.getName());
-//            if (product instanceof AbstractBox) {
-//                showBox((AbstractBox) product);
-//            } else {
-//                System.out.println("product: " + produce.getName()
-//                        + " in the " + box.getName());
-//            }
         }
     }
 
     /**
-     * Return store room instant
+     * Returns store room instance
      * @return StorageRoom
      */
     public static StorageRoom getInstance() {
@@ -90,7 +78,7 @@ public class StorageRoom extends AbstractRoom {
     /**
      * If the tool is not exist, will buy it from store.
      * If fail to buy, return one not available object
-     * @param The name of tool
+     * @param tool The name of tool
      * @return Tool the object of AbstractTool
      */
     public AbstractTool getTool(String tool) {
@@ -111,7 +99,8 @@ public class StorageRoom extends AbstractRoom {
         AbstractProduct product = proxyStore.buy(tool);
         // check
         if (product instanceof NullProduct) {
-            System.out.println("Fail to get : " + tool + ", caused by: the store did not sell " + tool);
+            System.out.println("Fail to get : " + tool +
+                    ", caused by: the store did not sell " + tool);
             return new NullToolProduct();
         }
         else if (product instanceof AbstractTool) {
@@ -119,23 +108,43 @@ public class StorageRoom extends AbstractRoom {
             products.add(product);
             return (AbstractTool) product;
         } else {
-            System.out.println("Fail to get : " + tool + ", caused by: the " + tool + " is not tool");
+            System.out.println("Fail to get : " + tool + ", caused by: the " + tool +
+                    " is not tool");
             return new NullToolProduct();
         }
     }
 
+    // TODO: Whether this method should be exposed to clients
+//    /**
+//     * Stores a produce into this storage room
+//     * @param produce The produce to be stored
+//     * @throws MethodExposedException if this method is exposed to outside packages
+//     */
+//    public void store(AbstractProduce produce) throws MethodExposedException {
+//        // Check if the caller method is allowed to call this method
+//        PackageChecker.checkPackage();
+//
+//        NormalBox normalBox = new NormalBox();
+//        normalBox.store(products, produce);
+//
+//        System.out.println(TAG + ": " + produce.toString() + " is stored in " +
+//                normalBox.toString() + " in " + toString());
+//    }
+
     /**
-     * Store produce in the store room
-     * @param produce The object ofAbstractProduce
+     * Stores a produce into this storage room
+     * @param produce The produce to be stored
      */
     public void store(AbstractProduce produce) {
-        // TODO: Control the permissions better
         NormalBox normalBox = new NormalBox();
         normalBox.store(products, produce);
+
+        System.out.println(TAG + ": " + produce.toString() + " is stored in " +
+                normalBox.toString() + " in " + toString());
     }
 
     /**
-     * Clean the room
+     * Cleans the room
      */
     @Override
     public void clean(String action) {

@@ -6,13 +6,13 @@ import com.haveacupofjava.happyfarm.trade.Tradable;
 /**
   * Class AbstractFactory
   * Abstract factory of animal factory and plant factory
-  * @author Yichao Wu
   */
 public abstract class AbstractFactory implements Tradable {
+
     /**
-      * Generate an instance of creature, set its properties and return it.
-      * @return an instance of creature
-      * @author Yichao Wu
+      * Returns an instance of creature, set its properties and return it.
+      * @return An instance of creature
       */
     abstract AbstractCreature create();
+
 }

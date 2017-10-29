@@ -12,6 +12,11 @@ public class Request {
     private static List<RequestParsingRule> requestParsingRuleList =
             new ArrayList<RequestParsingRule>();
 
+    /**
+     * Constructor for the class {@code Request}
+     * @param command The command string of this request
+     * @throws RequestParsingException if the request is not parsable
+     */
     public Request(String command) throws RequestParsingException {
         for (RequestParsingRule requestParsingRule : requestParsingRuleList) {
             if (requestParsingRule.getCommandString().equals(command)) {

@@ -8,10 +8,6 @@ import com.haveacupofjava.happyfarm.product.AbstractProduct;
 
 import java.util.List;
 
-/**
- * @author Create by xuantang
- * @date on 10/29/17
- */
 public class NormalBox extends AbstractBox {
 
     private BoxAdapter boxAdapter;
@@ -20,21 +16,15 @@ public class NormalBox extends AbstractBox {
         setName("normalBox");
     }
 
-
-    /**
-     * Override store
-     * @param products products list
-     * @param produce the produce will be stored
-     */
     @Override
     public void store(List<AbstractProduct> products, AbstractProduce produce) {
         // store special produce
-        if(produce instanceof AbstractMilkProduce ||
+        if (produce instanceof AbstractMilkProduce ||
                 produce instanceof AbstractFruitProduce ||
-                produce instanceof AbstractMeatProduce){
+                produce instanceof AbstractMeatProduce) {
             boxAdapter = new BoxAdapter(produce);
             boxAdapter.store(products, produce);
-        }else{
+        } else {
             getProduces().add(produce);
             products.add(this);
             System.out.println("Storage " + produce.getName() + " in the " + getName());
@@ -50,4 +40,5 @@ public class NormalBox extends AbstractBox {
     public AbstractProduct clone() {
         return null;
     }
+
 }

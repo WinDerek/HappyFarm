@@ -10,16 +10,16 @@ import java.util.List;
 /**
   * Class FarmlandTask
   * Task about Farm, PlantFarmHand
-  * @author Yiqun Lin
   */
-public class FarmlandTask extends AbstractTask{
+public class FarmlandTask extends AbstractTask {
+
     public PlantFarmHand farmhand;
     public String tool;
     public List<AbstractFarmland> farmlandList;
     // TODO
     // need a function object
 
-    public FarmlandTask(PlantFarmHand farmhand, String tool, Class penClazz){
+    public FarmlandTask(PlantFarmHand farmhand, String tool, Class penClazz) {
         this.farmhand = farmhand;
         this.tool = tool;
 

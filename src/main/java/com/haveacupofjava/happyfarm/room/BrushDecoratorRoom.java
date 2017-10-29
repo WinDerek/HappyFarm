@@ -1,9 +1,5 @@
 package com.haveacupofjava.happyfarm.room;
 
-/**
- * @author Create by xuantang
- * @date on 10/29/17
- */
 public class BrushDecoratorRoom extends AbstractRoom {
 
     private AbstractRoom abstractRoom;
@@ -12,9 +8,6 @@ public class BrushDecoratorRoom extends AbstractRoom {
         this.abstractRoom = abstractRoom;
     }
 
-    /**
-     * Brush the room
-     */
     @Override
     public void show() {
         super.show();
@@ -22,7 +15,7 @@ public class BrushDecoratorRoom extends AbstractRoom {
     }
 
     /**
-     * Brush the room
+     * Brushes the room
      */
     private void brush(){
         System.out.println("Brush the room");
@@ -32,4 +25,5 @@ public class BrushDecoratorRoom extends AbstractRoom {
     public void clean(String action) {
         super.clean(action);
     }
+
 }

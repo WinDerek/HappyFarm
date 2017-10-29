@@ -9,13 +9,11 @@ import java.util.List;
 /**
   * Class Sheep
   * Definition for sheep
-  * @author Yichao Wu
   */
 public class Sheep extends AbstractVivipara {
 
     /**
       * Sheep produce milk and notify SheepProduceMilk message to the observers
-      * @author Yichao Wu
       */
     @Override
     public void produce() {

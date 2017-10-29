@@ -6,10 +6,15 @@ import com.haveacupofjava.happyfarm.creature.AbstractAnimal;
 /**
   * Class AbstractAnimalFactory
   * Abstract factory of all animal factories
-  * @author Yichao Wu
   */
 public abstract class AbstractAnimalFactory extends AbstractFactory {
+
+    /**
+     * Returns an animal from this factory
+     * @return An animal from this factory
+     */
     public AbstractAnimal getAnimal() {
         return (AbstractAnimal) create();
     }
+
 }

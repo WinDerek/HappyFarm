@@ -9,28 +9,27 @@ import java.util.List;
 /**
   * Class AbstractCreature
   * Abstract class of creature and observable
-  * @author Yichao Wu
   */
-public abstract class AbstractCreature implements Serializable{
+public abstract class AbstractCreature implements Serializable {
+
+    private static final String TAG = AbstractCreature.class.getSimpleName();
+
     private List<Observer> observerList = new ArrayList<>();
 
     /**
-     * When the farmer buy the creature, the creature's price is selling price.
-     * When the farmer sell the creature, the creature's price is purchasing price.
+     * When the farmer buys the creature, the creature's price is selling price.
+     * When the farmer sells the creature, the creature's price is purchasing price.
      * Generally, the selling price is higher than the purchasing price.
      */
     private double sellingPrice;
     private double purchasingPrice;
+
     private String name;
 
-
-    /**
-      * Setters and getters
-      * @author Yichao Wu
-      */
     public void setSellingPrice(double price) {
         this.sellingPrice = price;
     }
+
     public double getSellingPrice() {
         return this.sellingPrice;
     }
@@ -38,6 +37,7 @@ public abstract class AbstractCreature implements Serializable{
     public void setPurchasingPrice(double price) {
         this.purchasingPrice = price;
     }
+
     public double getPurchasingPrice() {
         return this.purchasingPrice;
     }
@@ -45,15 +45,15 @@ public abstract class AbstractCreature implements Serializable{
     public String getName() {
         return name;
     }
+
     public void setName(String name) {
         this.name = name;
     }
 
     /**
-      * Add observer for creature
+      * Adds observer for creature
       * @param  observer
-      *         the observer to be added
-      * @author Yichao Wu
+      *         The observer to be added
       */
     public synchronized void addObserver(Observer observer) {
         if (observer == null) {
@@ -61,25 +61,29 @@ public abstract class AbstractCreature implements Serializable{
         }
         if (!observerList.contains(observer)) {
             observerList.add(observer);
+
+            System.out.println(TAG + ": " + observer.toString() + " is added for " + toString());
         }
     }
 
-
     /**
-      * Remove all observers from creature
-      * @author Yichao Wu
+      * Removes all observers from creature
       */
     public synchronized void removeAllObservers() {
         if (!observerList.isEmpty()) {
             observerList.clear();
+
+            System.out.println(TAG + ": All the observers form " + toString() + " removed.");
+        } else {
+            System.out.println(TAG + ": No observers observing "+ toString() +
+                    ", so no observers removed.");
         }
     }
 
     /**
-      * Notify all observers
+      * Notifies all the observers
       * @param notification
-      *         type of notification
-      * @author Yichao Wu
+      *         Type of notification
       */
     void notifyAllObservers(String notification) {
         if (!observerList.isEmpty()) {
@@ -90,8 +94,8 @@ public abstract class AbstractCreature implements Serializable{
     }
 
     /**
-      * Creature produce agricultural product
-      * @author Yichao Wu
+      * Creates produce agricultural product
       */
     public abstract void produce();
+
 }

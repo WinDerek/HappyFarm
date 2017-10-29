@@ -9,13 +9,11 @@ import java.util.List;
 /**
   * Class Wheat
   * Definition for wheat
-  * @author Yichao Wu
   */
 public class Wheat extends AbstractPlant {
 
     /**
       * Wheat produce rice and notify WheatProduceRice message to all observers
-      * @author Yichao Wu
       */
     @Override
     public void produce() {
@@ -29,4 +27,5 @@ public class Wheat extends AbstractPlant {
         System.out.println("hey, rice!");
         notifyAllObservers("WheatProduceFruit");
     }
+
 }

@@ -6,17 +6,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * @author Create by xuantang
- * @date on 10/29/17
- */
 public abstract class AbstractRoom implements Serializable{
 
-
-    /**
-     * Room name
-     * setter and getter
-     */
     private String name;
 
     public String getName() {
@@ -28,11 +19,11 @@ public abstract class AbstractRoom implements Serializable{
     }
 
     /**
-     * Get cleanables
+     * Gets cleanables
      * @return List<Cleanable>
      */
     public List<Cleanable> getCleanables() {
-        if(null == cleanables){
+        if (null == cleanables) {
             cleanables = new ArrayList<>();
         }
         return cleanables;
@@ -52,10 +43,10 @@ public abstract class AbstractRoom implements Serializable{
      * Clean the room and execute action
      * @param action the name of action
      */
-    public void clean(String action){
-        if(null != cleanables){
-            for(Cleanable cleanable : cleanables){
-                if(cleanable.getClass().getSimpleName().toLowerCase().equals(action)){
+    public void clean(String action) {
+        if (null != cleanables) {
+            for (Cleanable cleanable : cleanables) {
+                if (cleanable.getClass().getSimpleName().toLowerCase().equals(action)) {
                     cleanable.clean();
                     return;
                 }
@@ -63,10 +54,10 @@ public abstract class AbstractRoom implements Serializable{
             System.out.println("Fail to clean, cause by : there is no '" + action + "' action");
             System.out.println("List actions : ");
             int index = 0;
-            for(Cleanable cleanable : getCleanables()){
+            for (Cleanable cleanable : getCleanables()) {
                 System.out.println(index++ + ". " + cleanable.getClass().getSimpleName());
             }
-        }else{
+        } else {
             System.out.println("There is not a clean way");
         }
     }
@@ -75,11 +66,11 @@ public abstract class AbstractRoom implements Serializable{
      * Show all the items in the room
      */
     public void show() {
-        if(null == products){
+        if(null == products) {
             System.out.println("There is nothing in the room");
-        }else{
+        } else {
             System.out.println("The items in the room as follows: ");
-            for(AbstractProduct abstractProduct : products){
+            for (AbstractProduct abstractProduct : products) {
                 System.out.println(abstractProduct.getName());
             }
         }
@@ -90,18 +81,18 @@ public abstract class AbstractRoom implements Serializable{
      * @param cleanable the interface of cleanable
      */
     public void addCleanable(Cleanable cleanable) {
-        if(null == cleanables){
+        if (null == cleanables) {
             cleanables = new ArrayList<>();
         }
         cleanables.add(cleanable);
     }
 
     /**
-     * Add product in the room
-     * @param abstractProduct
+     * Adds product in the room
+     * @param abstractProduct The product to be added
      */
-    public void addProduct(AbstractProduct abstractProduct){
-        if(null == products){
+    public void addProduct(AbstractProduct abstractProduct) {
+        if (null == products) {
             products = new ArrayList<>();
         }
         products.add(abstractProduct);

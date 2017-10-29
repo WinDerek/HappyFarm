@@ -12,4 +12,5 @@ public class WheatFarmlandBuilder extends AbstractFieldBuilder<WheatFarmland> {
     public void buildField() {
         this.field = new WheatFarmland();
     }
+
 }

@@ -23,24 +23,15 @@ public class AnimalGroup<T extends AbstractAnimal> {
     }
 
     /**
-     * Feeds all the animals in this group
+     * Feed all the animals in this group
+     * @throws MethodExposedException if this method is exposed to outside packages
      */
-    public void feed() {
+    public void feed() throws MethodExposedException {
         // Checks if the caller method is allowed to call this method
-        try {
-            PackageChecker.checkPackage();
-        } catch (Exception exception) {
-            System.out.println(exception.toString());
-            exception.printStackTrace();
-            return;
-        }
+        PackageChecker.checkPackage();
 
         for (T animal : animals) {
-            try {
-                animal.feed();
-            } catch (MethodExposedException exception) {
-                exception.printStackTrace(System.out);
-            }
+            animal.feed();
         }
 
         String animalClassName = ((ParameterizedType) getClass().getGenericSuperclass())

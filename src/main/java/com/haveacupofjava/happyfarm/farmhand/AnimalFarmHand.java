@@ -7,15 +7,15 @@ import java.util.List;
 public class AnimalFarmHand extends AbstractFarmHand {
 
     /**
-      * farmhand use tool to handle pen field command
-      * @param null
-      * @return
-      * @author Yiqun Lin
-      */
+     * Let this farmhand use the tool
+     * @param tool The tool to be used
+     * @param fieldList The list of field that this tool effect on
+     */
     public void useTool(String tool, List<AbstractPen> fieldList) {
         this.tool = getTool(tool);
         for (AbstractPen field : fieldList) {
             this.tool.handleField(field);
         }
     }
+
 }

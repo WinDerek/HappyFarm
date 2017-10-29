@@ -2,10 +2,13 @@ package com.haveacupofjava.happyfarm.field;
 
 import com.haveacupofjava.happyfarm.creature.AbstractPlant;
 import com.haveacupofjava.happyfarm.creature.group.PlantGroup;
+import com.haveacupofjava.happyfarm.security.MethodExposedException;
 
 import java.lang.reflect.ParameterizedType;
 
 public abstract class AbstractFarmland<T extends AbstractPlant> extends AbstractField {
+
+    private static final String TAG = AbstractFarmland.class.getSimpleName();
 
     private PlantGroup<T> plantGroup;
 
@@ -22,13 +25,21 @@ public abstract class AbstractFarmland<T extends AbstractPlant> extends Abstract
      */
     public void addPlant(T plant) {
         plantGroup.addPlant(plant);
+
+        System.out.println(TAG + ": " + plant.toString() + " is added into " + toString());
     }
 
     /**
      * Plants all the plants in this farmland
      */
     public void waterPlants() {
-        plantGroup.water();
+        try {
+            plantGroup.water();
+        } catch (MethodExposedException exception) {
+            exception.printStackTrace(System.out);
+        }
+
+        System.out.println(TAG + ": All the plants in " + toString() + " have been watered.");
     }
 
     @Override

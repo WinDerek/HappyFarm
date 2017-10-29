@@ -2,14 +2,15 @@ package com.haveacupofjava.happyfarm.task;
 
 import com.haveacupofjava.happyfarm.farmhand.AnimalFarmHand;
 
-public class AnimalManagerHandler extends AbstractManagerHandler{
+public class AnimalManagerHandler extends AbstractManagerHandler {
+
     @Override
-    protected RequestCategory getRequestCategory(){
+    protected RequestCategory getRequestCategory() {
         return RequestCategory.PEN_REQUEST;
     }
 
     @Override
-    protected void handle(Request request){
+    protected void handle(Request request) {
         String tool = request.getTool();
         Class clazz = request.getField();
 
@@ -19,4 +20,5 @@ public class AnimalManagerHandler extends AbstractManagerHandler{
 
         System.out.println("Animal Manager has handled this request.");
     }
+
 }

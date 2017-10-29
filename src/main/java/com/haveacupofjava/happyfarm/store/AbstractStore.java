@@ -2,10 +2,6 @@ package com.haveacupofjava.happyfarm.store;
 
 import com.haveacupofjava.happyfarm.product.AbstractProduct;
 
-/**
- * @author Create by xuantang
- * @date on 10/29/17
- */
 public abstract class AbstractStore {
 
     /**
