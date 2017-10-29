@@ -35,17 +35,17 @@ public abstract class AbstractRoom implements Serializable{
     protected Cleanable cleanable;
 
     /**
-     * items in the room
+     * Items in the room
      */
     protected List<AbstractProduct> products;
 
     /**
-     * clean the room
+     * Clean the room
      */
     public abstract void clean();
 
     /**
-     * show all the items in the room
+     * Show all the items in the room
      */
     public void show() {
         if(null == products){
@@ -59,7 +59,7 @@ public abstract class AbstractRoom implements Serializable{
     }
 
     /**
-     * add the clean way
+     * Add the clean way
      * @param cleanable
      */
     public void setCleanable(Cleanable cleanable) {
@@ -67,7 +67,7 @@ public abstract class AbstractRoom implements Serializable{
     }
 
     /**
-     * add product in the room
+     * Add product in the room
      * @param abstractProduct
      */
     public void addProduct(AbstractProduct abstractProduct){

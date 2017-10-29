@@ -53,6 +53,6 @@ public class WzesTestApplication0 {
         farmer.getProduce(SheepMilk.class, 1);
         System.out.println("\n-------------- farmer get more produce-------------");
         farmer.getProduce(SheepMilk.class, 1);
-        
+
     }
 }

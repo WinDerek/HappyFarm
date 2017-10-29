@@ -20,6 +20,11 @@ public class BoxAdapter extends AbstractBox {
         }
     }
 
+    /**
+     *
+     * @param products products list
+     * @param produce the produce will be stored
+     */
     @Override
     public void storage(List<AbstractProduct> products, AbstractProduce produce) {
         String name = produce.getName();

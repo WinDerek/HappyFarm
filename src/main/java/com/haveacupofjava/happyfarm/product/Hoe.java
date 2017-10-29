@@ -3,6 +3,7 @@ package com.haveacupofjava.happyfarm.product;
 import com.haveacupofjava.happyfarm.field.AbstractField;
 
 public class Hoe extends AbstractTool{
+
     public Hoe() {
         setName("hoe");
         setPrice(99D);

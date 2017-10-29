@@ -33,18 +33,18 @@ public class StorageRoom extends AbstractRoom {
     }
 
     /**
-     * override show
-     * show the items int the box
+     * Override show
+     * Show the items int the box
      */
     @Override
     public void show() {
         //super.show();
         if(null == products){
-            System.out.println("there is nothing in the room");
+            System.out.println("There is nothing in the room");
         } else {
             for (AbstractProduct product : products) {
                 if (product instanceof AbstractBox) {
-                    System.out.println("product: " + product.getName() + ", inside items :");
+                    System.out.println("box : " + product.getName() + ", inside items :");
                     showBox((AbstractBox) product);
                 } else {
                     System.out.println("product: " + product.getName());
@@ -55,8 +55,8 @@ public class StorageRoom extends AbstractRoom {
     }
 
     /**
-     * recursion print the items in the box
-     * @param box
+     * Recursion print the items in the box
+     * @param box the object of box
      */
     public void showBox(AbstractBox box) {
         // show all the products
@@ -73,7 +73,7 @@ public class StorageRoom extends AbstractRoom {
     }
 
     /**
-     * return storage room instant
+     * Return storage room instant
      * @return StorageRoom
      */
     public static StorageRoom getInstance() {
@@ -84,9 +84,10 @@ public class StorageRoom extends AbstractRoom {
     }
 
     /**
-     * return tool object
-     * @param tool name
-     * @return Tool
+     * If the tool is not exist, will buy it from store.
+     * If fail to buy, return one not available object
+     * @param The name of tool
+     * @return Tool the object of AbstractTool
      */
     public AbstractTool getTool(String tool) {
         if (products == null) {
@@ -120,8 +121,8 @@ public class StorageRoom extends AbstractRoom {
     }
 
     /**
-     * storage produce
-     * @param produce AbstractProduce
+     * Store produce in the storage room
+     * @param produce The object ofAbstractProduce
      */
     public void storage(AbstractProduce produce) {
         // TODO: Control the permissions better
@@ -130,6 +131,9 @@ public class StorageRoom extends AbstractRoom {
         products.add(normalBox);
     }
 
+    /**
+     * Clean the room
+     */
     @Override
     public void clean() {
         if (null != cleanable) {

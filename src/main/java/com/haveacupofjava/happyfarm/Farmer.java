@@ -214,7 +214,8 @@ public class Farmer implements Observer, Tradable {
     }
 
     /**
-     * show all items in the store
+     * Go shopping
+     * Show all items in the store
      */
     public void goShopping(){
         ProxyStore proxyStore = ProxyStore.getInstance();

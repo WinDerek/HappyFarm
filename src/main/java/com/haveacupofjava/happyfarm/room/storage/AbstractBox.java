@@ -19,8 +19,8 @@ public abstract class AbstractBox extends AbstractProduct{
     private List<AbstractProduct> products;
 
     /**
-     * get products container
-     * @return
+     * Get products container
+     * @return The list of AbstractProduct
      */
     public List<AbstractProduct> getProducts() {
         if(null == products){
@@ -30,8 +30,8 @@ public abstract class AbstractBox extends AbstractProduct{
     }
 
     /**
-     * get produces container
-     * @return
+     * Ｇet produces container
+     * @return The list of AbstractProduce
      */
     public List<AbstractProduce> getProduces() {
         if(null == produces){
@@ -41,8 +41,9 @@ public abstract class AbstractBox extends AbstractProduct{
     }
 
     /**
-     * storage product
-     * @param name
+     * Store produce to box and save in products list
+     * @param products products list
+     * @param produce the produce will be stored
      */
     public abstract void storage(List<AbstractProduct> products, AbstractProduce produce);
 }
