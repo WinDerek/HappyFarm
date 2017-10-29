@@ -132,7 +132,7 @@ public class StorageRoom extends AbstractRoom {
         // TODO: Control the permissions better
         NormalBox normalBox = new NormalBox();
         normalBox.store(products, produce);
-        products.add(normalBox);
+        //products.add(normalBox);
     }
 
     /**

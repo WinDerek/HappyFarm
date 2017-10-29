@@ -25,7 +25,7 @@ public class NormalBox extends AbstractBox {
      */
     @Override
     public void store(List<AbstractProduct> products, AbstractProduce produce) {
-        String name = produce.getName();
+        String name = produce.getName().toLowerCase();
         // store special produce
         if(name.endsWith("meat") || name.endsWith("milk") || name.endsWith("fruit")){
             boxAdapter = new BoxAdapter(produce);
@@ -33,6 +33,7 @@ public class NormalBox extends AbstractBox {
             //getProducts().add(boxAdapter);
         }else{
             getProduces().add(produce);
+            products.add(this);
             System.out.println("Storage " + produce.getName() + " in the " + getName());
         }
     }
