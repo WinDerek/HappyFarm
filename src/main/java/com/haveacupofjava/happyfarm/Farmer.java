@@ -8,6 +8,7 @@ import com.haveacupofjava.happyfarm.produce.AbstractProduce;
 import com.haveacupofjava.happyfarm.product.AbstractProduct;
 import com.haveacupofjava.happyfarm.product.NullProduct;
 import com.haveacupofjava.happyfarm.room.AbstractRoom;
+import com.haveacupofjava.happyfarm.room.Cleanable;
 import com.haveacupofjava.happyfarm.room.Mop;
 import com.haveacupofjava.happyfarm.room.Wipe;
 import com.haveacupofjava.happyfarm.room.storage.AbstractBox;
@@ -188,29 +189,19 @@ public class Farmer implements Observer, Tradable {
     }
 
     /**
-     * clean the room
-     * @param roomName
-     * @param action
+     * Clean the room
+     * @param roomName the name of room
+     * @param action the action of doing
      */
     public void cleanRoom(String roomName, String action){
         AbstractRoom abstractRoom = getRoom(roomName);
         if(null == abstractRoom){
-            System.out.println("Fail to clean, cause by : the " + roomName + " is not exist ");
+            System.out.println("Fail to clean, cause by : the '" + roomName + "' is not exist ");
             return;
         }
-        if(action.equalsIgnoreCase("wipe")){
-            abstractRoom.setCleanable(new Wipe());
-            abstractRoom.setCleanable(new Wipe());
-            abstractRoom.clean();
-        }else if(action.equalsIgnoreCase("mop")){
-            abstractRoom.setCleanable(new Mop());
-            abstractRoom.clean();
-        }else {
-            System.out.println("Fail to clean, cause by : there is no " + action + " action");
-            System.out.println("List actions : ");
-            System.out.println("1.wipe");
-            System.out.println("2.mop");
-        }
+        abstractRoom.addCleanable(new Wipe());
+        abstractRoom.addCleanable(new Mop());
+        abstractRoom.clean(action);
     }
 
     /**

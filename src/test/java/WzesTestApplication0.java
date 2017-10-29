@@ -35,6 +35,9 @@ public class WzesTestApplication0 {
         System.out.println("\n-------------------farmer build--------------------");
         farmer.buildRoom("livingroom", "livingroom");
 
+        System.out.println("\n----------------farmer wrong clean------------------");
+        farmer.cleanRoom("livingroom", "wipee");
+
         System.out.println("\n-------------------farmer clean--------------------");
         farmer.cleanRoom("livingroom", "wipe");
 
@@ -46,11 +49,12 @@ public class WzesTestApplication0 {
 
         System.out.println("\n--------------- farmer store produce-------------");
         farmer.storeProduce(new SheepMilk());
+        System.out.println("\n--------------- farmer store produce-------------");
         farmer.storeProduce(new SheepMilk());
         System.out.println("\n---------------- farmer get produce----------------");
         farmer.getProduce(SheepMilk.class, 1);
         System.out.println("\n-------------- farmer get more produce-------------");
-        farmer.getProduce(SheepMilk.class, 1);
+        farmer.getProduce(SheepMilk.class, 2);
 
     }
 }

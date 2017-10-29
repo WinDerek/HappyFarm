@@ -34,9 +34,20 @@ public abstract class AbstractRoom implements Serializable{
     }
 
     /**
+     * Get
+     * @return
+     */
+    public List<Cleanable> getCleanables() {
+        if(null == cleanables){
+            cleanables = new ArrayList<>();
+        }
+        return cleanables;
+    }
+
+    /**
      * clean interface
      */
-    protected Cleanable cleanable;
+    protected List<Cleanable> cleanables;
 
     /**
      * Items in the room
@@ -44,9 +55,27 @@ public abstract class AbstractRoom implements Serializable{
     protected List<AbstractProduct> products;
 
     /**
-     * Clean the room
+     * Clean the room and execute action
+     * @param action the name of action
      */
-    public abstract void clean();
+    public void clean(String action){
+        if(null != cleanables){
+            for(Cleanable cleanable : cleanables){
+                if(cleanable.getClass().getSimpleName().toLowerCase().equals(action)){
+                    cleanable.clean();
+                    return;
+                }
+            }
+            System.out.println("Fail to clean, cause by : there is no '" + action + "' action");
+            System.out.println("List actions : ");
+            int index = 0;
+            for(Cleanable cleanable : getCleanables()){
+                System.out.println(index++ + ". " + cleanable.getClass().getSimpleName());
+            }
+        }else{
+            System.out.println("There is not a clean way");
+        }
+    }
 
     /**
      * Show all the items in the room
@@ -66,8 +95,11 @@ public abstract class AbstractRoom implements Serializable{
      * Add the clean way
      * @param cleanable
      */
-    public void setCleanable(Cleanable cleanable) {
-        this.cleanable = cleanable;
+    public void addCleanable(Cleanable cleanable) {
+        if(null == cleanables){
+            cleanables = new ArrayList<>();
+        }
+        cleanables.add(cleanable);
     }
 
     /**

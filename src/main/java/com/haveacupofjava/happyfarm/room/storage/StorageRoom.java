@@ -132,19 +132,14 @@ public class StorageRoom extends AbstractRoom {
         // TODO: Control the permissions better
         NormalBox normalBox = new NormalBox();
         normalBox.store(products, produce);
-        //products.add(normalBox);
     }
 
     /**
      * Clean the room
      */
     @Override
-    public void clean() {
-        if (null != cleanable) {
-            cleanable.clean();
-        } else {
-            System.out.println("You do not add clean way");
-        }
+    public void clean(String action) {
+        super.clean(action);
     }
 
 }

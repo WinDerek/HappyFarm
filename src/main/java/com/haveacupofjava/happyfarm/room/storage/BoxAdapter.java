@@ -1,5 +1,8 @@
 package com.haveacupofjava.happyfarm.room.storage;
 
+import com.haveacupofjava.happyfarm.produce.AbstractFruitProduce;
+import com.haveacupofjava.happyfarm.produce.AbstractMeatProduce;
+import com.haveacupofjava.happyfarm.produce.AbstractMilkProduce;
 import com.haveacupofjava.happyfarm.produce.AbstractProduce;
 import com.haveacupofjava.happyfarm.product.AbstractProduct;
 
@@ -14,12 +17,11 @@ public class BoxAdapter extends AbstractBox {
     private SpecialBox specialBox;
 
     public BoxAdapter(AbstractProduce produce){
-        String name = produce.getName().toLowerCase();
-        if(name.endsWith("meat")){
+        if(produce instanceof AbstractMeatProduce){
             specialBox = new MeatBox();
-        }else if(name.endsWith("milk")){
+        }else if(produce instanceof AbstractMilkProduce){
             specialBox = new MilkBox();
-        }else if(name.endsWith("fruit")){
+        }else if(produce instanceof AbstractFruitProduce){
             specialBox = new FruitBox();
         }
     }
@@ -31,12 +33,11 @@ public class BoxAdapter extends AbstractBox {
      */
     @Override
     public void store(List<AbstractProduct> products, AbstractProduce produce) {
-        String name = produce.getName().toLowerCase();
-        if(name.endsWith("meat")){
+        if(produce instanceof AbstractMeatProduce){
             specialBox.store(products, produce);
-        }else if(name.endsWith("milk")){
+        }else if(produce instanceof AbstractMilkProduce){
             specialBox.store(products, produce);
-        }else if(name.endsWith("fruit")){
+        }else if(produce instanceof AbstractFruitProduce){
             specialBox.store(products, produce);
         }
     }

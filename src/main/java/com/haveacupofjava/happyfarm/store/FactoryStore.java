@@ -31,6 +31,7 @@ public class FactoryStore extends AbstractStore {
     public static void addTool(String name, AbstractTool tool) {
         try {
             hashMap.put(name, tool);
+            System.out.println("Success to add :" + name);
         } catch (Exception exception) {
             exception.printStackTrace(System.out);
         }
@@ -57,7 +58,7 @@ public class FactoryStore extends AbstractStore {
                 System.out.println(name);
             }
         }else{
-            System.out.println("there is no product in the store");
+            System.out.println("There is no product in the store");
         }
     }
 
