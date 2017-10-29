@@ -8,6 +8,7 @@ import com.haveacupofjava.happyfarm.produce.AbstractProduce;
 import com.haveacupofjava.happyfarm.product.AbstractProduct;
 import com.haveacupofjava.happyfarm.product.NullProduct;
 import com.haveacupofjava.happyfarm.room.AbstractRoom;
+import com.haveacupofjava.happyfarm.room.Cleanable;
 import com.haveacupofjava.happyfarm.room.Mop;
 import com.haveacupofjava.happyfarm.room.Wipe;
 import com.haveacupofjava.happyfarm.room.storage.AbstractBox;
@@ -27,6 +28,7 @@ import com.haveacupofjava.happyfarm.trade.MarketMediator;
 import com.haveacupofjava.happyfarm.trade.Tradable;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class Farmer implements Observer, Tradable {
@@ -85,7 +87,7 @@ public class Farmer implements Observer, Tradable {
             System.out.println("Fail to buy : " + productName + " cause by : there is not enough money");
             return;
         }
-        // storage the product
+        // store the product
         if(!(product instanceof NullProduct)){
             StorageRoom.getInstance().addProduct(product);
         }
@@ -112,22 +114,27 @@ public class Farmer implements Observer, Tradable {
     }
 
     /**
-     * farmer storage produce
-     * @param produce
+     * Farmer store produce
+     * @param produce The object of AbstractProduce
      */
-    public void storageProduce(AbstractProduce produce){
+    public void storeProduce(AbstractProduce produce){
         StorageRoom storageRoom = StorageRoom.getInstance();
-        storageRoom.storage(produce);
-        System.out.println("Show all products in the storage room : ");
+        storageRoom.store(produce);
+        System.out.println("Show all products in the store room : ");
         storageRoom.show();
     }
 
     /**
-     * get produce
-     * @param clazz
-     * @return null if the get operation fails
+     * Get some produces
+     * @param clazz Class type
+     * @param number The number of produce
+     * @return null If the get operation fails
      */
     public List<AbstractProduce> getProduce(Class clazz, int number) {
+        if(number <= 0){
+            System.out.println("Please enter a valid value");
+            return null;
+        }
         List<AbstractProduce> produceList = new ArrayList<>();
         int mNumber = 0;
         StorageRoom storageRoom = StorageRoom.getInstance();
@@ -135,7 +142,6 @@ public class Farmer implements Observer, Tradable {
         for (AbstractProduct product : storageRoom.getProducts()) {
             if (product instanceof AbstractBox) {
                 for (AbstractProduce produce : ((AbstractBox) product).getProduces()) {
-
                     if (clazz.getSimpleName().equalsIgnoreCase(produce.getName())) {
                         mNumber++;
                     }
@@ -143,27 +149,22 @@ public class Farmer implements Observer, Tradable {
             }
         }
         if (mNumber < number) {
-            System.out.println("Fail to get : " + clazz.getSimpleName() + ", cause by : storage is not enough produce");
+            System.out.println("Fail to get : " + clazz.getSimpleName() + ", cause by : store is not enough produce");
             return null;
         }
         // ok
         mNumber = 0;
-        int index = 0;
-        List<Integer> integers = new ArrayList<>();
-        for (AbstractProduct product : storageRoom.getProducts()) {
-            //System.out.println(storageRoom.getProducts().size() + " " + product.getName());
-            if (product instanceof AbstractBox) {
+        // use iterator to remove object
+        Iterator iterator = storageRoom.getProducts().iterator();
+        while (iterator.hasNext()){
+            AbstractProduct product = (AbstractProduct) iterator.next();
+            if(product instanceof AbstractBox){
                 for (AbstractProduce produce : ((AbstractBox) product).getProduces()) {
                     if (clazz.getSimpleName().equalsIgnoreCase(produce.getName())) {
-                        mNumber++;
                         produceList.add(produce);
-                        integers.add(index);
+                        iterator.remove();
+                        mNumber++;
                         if (mNumber == number) {
-                            int count = 0;
-                            for (Integer integer : integers) {
-                                storageRoom.getProducts().remove(integer - count);
-                                count++;
-                            }
                             System.out.println("Success to get " + number + " " +
                                     clazz.getSimpleName() + "s");
                             return produceList;
@@ -171,7 +172,6 @@ public class Farmer implements Observer, Tradable {
                     }
                 }
             }
-            index++;
         }
         System.out.println("Fail to get produce, cause by : the class " +
                 clazz.getSimpleName() + " does not exist");
@@ -179,42 +179,33 @@ public class Farmer implements Observer, Tradable {
     }
 
     /**
-     * decorator the room
-     * @param action
-     * @param roomName
+     * Decorator the room
+     * @param action The name of action
+     * @param roomName The name of room
      */
     public void decoratorRoom( String roomName, String action){
         HappyFarm.getInstance().decoratorRoom(roomName, action);
     }
 
     /**
-     * clean the room
-     * @param roomName
-     * @param action
+     * Clean the room
+     * @param roomName the name of room
+     * @param action the action of doing
      */
     public void cleanRoom(String roomName, String action){
         AbstractRoom abstractRoom = getRoom(roomName);
         if(null == abstractRoom){
-            System.out.println("Fail to clean, cause by : the " + roomName + " is not exist ");
+            System.out.println("Fail to clean, cause by : the '" + roomName + "' is not exist ");
             return;
         }
-        if(action.equalsIgnoreCase("wipe")){
-            abstractRoom.setCleanable(new Wipe());
-            abstractRoom.setCleanable(new Wipe());
-            abstractRoom.clean();
-        }else if(action.equalsIgnoreCase("mop")){
-            abstractRoom.setCleanable(new Mop());
-            abstractRoom.clean();
-        }else {
-            System.out.println("Fail to clean, cause by : there is no " + action + " action");
-            System.out.println("List actions : ");
-            System.out.println("1.wipe");
-            System.out.println("2.mop");
-        }
+        abstractRoom.addCleanable(new Wipe());
+        abstractRoom.addCleanable(new Mop());
+        abstractRoom.clean(action);
     }
 
     /**
-     * show all items in the store
+     * Go shopping
+     * Show all items in the store
      */
     public void goShopping(){
         ProxyStore proxyStore = ProxyStore.getInstance();

@@ -1,10 +1,17 @@
 package com.haveacupofjava.happyfarm.room.storage;
 
+import com.haveacupofjava.happyfarm.produce.AbstractFruitProduce;
+import com.haveacupofjava.happyfarm.produce.AbstractMeatProduce;
+import com.haveacupofjava.happyfarm.produce.AbstractMilkProduce;
 import com.haveacupofjava.happyfarm.produce.AbstractProduce;
 import com.haveacupofjava.happyfarm.product.AbstractProduct;
 
 import java.util.List;
 
+/**
+ * @author Create by xuantang
+ * @date on 10/29/17
+ */
 public class NormalBox extends AbstractBox {
 
     private BoxAdapter boxAdapter;
@@ -14,16 +21,22 @@ public class NormalBox extends AbstractBox {
     }
 
 
+    /**
+     * Override store
+     * @param products products list
+     * @param produce the produce will be stored
+     */
     @Override
-    public void storage(List<AbstractProduct> products, AbstractProduce produce) {
-        String name = produce.getName();
-        // storage special produce
-        if(name.endsWith("meat") || name.endsWith("milk") || name.endsWith("fruit")){
+    public void store(List<AbstractProduct> products, AbstractProduce produce) {
+        // store special produce
+        if(produce instanceof AbstractMilkProduce ||
+                produce instanceof AbstractFruitProduce ||
+                produce instanceof AbstractMeatProduce){
             boxAdapter = new BoxAdapter(produce);
-            boxAdapter.storage(products, produce);
-            //getProducts().add(boxAdapter);
+            boxAdapter.store(products, produce);
         }else{
             getProduces().add(produce);
+            products.add(this);
             System.out.println("Storage " + produce.getName() + " in the " + getName());
         }
     }

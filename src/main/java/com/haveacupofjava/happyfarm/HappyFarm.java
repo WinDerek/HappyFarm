@@ -40,9 +40,9 @@ public class HappyFarm {
     }
 
     /**
-     * build a room
-     * @param roomType
-     * @param roomName
+     * Build a room has one type
+     * @param roomType The type of room
+     * @param roomName The name of room
      */
     void buildRoom(String roomType, String roomName) {
         // check if
@@ -74,30 +74,30 @@ public class HappyFarm {
     }
 
     /**
-     * get room object in the HappyFarm
-     * @param roomName
-     * @return AbstractRoom
+     * Get room object in the HappyFarm
+     * @param roomName The name of room
+     * @return AbstractRoom The object of room
      */
     AbstractRoom getRoom(String roomName){
         for (AbstractRoom room : roomList){
             if(room.getName().equalsIgnoreCase(roomName)){
-                System.out.println("success to get " + roomName);
+                System.out.println("Success to find " + roomName);
                 return room;
             }
         }
         if(roomName.equalsIgnoreCase("storageroom")){
-            System.out.println("success to get " + roomName);
+            System.out.println("Success to find " + roomName);
             return StorageRoom.getInstance();
         }
-        System.out.println("Fail to get " + roomName + " , cause by : the room is not exits");
+        System.out.println("Fail to find " + roomName + " , cause by : the room is not exits");
 //        throw new NullPointerException("not find");
         return null;
     }
 
     /**
-     * decorator the room
-     * @param action
-     * @param roomName
+     * Decorator the room
+     * @param action The name of action
+     * @param roomName The name of room
      */
     void decoratorRoom(String roomName, String action) {
         if (action.equalsIgnoreCase("brush")) {

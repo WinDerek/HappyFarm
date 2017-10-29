@@ -4,6 +4,10 @@ import com.haveacupofjava.happyfarm.product.*;
 
 import java.util.HashMap;
 
+/**
+ * @author Create by xuantang
+ * @date on 10/29/17
+ */
 public class FactoryStore extends AbstractStore {
 
     private static HashMap<String, AbstractProduct> hashMap = new HashMap<>();
@@ -27,11 +31,17 @@ public class FactoryStore extends AbstractStore {
     public static void addTool(String name, AbstractTool tool) {
         try {
             hashMap.put(name, tool);
+            System.out.println("Success to add :" + name);
         } catch (Exception exception) {
             exception.printStackTrace(System.out);
         }
     }
 
+    /**
+     * Buy product through product name
+     * @param name product name
+     * @return AbstractProduct
+     */
     @Override
     public AbstractProduct buy(String name) {
         // check if product exist in the factory
@@ -44,6 +54,7 @@ public class FactoryStore extends AbstractStore {
         }
     }
 
+
     @Override
     public void show() {
         if(null != hashMap){
@@ -52,7 +63,7 @@ public class FactoryStore extends AbstractStore {
                 System.out.println(name);
             }
         }else{
-            System.out.println("there is no product in the store");
+            System.out.println("There is no product in the store");
         }
     }
 

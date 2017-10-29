@@ -5,6 +5,10 @@ import com.haveacupofjava.happyfarm.product.AbstractProduct;
 
 import java.util.List;
 
+/**
+ * @author Create by xuantang
+ * @date on 10/29/17
+ */
 public class MilkBox extends SpecialBox {
 
 
@@ -13,7 +17,7 @@ public class MilkBox extends SpecialBox {
     }
 
     @Override
-    public void storage(List<AbstractProduct> products, AbstractProduce produce) {
+    public void store(List<AbstractProduct> products, AbstractProduce produce) {
         getProduces().add(produce);
         products.add(this);
         System.out.println("Storage " + produce.getName() + " in the " + getName());
