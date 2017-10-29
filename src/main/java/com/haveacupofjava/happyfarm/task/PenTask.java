@@ -19,9 +19,6 @@ public class PenTask extends AbstractTask {
     public String tool;
     public List<AbstractPen> penList;
 
-    // TODO
-    // need a function object
-
     public PenTask(AnimalFarmHand farmhand, String tool, Class penClazz) {
         this.farmhand = farmhand;
         this.tool = tool;

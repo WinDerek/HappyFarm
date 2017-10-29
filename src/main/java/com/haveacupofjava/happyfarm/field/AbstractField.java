@@ -12,10 +12,6 @@ public abstract class AbstractField extends AbstractFieldComponent implements Se
 
     protected AbstractFieldDecorator decorator;
 
-    // TODO
-    /*
-     * a container for creature
-     */
     public void resetDecoratorHead(AbstractFieldDecorator decorator) {
         this.decorator = decorator;
     }
