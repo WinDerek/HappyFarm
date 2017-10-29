@@ -81,4 +81,9 @@ public abstract class AbstractPen<T extends AbstractAnimal> extends AbstractFiel
         return animalGroup.getEggProduce();
     }
 
+    @Override
+    public void stimulateProduction() {
+        animalGroup.produce();
+    }
+
 }

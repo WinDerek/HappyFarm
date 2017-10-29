@@ -56,4 +56,9 @@ public abstract class AbstractFarmland<T extends AbstractPlant> extends Abstract
         return plantGroup.plantCount();
     }
 
+    @Override
+    public void stimulateProduction() {
+        plantGroup.produce();
+    }
+
 }

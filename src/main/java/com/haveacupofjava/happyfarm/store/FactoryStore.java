@@ -11,7 +11,7 @@ public class FactoryStore extends AbstractStore {
     public FactoryStore() {
         // init the factory and add init products
         hashMap.put("sickle", new Sickle());
-        hashMap.put("spinkler", new Sprinkler());
+        hashMap.put("sprinkler", new Sprinkler());
         hashMap.put("purse", new Purse());
         hashMap.put("bed", new Bed());
         hashMap.put("hoe", new Hoe());
@@ -50,7 +50,6 @@ public class FactoryStore extends AbstractStore {
             return new NullProduct();
         }
     }
-
 
     @Override
     public void show() {

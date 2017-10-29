@@ -1,10 +1,6 @@
 package com.haveacupofjava.happyfarm.creature;
 
-import com.haveacupofjava.happyfarm.produce.AbstractMilkProduce;
 import com.haveacupofjava.happyfarm.produce.PigMilk;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
   * Class Pig
@@ -13,8 +9,6 @@ import java.util.List;
 public class Pig extends AbstractVivipara {
 
     public Pig() {
-        // TODO: implement an interface in HappyFarm, also in Sheep, Wheat, ...
-        produce();
     }
 
     /**

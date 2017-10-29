@@ -56,4 +56,9 @@ public abstract class AbstractField extends AbstractFieldComponent implements Se
      */
     public abstract int creatureCount();
 
+    /**
+     * Stimulates all the creatures to produce once
+     */
+    public abstract void stimulateProduction();
+
 }

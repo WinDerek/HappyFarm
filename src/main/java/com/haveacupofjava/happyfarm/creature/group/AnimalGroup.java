@@ -12,7 +12,7 @@ import java.lang.reflect.ParameterizedType;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AnimalGroup<T extends AbstractAnimal> {
+public class AnimalGroup<T extends AbstractAnimal> extends AbstractAnimal {
 
     private static final String TAG = AnimalGroup.class.getSimpleName();
 
@@ -23,9 +23,10 @@ public class AnimalGroup<T extends AbstractAnimal> {
     }
 
     /**
-     * Feed all the animals in this group
+     * Feeds all the animals in this group
      * @throws MethodExposedException if this method is exposed to outside packages
      */
+    @Override
     public void feed() throws MethodExposedException {
         // Checks if the caller method is allowed to call this method
         PackageChecker.checkPackage();
@@ -34,9 +35,27 @@ public class AnimalGroup<T extends AbstractAnimal> {
             animal.feed();
         }
 
-        String animalClassName = ((ParameterizedType) getClass().getGenericSuperclass())
-                .getActualTypeArguments()[0].getTypeName();
-        System.out.println(TAG + ": All the " + animalClassName + " have been fed.");
+        // TODO: Fix: java.lang.ClassCastException: java.lang.Class cannot be cast to java.lang.reflect.ParameterizedType
+//        String animalClassName = ((ParameterizedType) getClass().getGenericSuperclass())
+//                .getActualTypeArguments()[0].getTypeName();
+//        System.out.println(TAG + ": All the " + animalClassName + " have been fed.");
+        System.out.println(TAG + ": All the animals in " + toString() + " have been fed.");
+    }
+
+    /**
+     * Let all the animals produce once
+     */
+    @Override
+    public void produce() {
+        for (T animal : animals) {
+            animal.produce();
+        }
+
+        // TODO: Fix: java.lang.ClassCastException: java.lang.Class cannot be cast to java.lang.reflect.ParameterizedType
+//        String animalClassName = ((ParameterizedType) getClass().getGenericSuperclass())
+//                .getActualTypeArguments()[0].getTypeName();
+//        System.out.println(TAG + ": All the " + animalClassName + " have produced once.");
+        System.out.println(TAG + ": All the animals in " + toString() + " have produced once.");
     }
 
     /**

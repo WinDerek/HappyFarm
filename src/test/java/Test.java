@@ -33,21 +33,37 @@ public class Test {
 //        pig.addObserver(farmer);
 //        pig.produce();
 
-        Farmer.getInstance().buyField(new PigPenBuilder());
-        Farmer.getInstance().buyAnimal(new PigFactory(), 2);
+        Farmer farmer = Farmer.getInstance();
 
-        RequestParsingRule requestParsingRule =
-                new RequestParsingRule("Please collect pig milk",
+        farmer.buyField(new PigPenBuilder());
+        farmer.buyAnimal(new PigFactory(), 2);
+
+        Request.addRequestParsingRule(
+                new RequestParsingRule(
+                        "Stimulate all the pigs to produce! Let them fuck!",
                         RequestCategory.PEN_REQUEST,
-                        "bucket",
-                        PigPen.class);
-        Request.addRequestParsingRule(requestParsingRule);
+                        PigProductionStimulator.class.getSimpleName(),
+                        PigPen.class
+                )
+        );
 
-        FactoryStore.addTool("bucket", new Bucket());
+        Request.addRequestParsingRule(
+                new RequestParsingRule(
+                        "Please collect pig milk",
+                        RequestCategory.PEN_REQUEST,
+                        Bucket.class.getSimpleName(),
+                        PigPen.class)
+        );
 
-        Request request = new Request("Please collect pig milk");
+        FactoryStore.addTool(Bucket.class.getSimpleName(), new Bucket());
+        FactoryStore.addTool(PigProductionStimulator.class.getSimpleName(),
+                new PigProductionStimulator());
 
-        Farmer.getInstance().handleRequest(request);
+        Request stimulatePigProductionRequest = new Request("Stimulate all the pigs to produce! Let them fuck!");
+        Request collectPigMilkRequest = new Request("Please collect pig milk");
+
+        farmer.handleRequest(stimulatePigProductionRequest);
+        farmer.handleRequest(collectPigMilkRequest);
 
         Farmer.getInstance().sellProduce(PigMilk.class, 1);
     }

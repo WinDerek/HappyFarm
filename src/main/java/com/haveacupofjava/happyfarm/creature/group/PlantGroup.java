@@ -8,7 +8,7 @@ import java.lang.reflect.ParameterizedType;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PlantGroup<T extends AbstractPlant> {
+public class PlantGroup<T extends AbstractPlant> extends AbstractPlant {
 
     private static final String TAG = PlantGroup.class.getSimpleName();
 
@@ -22,6 +22,7 @@ public class PlantGroup<T extends AbstractPlant> {
      * Waters all the plants in this group
      * @throws MethodExposedException if this method is exposed to outside packages
      */
+    @Override
     public void water() throws MethodExposedException {
         // Checks if the caller method is allowed to call this method
         PackageChecker.checkPackage();
@@ -30,9 +31,30 @@ public class PlantGroup<T extends AbstractPlant> {
             plant.water();
         }
 
-        String plantClassName = ((ParameterizedType) getClass().getGenericSuperclass())
-                .getActualTypeArguments()[0].getTypeName();
-        System.out.println(TAG + ": All the " + plantClassName + " have been watered.");
+
+        // TODO: Fix: java.lang.ClassCastException: java.lang.Class cannot be cast to java.lang.reflect.ParameterizedType
+//        String plantClassName = ((ParameterizedType) getClass().getGenericSuperclass())
+//                .getActualTypeArguments()[0].getTypeName();
+//        System.out.println(TAG + ": All the " + plantClassName + " in " + toString() +
+//                " have been watered.");
+        System.out.println(TAG + ": All the plants have produces once.");
+    }
+
+    /**
+     * Let all the plants to produce once
+     */
+    @Override
+    public void produce() {
+        for (T plant : plants) {
+            plant.produce();
+        }
+
+        // TODO: Fix: java.lang.ClassCastException: java.lang.Class cannot be cast to java.lang.reflect.ParameterizedType
+//        String plantClassName = ((ParameterizedType) getClass().getGenericSuperclass())
+//                .getActualTypeArguments()[0].getTypeName();
+//        System.out.println(TAG + ": All the " + plantClassName + " in " + toString() +
+//                " have produced once.");
+        System.out.println(TAG + ": All the plants have produces once.");
     }
 
     /**
