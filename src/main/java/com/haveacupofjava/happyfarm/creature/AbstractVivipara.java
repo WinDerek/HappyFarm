@@ -2,6 +2,7 @@ package com.haveacupofjava.happyfarm.creature;
 
 import com.haveacupofjava.happyfarm.produce.AbstractMilkProduce;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -12,16 +13,10 @@ public abstract class AbstractVivipara extends AbstractAnimal {
 
     private static final String TAG = AbstractVivipara.class.getSimpleName();
 
-    // TODO: Constructor new list for milkProduce?
-
-    private List<AbstractMilkProduce> milkProduce;
+    protected List<AbstractMilkProduce> milkProduce = new ArrayList<>();
 
     public List<AbstractMilkProduce> getMilkProduce() {
         return milkProduce;
-    }
-
-    void setMilkProduce(List<AbstractMilkProduce> milkProduce) {
-        this.milkProduce = milkProduce;
     }
 
 }

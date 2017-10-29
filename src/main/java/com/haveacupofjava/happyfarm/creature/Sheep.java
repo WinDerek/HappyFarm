@@ -17,12 +17,10 @@ public class Sheep extends AbstractVivipara {
       */
     @Override
     public void produce() {
-        List<AbstractMilkProduce> list = new ArrayList<>();
         for (int i = 0; i < 10; i++) {
             SheepMilk milk = new SheepMilk();
-            list.add(milk);
+            milkProduce.add(milk);
         }
-        this.setMilkProduce(list);
 
         System.out.println("hey, sheep milk!");
         notifyAllObservers("SheepProduceMilk");

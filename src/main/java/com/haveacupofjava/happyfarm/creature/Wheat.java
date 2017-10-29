@@ -17,12 +17,10 @@ public class Wheat extends AbstractPlant {
       */
     @Override
     public void produce() {
-        List<AbstractFruitProduce> list = new ArrayList<>();
         for (int i = 0; i < 20; i++) {
             Rice fruit = new Rice();
-            list.add(fruit);
+            fruitProduce.add(fruit);
         }
-        this.setFruitProduce(list);
 
         System.out.println("hey, rice!");
         notifyAllObservers("WheatProduceFruit");

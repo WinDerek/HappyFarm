@@ -23,12 +23,10 @@ public class Pig extends AbstractVivipara {
       */
     @Override
     public void produce() {
-        List<AbstractMilkProduce> list = new ArrayList<>();
         for (int i = 0; i < 10; i++) {
             PigMilk milk = new PigMilk();
-            list.add(milk);
+            milkProduce.add(milk);
         }
-        this.setMilkProduce(list);
 
         System.out.println("hey, pig milk!");
         notifyAllObservers("PigProduceMilk");

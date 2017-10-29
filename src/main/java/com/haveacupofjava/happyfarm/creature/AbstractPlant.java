@@ -4,15 +4,14 @@ import com.haveacupofjava.happyfarm.produce.AbstractFruitProduce;
 import com.haveacupofjava.happyfarm.security.MethodExposedException;
 import com.haveacupofjava.happyfarm.security.PackageChecker;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public abstract class AbstractPlant extends AbstractCreature {
 
     private static final String TAG = AbstractPlant.class.getSimpleName();
 
-    // TODO: Constructor new list for fruitProduce?
-
-    private List<AbstractFruitProduce> fruitProduce;
+    protected List<AbstractFruitProduce> fruitProduce = new ArrayList<>();
 
     /**
      * The unit is centimeter
@@ -32,10 +31,6 @@ public abstract class AbstractPlant extends AbstractCreature {
 
     public List<AbstractFruitProduce> getFruitProduce() {
         return fruitProduce;
-    }
-
-    public void setFruitProduce(List<AbstractFruitProduce> fruitProduce) {
-        this.fruitProduce = fruitProduce;
     }
 
     public double getHeight() {

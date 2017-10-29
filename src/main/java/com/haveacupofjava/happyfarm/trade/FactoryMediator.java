@@ -31,6 +31,7 @@ public class FactoryMediator extends AbstractMediator {
             }
         } else {
             // TODO: Handle undefined factory in library
+            System.out.println("Can not handle undefined factory.");
         }
 
         // Let the farmer pay money
