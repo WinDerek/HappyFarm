@@ -25,6 +25,7 @@ public abstract class AbstractField extends AbstractFieldComponent implements Se
     }
 
     public void showField() {
+        System.out.println("Showing " + toString() +": \n");
         this.decorator.show();
     }
 

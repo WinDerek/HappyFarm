@@ -2,7 +2,7 @@ package com.haveacupofjava.happyfarm.field;
 
 public class Fence extends AbstractFieldDecorator {
 
-    public Fence(AbstractField field){
+    public Fence(AbstractField field) {
         super(field);
     }
 

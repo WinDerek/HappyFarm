@@ -13,8 +13,6 @@ import java.util.Stack;
   */
 public class Memento {
 
-    // TODO: All abstract generic super class implements Serializable
-
     private static Stack<Memento> mementosStack = new Stack<Memento>();
 
     public static void addState(Memento memento){

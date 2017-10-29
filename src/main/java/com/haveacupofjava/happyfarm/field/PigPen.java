@@ -9,7 +9,7 @@ public class PigPen extends AbstractPen<Pig> {
 
     @Override
     public void show() {
-        System.out.println("pig pen shown");
+        System.out.println(toString() + " shown.");
     }
 
     @Override

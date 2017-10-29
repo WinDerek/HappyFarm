@@ -2,7 +2,9 @@ package com.haveacupofjava.happyfarm.store;
 
 import com.haveacupofjava.happyfarm.product.AbstractProduct;
 
-public abstract class AbstractStore {
+import java.io.Serializable;
+
+public abstract class AbstractStore implements Serializable {
 
     /**
      * Buy product through product name

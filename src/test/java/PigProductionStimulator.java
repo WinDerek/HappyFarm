@@ -25,6 +25,7 @@ public class PigProductionStimulator extends AbstractTool {
     @Override
     public void handleField(AbstractField field) {
         field.stimulateProduction();
+        field.showField();
     }
 
 }
