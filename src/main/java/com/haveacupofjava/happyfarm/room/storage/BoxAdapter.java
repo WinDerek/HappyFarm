@@ -30,14 +30,14 @@ public class BoxAdapter extends AbstractBox {
      * @param produce the produce will be stored
      */
     @Override
-    public void storage(List<AbstractProduct> products, AbstractProduce produce) {
+    public void store(List<AbstractProduct> products, AbstractProduce produce) {
         String name = produce.getName();
         if(name.endsWith("meat")){
-            specialBox.storage(products, produce);
+            specialBox.store(products, produce);
         }else if(name.endsWith("milk")){
-            specialBox.storage(products, produce);
+            specialBox.store(products, produce);
         }else if(name.endsWith("fruit")){
-            specialBox.storage(products, produce);
+            specialBox.store(products, produce);
         }
     }
 

@@ -19,17 +19,17 @@ public class NormalBox extends AbstractBox {
 
 
     /**
-     * Override storage
+     * Override store
      * @param products products list
      * @param produce the produce will be stored
      */
     @Override
-    public void storage(List<AbstractProduct> products, AbstractProduce produce) {
+    public void store(List<AbstractProduct> products, AbstractProduce produce) {
         String name = produce.getName();
-        // storage special produce
+        // store special produce
         if(name.endsWith("meat") || name.endsWith("milk") || name.endsWith("fruit")){
             boxAdapter = new BoxAdapter(produce);
-            boxAdapter.storage(products, produce);
+            boxAdapter.store(products, produce);
             //getProducts().add(boxAdapter);
         }else{
             getProduces().add(produce);

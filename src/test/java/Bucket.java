@@ -30,7 +30,7 @@ public class Bucket extends AbstractTool {
         List<AbstractProduce> produceList = ((AbstractPen) field).getMilkProduce();
 
         for (AbstractProduce produce : produceList) {
-            StorageRoom.getInstance().storage(produce);
+            StorageRoom.getInstance().store(produce);
         }
     }
 

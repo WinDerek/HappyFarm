@@ -1,13 +1,11 @@
 import com.haveacupofjava.happyfarm.Farmer;
 import com.haveacupofjava.happyfarm.produce.SheepMilk;
-import com.haveacupofjava.happyfarm.product.*;
-import com.haveacupofjava.happyfarm.room.BedRoom;
-import com.haveacupofjava.happyfarm.room.BrushDecoratorRoom;
-import com.haveacupofjava.happyfarm.room.Cleanable;
-import com.haveacupofjava.happyfarm.room.Wipe;
-import com.haveacupofjava.happyfarm.room.storage.StorageRoom;
-import com.haveacupofjava.happyfarm.store.ProxyStore;
 
+/**
+ * Test Application
+ * @author Create by xuantang
+ * @date on 10/29/17
+ */
 public class WzesTestApplication0 {
     public static void main(String[] args) {
         // buy product from proxy store
@@ -20,7 +18,7 @@ public class WzesTestApplication0 {
 //        Bed bed = (Bed) proxyStore.buy("bed");
 //        System.out.println(bed.getName());
 //        System.out.println("\n---------------------------------------------------");
-//        // get hoe from storage
+//        // get hoe from store
 //        StorageRoom storageRoom = StorageRoom.getInstance();
 //        // storageRoom.addProduct(hoe);
 //        Hoe mHoe = (Hoe) storageRoom.getTool("hoe");
@@ -46,9 +44,9 @@ public class WzesTestApplication0 {
         System.out.println("\n--------------------farmer buy---------------------");
         farmer.buyProduct("hoe", 1);
 
-        System.out.println("\n--------------- farmer storage produce-------------");
-        farmer.storageProduce(new SheepMilk());
-        farmer.storageProduce(new SheepMilk());
+        System.out.println("\n--------------- farmer store produce-------------");
+        farmer.storeProduce(new SheepMilk());
+        farmer.storeProduce(new SheepMilk());
         System.out.println("\n---------------- farmer get produce----------------");
         farmer.getProduce(SheepMilk.class, 1);
         System.out.println("\n-------------- farmer get more produce-------------");

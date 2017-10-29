@@ -77,7 +77,7 @@ public class StorageRoom extends AbstractRoom {
     }
 
     /**
-     * Return storage room instant
+     * Return store room instant
      * @return StorageRoom
      */
     public static StorageRoom getInstance() {
@@ -97,16 +97,16 @@ public class StorageRoom extends AbstractRoom {
         if (products == null) {
             products = new ArrayList<>();
         }
-        // get tool from storage
+        // get tool from store
         for (AbstractProduct product : products) {
             if ((product instanceof AbstractTool) && product.getName().equals(tool)) {
-                System.out.println("Success to get " + tool + " from storage");
+                System.out.println("Success to get " + tool + " from store");
                 return (AbstractTool) product;
             }
         }
-        System.out.println("There is not " + tool + " in the storage");
+        System.out.println("There is not " + tool + " in the store");
         System.out.println("Will buy " + tool + " from store");
-        // there is no tool int the storage room and buy it from proxy store
+        // there is no tool int the store room and buy it from proxy store
         ProxyStore proxyStore = ProxyStore.getInstance();
         AbstractProduct product = proxyStore.buy(tool);
         // check
@@ -125,13 +125,13 @@ public class StorageRoom extends AbstractRoom {
     }
 
     /**
-     * Store produce in the storage room
+     * Store produce in the store room
      * @param produce The object ofAbstractProduce
      */
-    public void storage(AbstractProduce produce) {
+    public void store(AbstractProduce produce) {
         // TODO: Control the permissions better
         NormalBox normalBox = new NormalBox();
-        normalBox.storage(products, produce);
+        normalBox.store(products, produce);
         products.add(normalBox);
     }
 

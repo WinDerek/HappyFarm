@@ -13,12 +13,12 @@ import java.util.List;
 public abstract class AbstractBox extends AbstractProduct{
 
     /**
-     * storage the produces
+     * store the produces
      */
     private List<AbstractProduce> produces;
 
 //    /**
-//     * storage the products
+//     * store the products
 //     */
     private List<AbstractProduct> products;
 
@@ -49,5 +49,5 @@ public abstract class AbstractBox extends AbstractProduct{
      * @param products products list
      * @param produce the produce will be stored
      */
-    public abstract void storage(List<AbstractProduct> products, AbstractProduce produce);
+    public abstract void store(List<AbstractProduct> products, AbstractProduce produce);
 }

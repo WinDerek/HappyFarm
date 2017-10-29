@@ -85,7 +85,7 @@ public class Farmer implements Observer, Tradable {
             System.out.println("Fail to buy : " + productName + " cause by : there is not enough money");
             return;
         }
-        // storage the product
+        // store the product
         if(!(product instanceof NullProduct)){
             StorageRoom.getInstance().addProduct(product);
         }
@@ -112,13 +112,13 @@ public class Farmer implements Observer, Tradable {
     }
 
     /**
-     * farmer storage produce
+     * farmer store produce
      * @param produce
      */
-    public void storageProduce(AbstractProduce produce){
+    public void storeProduce(AbstractProduce produce){
         StorageRoom storageRoom = StorageRoom.getInstance();
-        storageRoom.storage(produce);
-        System.out.println("Show all products in the storage room : ");
+        storageRoom.store(produce);
+        System.out.println("Show all products in the store room : ");
         storageRoom.show();
     }
 
@@ -143,7 +143,7 @@ public class Farmer implements Observer, Tradable {
             }
         }
         if (mNumber < number) {
-            System.out.println("Fail to get : " + clazz.getSimpleName() + ", cause by : storage is not enough produce");
+            System.out.println("Fail to get : " + clazz.getSimpleName() + ", cause by : store is not enough produce");
             return null;
         }
         // ok
