@@ -1,19 +1,23 @@
 package com.haveacupofjava.happyfarm.product;
 
+/**
+ * @author Create by xuantang
+ * @date on 10/29/17
+ */
 public abstract class AbstractProduct {
 
     /**
-     * product name
+     * Product name
      */
     private String name;
 
     /**
-     * product price
+     * Product price
      */
     private Double price;
 
     /**
-     * get product price
+     * Set product price
      * @return
      */
     public Double getPrice() {
@@ -21,7 +25,7 @@ public abstract class AbstractProduct {
     }
 
     /**
-     * set product price
+     * Set product price
      * @param price
      */
     public void setPrice(Double price) {
@@ -29,7 +33,7 @@ public abstract class AbstractProduct {
     }
 
     /**
-     * return the product name
+     * Return the product name
      * @return
      */
     public String getName(){
@@ -37,13 +41,13 @@ public abstract class AbstractProduct {
     }
 
     /**
-     * check whether the object is empty
+     * Check whether the object is empty
      * @return boolean
      */
     public abstract boolean isNil();
 
     /**
-     * update the product name
+     * Update the product name
      * @param name that is product name
      */
     public void setName(String name){
@@ -51,7 +55,7 @@ public abstract class AbstractProduct {
     }
 
     /**
-     * clone the product
+     * Clone the product
      * @return new product
      */
     public abstract AbstractProduct clone();

@@ -4,6 +4,10 @@ import com.haveacupofjava.happyfarm.product.*;
 
 import java.util.HashMap;
 
+/**
+ * @author Create by xuantang
+ * @date on 10/29/17
+ */
 public class FactoryStore extends AbstractStore {
 
     private static HashMap<String, AbstractProduct> hashMap = new HashMap<>();
@@ -43,6 +47,7 @@ public class FactoryStore extends AbstractStore {
             return new NullProduct();
         }
     }
+
 
     @Override
     public void show() {

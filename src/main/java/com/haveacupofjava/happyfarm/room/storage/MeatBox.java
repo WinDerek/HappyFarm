@@ -5,6 +5,10 @@ import com.haveacupofjava.happyfarm.product.AbstractProduct;
 
 import java.util.List;
 
+/**
+ * @author Create by xuantang
+ * @date on 10/29/17
+ */
 public class MeatBox extends SpecialBox {
 
     public MeatBox(){

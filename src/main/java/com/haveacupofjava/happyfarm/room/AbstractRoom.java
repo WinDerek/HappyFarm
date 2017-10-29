@@ -6,6 +6,10 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author Create by xuantang
+ * @date on 10/29/17
+ */
 public abstract class AbstractRoom implements Serializable{
 
 

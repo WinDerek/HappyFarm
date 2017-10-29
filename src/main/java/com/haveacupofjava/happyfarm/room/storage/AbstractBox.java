@@ -6,6 +6,10 @@ import com.haveacupofjava.happyfarm.product.AbstractProduct;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author Create by xuantang
+ * @date on 10/29/17
+ */
 public abstract class AbstractBox extends AbstractProduct{
 
     /**

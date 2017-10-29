@@ -12,6 +12,10 @@ import com.haveacupofjava.happyfarm.store.ProxyStore;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author Create by xuantang
+ * @date on 10/29/17
+ */
 public class StorageRoom extends AbstractRoom {
 
     private static StorageRoom storageRoom;
