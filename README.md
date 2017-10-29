@@ -29,7 +29,7 @@ Design Patterns
 - [ ] Interpreter
 - [ ] Iterator
 - [x] Mediator
-- [ ] Memento
+- [x] Memento
 - [x] Observer
 - [ ] State
 - [ ] Strategy
