@@ -54,7 +54,7 @@ public class WzesTestApplication0 {
         System.out.println("\n---------------- farmer get produce----------------");
         farmer.getProduce(SheepMilk.class, 1);
         System.out.println("\n-------------- farmer get more produce-------------");
-        farmer.getProduce(SheepMilk.class, 2);
+        farmer.getProduce(SheepMilk.class, 1);
 
     }
 }

@@ -28,6 +28,7 @@ import com.haveacupofjava.happyfarm.trade.MarketMediator;
 import com.haveacupofjava.happyfarm.trade.Tradable;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class Farmer implements Observer, Tradable {
@@ -129,6 +130,10 @@ public class Farmer implements Observer, Tradable {
      * @return null if the get operation fails
      */
     public List<AbstractProduce> getProduce(Class clazz, int number) {
+        if(number <= 0){
+            System.out.println("Please enter a valid value");
+            return null;
+        }
         List<AbstractProduce> produceList = new ArrayList<>();
         int mNumber = 0;
         StorageRoom storageRoom = StorageRoom.getInstance();
@@ -136,7 +141,6 @@ public class Farmer implements Observer, Tradable {
         for (AbstractProduct product : storageRoom.getProducts()) {
             if (product instanceof AbstractBox) {
                 for (AbstractProduce produce : ((AbstractBox) product).getProduces()) {
-
                     if (clazz.getSimpleName().equalsIgnoreCase(produce.getName())) {
                         mNumber++;
                     }
@@ -149,22 +153,16 @@ public class Farmer implements Observer, Tradable {
         }
         // ok
         mNumber = 0;
-        int index = 0;
-        List<Integer> integers = new ArrayList<>();
-        for (AbstractProduct product : storageRoom.getProducts()) {
-            //System.out.println(storageRoom.getProducts().size() + " " + product.getName());
-            if (product instanceof AbstractBox) {
+        Iterator iterator = storageRoom.getProducts().iterator();
+        while (iterator.hasNext()){
+            AbstractProduct product = (AbstractProduct) iterator.next();
+            if(product instanceof AbstractBox){
                 for (AbstractProduce produce : ((AbstractBox) product).getProduces()) {
                     if (clazz.getSimpleName().equalsIgnoreCase(produce.getName())) {
-                        mNumber++;
                         produceList.add(produce);
-                        integers.add(index);
+                        iterator.remove();
+                        mNumber++;
                         if (mNumber == number) {
-                            int count = 0;
-                            for (Integer integer : integers) {
-                                storageRoom.getProducts().remove(integer - count);
-                                count++;
-                            }
                             System.out.println("Success to get " + number + " " +
                                     clazz.getSimpleName() + "s");
                             return produceList;
@@ -172,7 +170,6 @@ public class Farmer implements Observer, Tradable {
                     }
                 }
             }
-            index++;
         }
         System.out.println("Fail to get produce, cause by : the class " +
                 clazz.getSimpleName() + " does not exist");
