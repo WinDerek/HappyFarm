@@ -5,18 +5,20 @@ import com.haveacupofjava.happyfarm.security.PackageChecker;
 
 public abstract class AbstractAnimal extends AbstractCreature {
 
+    private static final String TAG = AbstractAnimal.class.getSimpleName();
+
     private double bodyLength;
     private double weight;
 
     /**
      * Feeds this animal
-     * @throws MethodExposedException if the method is exposed to the outside package
+     * @throws MethodExposedException if this method is exposed to outside packages
      */
     public void feed() throws MethodExposedException {
         // Checks if the caller method is allowed to call this method
         PackageChecker.checkPackage();
 
-        System.out.println("Animal " + this.toString() + " get fed.");
+        System.out.println(TAG + ": The animal " + this.toString() + " get fed.");
     }
 
     public double getBodyLength() {

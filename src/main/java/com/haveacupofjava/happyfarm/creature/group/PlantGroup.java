@@ -3,10 +3,13 @@ package com.haveacupofjava.happyfarm.creature.group;
 import com.haveacupofjava.happyfarm.creature.AbstractPlant;
 import com.haveacupofjava.happyfarm.security.PackageChecker;
 
+import java.lang.reflect.ParameterizedType;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PlantGroup <T extends AbstractPlant> {
+public class PlantGroup<T extends AbstractPlant> {
+
+    private static final String TAG = PlantGroup.class.getSimpleName();
 
     private List<T> plants;
 
@@ -30,6 +33,10 @@ public class PlantGroup <T extends AbstractPlant> {
         for (T plant : plants) {
             plant.water();
         }
+
+        String plantClassName = ((ParameterizedType) getClass().getGenericSuperclass())
+                .getActualTypeArguments()[0].getTypeName();
+        System.out.println(TAG + ": All the " + plantClassName + " have been watered.");
     }
 
     /**
@@ -38,6 +45,8 @@ public class PlantGroup <T extends AbstractPlant> {
      */
     public void addPlant(T plant) {
         plants.add(plant);
+
+        System.out.println(TAG + ": " + plant.toString() + " has been added to " + toString());
     }
 
     /**

@@ -8,10 +8,13 @@ import com.haveacupofjava.happyfarm.produce.AbstractMilkProduce;
 import com.haveacupofjava.happyfarm.security.MethodExposedException;
 import com.haveacupofjava.happyfarm.security.PackageChecker;
 
+import java.lang.reflect.ParameterizedType;
 import java.util.ArrayList;
 import java.util.List;
 
 public class AnimalGroup<T extends AbstractAnimal> {
+
+    private static final String TAG = AnimalGroup.class.getSimpleName();
 
     private List<T> animals;
 
@@ -39,6 +42,10 @@ public class AnimalGroup<T extends AbstractAnimal> {
                 exception.printStackTrace(System.out);
             }
         }
+
+        String animalClassName = ((ParameterizedType) getClass().getGenericSuperclass())
+                .getActualTypeArguments()[0].getTypeName();
+        System.out.println(TAG + ": All the " + animalClassName + " have been fed.");
     }
 
     /**
@@ -47,6 +54,8 @@ public class AnimalGroup<T extends AbstractAnimal> {
      */
     public void addAnimal(T animal) {
         animals.add(animal);
+
+        System.out.println(TAG + ": " + animal.toString() + " has been added to " + toString());
     }
 
     /**
@@ -67,8 +76,10 @@ public class AnimalGroup<T extends AbstractAnimal> {
     }
 
     /**
-     *
-     * @return
+     * Returns a list of all the milk produces in this animal group. Returns null if the animal
+     * list is null or the animals are oviparas.
+     * @return A list of all the milk produces in this animal group. Null if the animal list is
+     * null or the animals are oviparas.
      */
     public List<AbstractMilkProduce> getMilkProduce() {
         // If the animal list is null
@@ -89,8 +100,10 @@ public class AnimalGroup<T extends AbstractAnimal> {
     }
 
     /**
-     *
-     * @return
+     * Returns a list of all the egg produces in this animal group. Returns null if the animal
+     * list is null or the animals are viviparas
+     * @return A list of all the egg produces in this animal group. Null if the animal list is null
+     * or the animals are viviparas
      */
     public List<AbstractEggProduce> getEggProduce() {
         // If the animal list is null
