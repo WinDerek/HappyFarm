@@ -1,10 +1,6 @@
 package com.haveacupofjava.happyfarm.creature;
 
-import com.haveacupofjava.happyfarm.produce.AbstractMilkProduce;
 import com.haveacupofjava.happyfarm.produce.PigMilk;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
   * Class Pig
