@@ -31,7 +31,9 @@ public abstract class AbstractPen<T extends AbstractAnimal> extends AbstractFiel
     public void addAnimal(T animal) {
         animalGroup.addAnimal(animal);
 
-        System.out.println(TAG + ": " + animal.toString() + " is added into " + toString());
+        System.out.println(TAG + ": " + animal.getClass().getSimpleName() + "@" +
+                animal.hashCode() + " is added into " + getClass().getSimpleName() + "@" +
+                hashCode() + ".");
     }
 
     /**
@@ -44,7 +46,8 @@ public abstract class AbstractPen<T extends AbstractAnimal> extends AbstractFiel
             exception.printStackTrace(System.out);
         }
 
-        System.out.println(TAG + ": All the animals in " + toString() + " have been fed.");
+        System.out.println(TAG + ": All the animals in " + getClass().getSimpleName() + "@" +
+                hashCode() + " have been fed.");
     }
 
     @Override

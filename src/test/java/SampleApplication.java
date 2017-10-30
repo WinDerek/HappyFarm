@@ -21,7 +21,7 @@ import com.haveacupofjava.happyfarm.task.RequestParsingRule;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Test {
+public class SampleApplication {
 
     public static void main(String[] args) throws Exception {
         Farmer farmer = Farmer.getInstance();

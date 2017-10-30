@@ -10,6 +10,8 @@ import java.io.Serializable;
   */
 public abstract class AbstractField extends AbstractFieldComponent implements Serializable {
 
+    private static final String TAG = AbstractField.class.getSimpleName();
+
     protected AbstractFieldDecorator decorator;
 
     public void resetDecoratorHead(AbstractFieldDecorator decorator) {
@@ -25,7 +27,8 @@ public abstract class AbstractField extends AbstractFieldComponent implements Se
     }
 
     public void showField() {
-        System.out.println("Showing " + toString() +": \n");
+        System.out.println(TAG + ": Showing " + getClass().getSimpleName() + "@" + hashCode() +
+                ": ");
         this.decorator.show();
     }
 

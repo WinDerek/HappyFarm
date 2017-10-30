@@ -139,8 +139,10 @@ public class StorageRoom extends AbstractRoom {
         NormalBox normalBox = new NormalBox();
         normalBox.store(products, produce);
 
-        System.out.println(TAG + ": " + produce.toString() + " is stored in " +
-                normalBox.toString() + " in " + toString());
+        System.out.println(TAG + ": " + produce.getClass().getSimpleName() + "@" +
+                produce.hashCode() + " is stored in " + normalBox.getClass().getSimpleName() +
+                "@" + normalBox.hashCode() + " in " + getClass().getSimpleName() + "@" +
+                hashCode());
     }
 
     /**

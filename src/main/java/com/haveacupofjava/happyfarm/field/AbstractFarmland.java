@@ -26,7 +26,9 @@ public abstract class AbstractFarmland<T extends AbstractPlant> extends Abstract
     public void addPlant(T plant) {
         plantGroup.addPlant(plant);
 
-        System.out.println(TAG + ": " + plant.toString() + " is added into " + toString());
+        System.out.println(TAG + ": " + plant.getClass().getSimpleName()  + "@" +
+                plant.hashCode() + " is added into " + getClass().getSimpleName() + "@" +
+                hashCode());
     }
 
     /**
@@ -39,7 +41,8 @@ public abstract class AbstractFarmland<T extends AbstractPlant> extends Abstract
             exception.printStackTrace(System.out);
         }
 
-        System.out.println(TAG + ": All the plants in " + toString() + " have been watered.");
+        System.out.println(TAG + ": All the plants in " + getClass().getSimpleName() + "@" +
+                hashCode() + " have been watered.");
     }
 
     @Override

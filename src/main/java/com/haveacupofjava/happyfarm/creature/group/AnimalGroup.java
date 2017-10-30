@@ -39,7 +39,8 @@ public class AnimalGroup<T extends AbstractAnimal> extends AbstractAnimal {
 //        String animalClassName = ((ParameterizedType) getClass().getGenericSuperclass())
 //                .getActualTypeArguments()[0].getTypeName();
 //        System.out.println(TAG + ": All the " + animalClassName + " have been fed.");
-        System.out.println(TAG + ": All the animals in " + toString() + " have been fed.");
+        System.out.println(TAG + ": All the animals in " + getClass().getSimpleName() + "@" +
+                hashCode() + " have been fed.");
     }
 
     /**
@@ -55,7 +56,8 @@ public class AnimalGroup<T extends AbstractAnimal> extends AbstractAnimal {
 //        String animalClassName = ((ParameterizedType) getClass().getGenericSuperclass())
 //                .getActualTypeArguments()[0].getTypeName();
 //        System.out.println(TAG + ": All the " + animalClassName + " have produced once.");
-        System.out.println(TAG + ": All the animals in " + toString() + " have produced once.");
+        System.out.println(TAG + ": All the animals in " + getClass().getSimpleName() + "@" +
+                hashCode() + " have produced once.");
     }
 
     /**
@@ -65,7 +67,9 @@ public class AnimalGroup<T extends AbstractAnimal> extends AbstractAnimal {
     public void addAnimal(T animal) {
         animals.add(animal);
 
-        System.out.println(TAG + ": " + animal.toString() + " has been added to " + toString());
+        System.out.println(TAG + ": " + animal.getClass().getSimpleName() + "@" +
+                animal.hashCode() + " has been added to " + getClass().getSimpleName() + "@" +
+                hashCode() + ".");
     }
 
     /**

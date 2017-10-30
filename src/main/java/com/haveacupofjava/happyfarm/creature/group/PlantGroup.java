@@ -37,7 +37,8 @@ public class PlantGroup<T extends AbstractPlant> extends AbstractPlant {
 //                .getActualTypeArguments()[0].getTypeName();
 //        System.out.println(TAG + ": All the " + plantClassName + " in " + toString() +
 //                " have been watered.");
-        System.out.println(TAG + ": All the plants have produces once.");
+        System.out.println(TAG + ": All the plants in " + getClass().getSimpleName() + "@" +
+                hashCode() + " have produces once.");
     }
 
     /**
@@ -54,7 +55,8 @@ public class PlantGroup<T extends AbstractPlant> extends AbstractPlant {
 //                .getActualTypeArguments()[0].getTypeName();
 //        System.out.println(TAG + ": All the " + plantClassName + " in " + toString() +
 //                " have produced once.");
-        System.out.println(TAG + ": All the plants have produces once.");
+        System.out.println(TAG + ": All the plants in " + getClass().getSimpleName() + "@" +
+                hashCode() + " have produces once.");
     }
 
     /**
@@ -64,7 +66,9 @@ public class PlantGroup<T extends AbstractPlant> extends AbstractPlant {
     public void addPlant(T plant) {
         plants.add(plant);
 
-        System.out.println(TAG + ": " + plant.toString() + " has been added to " + toString());
+        System.out.println(TAG + ": " + plant.getClass().getSimpleName() + "@" +
+                plant.hashCode() + " has been added to " + getClass().getSimpleName() + "@" +
+                hashCode() + ".");
     }
 
     /**

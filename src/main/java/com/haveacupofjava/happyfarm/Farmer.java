@@ -197,13 +197,13 @@ public class Farmer implements Observer, Tradable {
     }
 
     /**
-     * Clean the room
-     * @param roomName the name of room
-     * @param action the action of doing
+     * Cleans the room
+     * @param roomName The name of room
+     * @param action The action of doing
      */
     public void cleanRoom(String roomName, String action){
         AbstractRoom abstractRoom = getRoom(roomName);
-        if(null == abstractRoom){
+        if (null == abstractRoom) {
             System.out.println("Fail to clean, cause by : the '" + roomName + "' is not exist ");
             return;
         }
@@ -213,12 +213,11 @@ public class Farmer implements Observer, Tradable {
     }
 
     /**
-     * Go shopping
-     * Show all items in the store
+     * Goes shopping
+     * Shows all items in the store
      */
     public void goShopping(){
-        ProxyStore proxyStore = ProxyStore.getInstance();
-        proxyStore.show();
+        ProxyStore.getInstance().show();
     }
 
     /**
