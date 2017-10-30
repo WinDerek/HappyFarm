@@ -5,13 +5,19 @@ package com.haveacupofjava.happyfarm.task;
   * handle command from farmer
   */
 public abstract class AbstractManagerHandler {
+
     protected AbstractManagerHandler nextManager;
 
     /**
-      * handle request from farmer
-      * @param request The request to be handled
-      */
-    public final void handleRequest(Request request){
+     * Handles a request
+     * @param request The request to be handled
+     * @throws RequestParsingException if the request is not parsable
+     */
+    public final void handleRequest(Request request) throws RequestParsingException {
+        if (!request.isParsed()) {
+            request.parse();
+        }
+
         if (getRequestCategory() == request.getCategory()) {
             handle(request);
         } else {

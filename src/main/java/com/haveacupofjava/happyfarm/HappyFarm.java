@@ -95,11 +95,11 @@ public class HappyFarm {
     }
 
     /**
-     * Decorator the room
+     * Decorates the room
      * @param action The name of action
      * @param roomName The name of room
      */
-    void decoratorRoom(String roomName, String action) {
+    void decorateRoom(String roomName, String action) {
         if (action.equalsIgnoreCase("brush")) {
             AbstractRoom room = getRoom(roomName);
             if (null != room) {

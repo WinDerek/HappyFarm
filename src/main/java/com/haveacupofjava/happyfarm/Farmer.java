@@ -22,6 +22,7 @@ import com.haveacupofjava.happyfarm.field.Director;
 import com.haveacupofjava.happyfarm.task.AnimalManagerHandler;
 import com.haveacupofjava.happyfarm.task.PlantManagerHandler;
 import com.haveacupofjava.happyfarm.task.Request;
+import com.haveacupofjava.happyfarm.task.RequestParsingException;
 import com.haveacupofjava.happyfarm.trade.FactoryMediator;
 import com.haveacupofjava.happyfarm.trade.Market;
 import com.haveacupofjava.happyfarm.trade.MarketMediator;
@@ -187,12 +188,12 @@ public class Farmer implements Observer, Tradable {
     }
 
     /**
-     * Decorator the room
+     * Decorates the room
      * @param action The name of action
      * @param roomName The name of room
      */
-    public void decoratorRoom( String roomName, String action){
-        HappyFarm.getInstance().decoratorRoom(roomName, action);
+    public void decorateRoom(String roomName, String action) {
+        HappyFarm.getInstance().decorateRoom(roomName, action);
     }
 
     /**
@@ -279,7 +280,6 @@ public class Farmer implements Observer, Tradable {
     /**
       * When the farmer gets a notification, he does something
       * @param notification type of notification
-      * @author Yichao Wu
       */
     @Override
     public void update(String notification) {
@@ -308,23 +308,29 @@ public class Farmer implements Observer, Tradable {
     }
 
     /**
-     *
-     * @param builder
+     * Buys a field and adds it into the farm
+     * @param builder A builder of the field
      */
-    public void buyField(AbstractFieldBuilder builder){
+    public void buyField(AbstractFieldBuilder builder) {
         Director director = new Director(builder);
         director.constructField();
         AbstractField field = builder.getField();
         HappyFarm.getInstance().addField(field);
     }
 
-    public void sellProduce(Class clazz, int number) {
+    /**
+     * Sells some amount of produces
+     * @param clazz The Class of the produce
+     * @param number The amount of the produce to sell
+     * @return True if the sell is successful, otherwise returns false.
+     */
+    public boolean sellProduce(Class clazz, int number) {
         List<AbstractProduce> list = getProduce(clazz, number);
 
         // Checks if the get operation fails
         if (list == null) {
             System.out.println("Sell produce fails due to the failure of getting the produces.");
-            return;
+            return false;
         }
 
         MarketMediator marketMediator = new MarketMediator();
@@ -334,13 +340,16 @@ public class Farmer implements Observer, Tradable {
         marketMediator.handleTrade();
 
         System.out.println("Trade completed.");
+
+        return true;
     }
 
     /**
-     *
-     * @param request
+     * Handles a request
+     * @param request The request to be handled
+     * @throws RequestParsingException if the request is not parsable
      */
-    public void handleRequest(Request request) {
+    public void handleRequest(Request request) throws RequestParsingException {
         AnimalManagerHandler animalManagerHandler = new AnimalManagerHandler();
         PlantManagerHandler plantManagerHandler = new PlantManagerHandler();
         animalManagerHandler.setNext(plantManagerHandler);

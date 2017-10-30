@@ -5,32 +5,28 @@ import java.util.List;
 
 public class Request {
 
+    private String command;
+
     private RequestCategory category;
     private String tool;
     private Class field;
 
+    private boolean parsed;
+
     private static List<RequestParsingRule> requestParsingRuleList =
             new ArrayList<RequestParsingRule>();
 
-    /**
-     * Constructor for the class {@code Request}
-     * @param command The command string of this request
-     * @throws RequestParsingException if the request is not parsable
-     */
-    public Request(String command) throws RequestParsingException {
-        for (RequestParsingRule requestParsingRule : requestParsingRuleList) {
-            if (requestParsingRule.getCommandString().equals(command)) {
-                category = requestParsingRule.getRequestCategory();
-                tool = requestParsingRule.getTool();
-                field = requestParsingRule.getField();
+    public Request(String command) {
+        this.command = command;
+        parsed = false;
+    }
 
-                return;
-            }
-        }
+    public boolean isParsed() {
+        return parsed;
+    }
 
-        throw new RequestParsingException("The request \"" + command +
-                "\" is not parsable. Please add your customized RequestParsingRule by " +
-                "calling the method Request.addParsingRule() first.");
+    public void setParsed(boolean parsed) {
+        this.parsed = parsed;
     }
 
     public RequestCategory getCategory() {
@@ -60,6 +56,28 @@ public class Request {
         }
 
         requestParsingRuleList.add(requestParsingRule);
+    }
+
+    /**
+     * Parses this request
+     * @throws RequestParsingException if the request is not parsable
+     */
+    public void parse() throws RequestParsingException {
+        for (RequestParsingRule requestParsingRule : requestParsingRuleList) {
+            if (requestParsingRule.getCommandString().equals(command)) {
+                category = requestParsingRule.getRequestCategory();
+                tool = requestParsingRule.getTool();
+                field = requestParsingRule.getField();
+
+                parsed = true;
+
+                return;
+            }
+        }
+
+        throw new RequestParsingException("The request \"" + command +
+                "\" is not parsable. Please add your customized RequestParsingRule by " +
+                "calling the method Request.addParsingRule() first.");
     }
 
 }

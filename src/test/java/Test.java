@@ -1,4 +1,5 @@
 import com.haveacupofjava.happyfarm.Farmer;
+import com.haveacupofjava.happyfarm.HappyFarm;
 import com.haveacupofjava.happyfarm.creature.Pig;
 import com.haveacupofjava.happyfarm.creature.Wheat;
 import com.haveacupofjava.happyfarm.factory.PigFactory;
@@ -24,6 +25,7 @@ public class Test {
 
     public static void main(String[] args) throws Exception {
         Farmer farmer = Farmer.getInstance();
+        HappyFarm happyFarm = HappyFarm.getInstance();
 
         farmer.buyField(new PigPenBuilder());
         farmer.buyAnimal(new PigFactory(), 2);
@@ -49,13 +51,18 @@ public class Test {
         FactoryStore.addTool(PigProductionStimulator.class.getSimpleName(),
                 new PigProductionStimulator());
 
-        Request stimulatePigProductionRequest = new Request("Stimulate all the pigs to produce! Let them fuck!");
+        Request stimulatePigProductionRequest =
+                new Request("Stimulate all the pigs to produce! Let them fuck!");
         Request collectPigMilkRequest = new Request("Please collect pig milk");
 
         farmer.handleRequest(stimulatePigProductionRequest);
         farmer.handleRequest(collectPigMilkRequest);
 
-        Farmer.getInstance().sellProduce(PigMilk.class, 1);
+        System.out.println("The funds of HappyFarm before trade: " + happyFarm.getFunds());
+
+        while (farmer.sellProduce(PigMilk.class, 1)) {}
+
+        System.out.println("The funds of HappyFarm after trade: " + happyFarm.getFunds());
     }
 
 }

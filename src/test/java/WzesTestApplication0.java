@@ -42,7 +42,7 @@ public class WzesTestApplication0 {
         farmer.cleanRoom("livingroom", "wipe");
 
         System.out.println("\n------------------farmer decorator-----------------");
-        farmer.decoratorRoom("livingroom", "brush");
+        farmer.decorateRoom("livingroom", "brush");
 
         System.out.println("\n--------------------farmer buy---------------------");
         farmer.buyProduct("hoe", 1);
