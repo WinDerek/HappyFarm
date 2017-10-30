@@ -1,6 +1,7 @@
 package com.haveacupofjava.happyfarm.factory;
 
 
+import com.haveacupofjava.happyfarm.Farmer;
 import com.haveacupofjava.happyfarm.creature.AbstractAnimal;
 
 /**
@@ -14,7 +15,9 @@ public abstract class AbstractAnimalFactory extends AbstractFactory {
      * @return An animal from this factory
      */
     public AbstractAnimal getAnimal() {
-        return (AbstractAnimal) create();
+        AbstractAnimal animal = (AbstractAnimal) create();
+        animal.addObserver(Farmer.getInstance());
+        return animal;
     }
 
 }
