@@ -1,25 +1,13 @@
 import com.haveacupofjava.happyfarm.Farmer;
 import com.haveacupofjava.happyfarm.HappyFarm;
-import com.haveacupofjava.happyfarm.creature.Pig;
-import com.haveacupofjava.happyfarm.creature.Wheat;
 import com.haveacupofjava.happyfarm.factory.PigFactory;
-import com.haveacupofjava.happyfarm.factory.WheatFactory;
-import com.haveacupofjava.happyfarm.field.AbstractField;
-import com.haveacupofjava.happyfarm.field.AbstractPen;
 import com.haveacupofjava.happyfarm.field.PigPen;
 import com.haveacupofjava.happyfarm.field.PigPenBuilder;
-import com.haveacupofjava.happyfarm.produce.AbstractProduce;
 import com.haveacupofjava.happyfarm.produce.PigMilk;
-import com.haveacupofjava.happyfarm.product.AbstractTool;
-import com.haveacupofjava.happyfarm.room.storage.StorageRoom;
 import com.haveacupofjava.happyfarm.store.FactoryStore;
-import com.haveacupofjava.happyfarm.store.ProxyStore;
 import com.haveacupofjava.happyfarm.task.Request;
 import com.haveacupofjava.happyfarm.task.RequestCategory;
 import com.haveacupofjava.happyfarm.task.RequestParsingRule;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class SampleApplication {
 
@@ -33,7 +21,7 @@ public class SampleApplication {
 
         Request.addRequestParsingRule(
                 new RequestParsingRule(
-                        "Stimulate all the pigs to produce! Let them fuck!",
+                        "Stimulate all the pigs to produce!",
                         RequestCategory.PEN_REQUEST,
                         PigProductionStimulator.class.getSimpleName(),
                         PigPen.class
@@ -53,7 +41,7 @@ public class SampleApplication {
                 new PigProductionStimulator());
 
         Request stimulatePigProductionRequest =
-                new Request("Stimulate all the pigs to produce! Let them fuck!");
+                new Request("Stimulate all the pigs to produce!");
         Request collectPigMilkRequest = new Request("Please collect pig milk");
 
         farmer.handleRequest(stimulatePigProductionRequest);
