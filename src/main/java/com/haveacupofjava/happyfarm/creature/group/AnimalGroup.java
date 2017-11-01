@@ -93,11 +93,16 @@ public class AnimalGroup<T extends AbstractAnimal> extends AbstractAnimal {
      * Returns a list of all the milk produces in this animal group. Returns null if the animal
      * list is null or the animals are oviparas.
      * @return A list of all the milk produces in this animal group. Null if the animal list is
-     * null or the animals are oviparas.
+     * null or the animal list is empty or the animals are oviparas.
      */
     public List<AbstractMilkProduce> getMilkProduce() {
         // If the animal list is null
         if (animals == null) {
+            return null;
+        }
+
+        // If the animal list is empty
+        if (animals.size() == 0) {
             return null;
         }
 

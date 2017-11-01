@@ -30,6 +30,11 @@ public class Bucket extends AbstractTool {
     public void handleField(AbstractField field) {
         List<AbstractProduce> produceList = ((AbstractPen) field).getMilkProduce();
 
+        // If the produce list is null
+        if (produceList == null) {
+            return;
+        }
+
         for (AbstractProduce produce : produceList) {
             StorageRoom.getInstance().store(produce);
         }

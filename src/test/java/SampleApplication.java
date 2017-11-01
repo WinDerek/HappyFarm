@@ -28,6 +28,7 @@ public class SampleApplication {
         HappyFarm happyFarm = HappyFarm.getInstance();
 
         farmer.buyField(new PigPenBuilder());
+        farmer.buyField(new PigPenBuilder());
         farmer.buyAnimal(new PigFactory(), 2);
 
         Request.addRequestParsingRule(
@@ -63,6 +64,8 @@ public class SampleApplication {
         while (farmer.sellProduce(PigMilk.class, 1)) {}
 
         System.out.println("The funds of HappyFarm after trade: " + happyFarm.getFunds());
+
+        happyFarm.showFieldsInformation();
     }
 
 }

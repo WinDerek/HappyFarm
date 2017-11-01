@@ -40,15 +40,16 @@ public class HappyFarm {
     }
 
     /**
-     * Build a room has one type
-     * @param roomType The type of room
-     * @param roomName The name of room
+     * Builds a room of a type
+     * @param roomType The type of the room
+     * @param roomName The name of the room
      */
     void buildRoom(String roomType, String roomName) {
         // check if
         for (AbstractRoom room : roomList) {
             if (room.getName().equalsIgnoreCase(roomName)) {
-                System.out.println("Fail to build " + roomType + " , cause by : the room name is exits ");
+                System.out.println("Fail to build " + roomType +
+                        " , cause by : the room name is exits ");
                 return;
             }
         }
@@ -69,23 +70,24 @@ public class HappyFarm {
             roomList.add(kitchenRoom);
             System.out.println("Success to build : " + roomName);
         } else {
-            System.out.println("Fail to build " + roomType + " , cause by : there is not exits " + roomType);
+            System.out.println("Fail to build " + roomType +
+                    " , cause by : there is not exits " + roomType);
         }
     }
 
     /**
-     * Get room object in the HappyFarm
+     * Gets room object in the HappyFarm
      * @param roomName The name of room
      * @return AbstractRoom The object of room
      */
-    AbstractRoom getRoom(String roomName){
-        for (AbstractRoom room : roomList){
-            if(room.getName().equalsIgnoreCase(roomName)){
+    AbstractRoom getRoom(String roomName) {
+        for (AbstractRoom room : roomList) {
+            if (room.getName().equalsIgnoreCase(roomName)) {
                 System.out.println("Success to find " + roomName);
                 return room;
             }
         }
-        if(roomName.equalsIgnoreCase("storageroom")){
+        if (roomName.equalsIgnoreCase("storageroom")) {
             System.out.println("Success to find " + roomName);
             return StorageRoom.getInstance();
         }
@@ -267,14 +269,9 @@ public class HappyFarm {
             Memento memento = new Memento();
             memento.setState(clonedFunds, clonedFieldList, clonedRoomList, clonedProductsList);
 
-            // TODO
-            // and other attributes (must implement serializable)
-            // and need define some functions in Memento (set..., get...)
-
             Memento.addState(memento);
 
             System.out.println("Save HappyFarm success.");
-
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -284,7 +281,6 @@ public class HappyFarm {
      * undo, reload state of HappyFarm and Storage
      */
     void reload() {
-
         Memento memento = Memento.popState();
 
         this.funds = memento.getFunds();
