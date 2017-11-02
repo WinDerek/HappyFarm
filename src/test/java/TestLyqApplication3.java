@@ -8,18 +8,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TestLyqApplication3 {
-    public static void main(String[] args){
 
-
-        try{
-
+    public static void main(String[] args) {
+        try {
             List<Pig> a = new ArrayList<>();
 
             Pig p = new Pig();
             p.setWeight(100);
             System.out.println(p.getWeight());
             a.add(p);
-
 
             ByteArrayOutputStream byteOut = new ByteArrayOutputStream();
             ObjectOutputStream out = new ObjectOutputStream(byteOut);
@@ -38,13 +35,8 @@ public class TestLyqApplication3 {
             System.out.println(a.get(0).getWeight());
             System.out.println(b.get(0).getWeight());
         }
-        catch (Exception e){
+        catch (Exception e) {
             System.out.println(e);
         }
-
-
-
-
-
     }
 }

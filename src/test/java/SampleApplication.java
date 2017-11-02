@@ -49,6 +49,8 @@ public class SampleApplication {
 
         System.out.println("The funds of HappyFarm before trade: " + happyFarm.getFunds());
 
+        happyFarm.save();
+
         while (farmer.sellProduce(PigMilk.class, 1)) {}
 
         System.out.println("The funds of HappyFarm after trade: " + happyFarm.getFunds());

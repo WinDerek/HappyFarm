@@ -1,11 +1,14 @@
 package com.haveacupofjava.happyfarm.field;
 
+import java.io.Serializable;
+
 /**
   * Class AbstractFieldDecorator
   * decorator to decorate field
   * @author Yiqun Lin
   */
-public abstract class AbstractFieldDecorator extends AbstractFieldComponent {
+public abstract class AbstractFieldDecorator extends AbstractFieldComponent
+        implements Serializable {
 
     public AbstractFieldComponent component;
 

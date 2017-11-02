@@ -240,17 +240,16 @@ public class HappyFarm {
     }
 
     /**
-     * save Farm State: HappyFarm(Funds, Field, Room List) and StorageRoom(ProductsList)
+     * Saves Farm State: HappyFarm(Funds, Field, Room List) and StorageRoom(ProductsList)
      */
-    void save() {
+    public void save() {
         try {
             Double clonedFunds = this.funds;
 
             //serializable
             ByteArrayOutputStream byteOut = new ByteArrayOutputStream();
             ObjectOutputStream out = new ObjectOutputStream(byteOut);
-            ByteArrayInputStream byteIn = new ByteArrayInputStream(
-                    byteOut.toByteArray());
+            ByteArrayInputStream byteIn = new ByteArrayInputStream(byteOut.toByteArray());
 
             out.writeObject(this.fieldList);
             ObjectInputStream in = new ObjectInputStream(byteIn);
@@ -272,15 +271,15 @@ public class HappyFarm {
             Memento.addState(memento);
 
             System.out.println("Save HappyFarm success.");
-        } catch (Exception e) {
-            System.out.println(e);
+        } catch (Exception exception) {
+            exception.printStackTrace(System.out);
         }
     }
 
     /**
-     * undo, reload state of HappyFarm and Storage
+     * Reloads state of HappyFarm and Storage
      */
-    void reload() {
+    public void reload() {
         Memento memento = Memento.popState();
 
         this.funds = memento.getFunds();
@@ -294,8 +293,8 @@ public class HappyFarm {
     }
 
     /**
-     *
-     * @return
+     * Returns a list of fields in this farm
+     * @return A list of fields in this farm
      * @throws MethodExposedException if the method is exposed to the outside package
      */
     public List<AbstractField> getFieldList() throws MethodExposedException {
