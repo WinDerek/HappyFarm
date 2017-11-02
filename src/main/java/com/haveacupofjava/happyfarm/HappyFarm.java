@@ -3,6 +3,7 @@ package com.haveacupofjava.happyfarm;
 import com.haveacupofjava.happyfarm.creature.AbstractAnimal;
 import com.haveacupofjava.happyfarm.creature.AbstractCreature;
 import com.haveacupofjava.happyfarm.creature.AbstractPlant;
+import com.haveacupofjava.happyfarm.creature.Pig;
 import com.haveacupofjava.happyfarm.field.AbstractFarmland;
 import com.haveacupofjava.happyfarm.field.AbstractField;
 import com.haveacupofjava.happyfarm.field.AbstractPen;
@@ -25,11 +26,11 @@ public class HappyFarm {
 
     private static HappyFarm instance;
 
-    private Double funds;
+    private Double funds = 0.0;
 
-    private List<AbstractField> fieldList;
+    private List<AbstractField> fieldList = new ArrayList<>();
 
-    private List<AbstractRoom> roomList;
+    private List<AbstractRoom> roomList = new ArrayList<>();
 
     private static final double INITIAL_FUNDS = 1000.0;
 
@@ -247,23 +248,34 @@ public class HappyFarm {
             Double clonedFunds = this.funds;
 
             //serializable
-            ByteArrayOutputStream byteOut = new ByteArrayOutputStream();
-            ObjectOutputStream out = new ObjectOutputStream(byteOut);
-            ByteArrayInputStream byteIn = new ByteArrayInputStream(byteOut.toByteArray());
 
-            out.writeObject(this.fieldList);
-            ObjectInputStream in = new ObjectInputStream(byteIn);
-            List<AbstractField> clonedFieldList = (List<AbstractField>) in.readObject();
+            ByteArrayOutputStream byteOutField = new ByteArrayOutputStream();
+            ObjectOutputStream outField = new ObjectOutputStream(byteOutField);
+            outField.writeObject(this.fieldList);
+            ByteArrayInputStream byteInField = new ByteArrayInputStream(
+                    byteOutField.toByteArray());
+            ObjectInputStream inField = new ObjectInputStream(byteInField);
+            List<AbstractField> clonedFieldList = (List<AbstractField>) inField.readObject();
 
-            out.writeObject(this.roomList);
-            in = new ObjectInputStream(byteIn);
-            List<AbstractRoom> clonedRoomList = (List<AbstractRoom>) in.readObject();
+            ByteArrayOutputStream byteOutRoom = new ByteArrayOutputStream();
+            ObjectOutputStream outRoom = new ObjectOutputStream(byteOutRoom);
+            outRoom.writeObject(this.roomList);
+            ByteArrayInputStream byteInRoom = new ByteArrayInputStream(
+                    byteOutRoom.toByteArray());
+            ObjectInputStream inRoom = new ObjectInputStream(byteInRoom);
+            List<AbstractRoom> clonedRoomList = (List<AbstractRoom>) inRoom.readObject();
 
             StorageRoom storageRoom = StorageRoom.getInstance();
             List<AbstractProduct> productsList = storageRoom.getProducts();
-            out.writeObject(productsList);
-            in = new ObjectInputStream(byteIn);
-            List<AbstractProduct> clonedProductsList = (List<AbstractProduct>) in.readObject();
+
+            ByteArrayOutputStream byteOutProducts = new ByteArrayOutputStream();
+            ObjectOutputStream outProducts = new ObjectOutputStream(byteOutProducts);
+            outProducts.writeObject(productsList);
+            ByteArrayInputStream byteInProducts = new ByteArrayInputStream(
+                    byteOutProducts.toByteArray());
+            ObjectInputStream inProducts = new ObjectInputStream(byteInProducts);
+            List<AbstractProduct> clonedProductsList = (List<AbstractProduct>) inProducts.readObject();
+
 
             Memento memento = new Memento();
             memento.setState(clonedFunds, clonedFieldList, clonedRoomList, clonedProductsList);
