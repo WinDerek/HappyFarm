@@ -37,7 +37,7 @@ public abstract class AbstractRoom implements Serializable {
     /**
      * Items in the room
      */
-    protected List<AbstractProduct> products;
+    protected List<AbstractProduct> products = new ArrayList<>();
 
     /**
      * Clean the room and execute action
