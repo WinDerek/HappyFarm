@@ -56,6 +56,8 @@ public class SampleApplication {
         System.out.println("The funds of HappyFarm after trade: " + happyFarm.getFunds());
 
         happyFarm.showFieldsInformation();
+
+        happyFarm.reload();
     }
 
 }
