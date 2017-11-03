@@ -15,6 +15,9 @@ public class SampleApplication {
         Farmer farmer = Farmer.getInstance();
         HappyFarm happyFarm = HappyFarm.getInstance();
 
+        happyFarm.save();
+        happyFarm.reload();
+
         farmer.buyField(new PigPenBuilder());
         farmer.buyField(new PigPenBuilder());
         farmer.buyAnimal(new PigFactory(), 2);
@@ -48,8 +51,6 @@ public class SampleApplication {
         farmer.handleRequest(collectPigMilkRequest);
 
         System.out.println("The funds of HappyFarm before trade: " + happyFarm.getFunds());
-
-        happyFarm.save();
 
         while (farmer.sellProduce(PigMilk.class, 1)) {}
 
