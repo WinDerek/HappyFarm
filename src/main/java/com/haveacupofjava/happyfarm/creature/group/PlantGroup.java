@@ -4,11 +4,12 @@ import com.haveacupofjava.happyfarm.creature.AbstractPlant;
 import com.haveacupofjava.happyfarm.security.MethodExposedException;
 import com.haveacupofjava.happyfarm.security.PackageChecker;
 
+import java.io.Serializable;
 import java.lang.reflect.ParameterizedType;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PlantGroup<T extends AbstractPlant> extends AbstractPlant {
+public class PlantGroup<T extends AbstractPlant> extends AbstractPlant implements Serializable{
 
     private static final String TAG = PlantGroup.class.getSimpleName();
 

@@ -28,11 +28,12 @@ import com.haveacupofjava.happyfarm.trade.Market;
 import com.haveacupofjava.happyfarm.trade.MarketMediator;
 import com.haveacupofjava.happyfarm.trade.Tradable;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class Farmer implements Observer, Tradable {
+public class Farmer implements Observer, Tradable, Serializable{
 
     private static Farmer instance;
 

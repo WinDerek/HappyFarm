@@ -8,11 +8,12 @@ import com.haveacupofjava.happyfarm.produce.AbstractMilkProduce;
 import com.haveacupofjava.happyfarm.security.MethodExposedException;
 import com.haveacupofjava.happyfarm.security.PackageChecker;
 
+import java.io.Serializable;
 import java.lang.reflect.ParameterizedType;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AnimalGroup<T extends AbstractAnimal> extends AbstractAnimal {
+public class AnimalGroup<T extends AbstractAnimal> extends AbstractAnimal implements Serializable{
 
     private static final String TAG = AnimalGroup.class.getSimpleName();
 
