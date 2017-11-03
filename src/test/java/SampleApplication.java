@@ -16,7 +16,6 @@ public class SampleApplication {
         HappyFarm happyFarm = HappyFarm.getInstance();
 
         happyFarm.save();
-        happyFarm.reload();
 
         farmer.buyField(new PigPenBuilder());
         farmer.buyField(new PigPenBuilder());
@@ -59,6 +58,8 @@ public class SampleApplication {
         happyFarm.showFieldsInformation();
 
         happyFarm.reload();
+
+        System.out.println("The funds of HappyFarm after reload: " + happyFarm.getFunds());
     }
 
 }
